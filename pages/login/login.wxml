@@ -1,0 +1,8 @@
+<view class="page-login">
+  <view class="login-center">
+    <view class="logo-box"><image src="https://img1.haoshiqi.net/miniapp/logo@3x_9a0bf5e698.png"></image></view>
+    <view class="brands-tip">好食期-日期越近越便宜</view>
+  </view>
+  <view class="goHomeBtn" bindtap="goHome"><image src="https://img1.haoshiqi.net/miniapp/img/home_43521cab98.png"></image></view>
+  <button class="loginBtn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">使用微信登录</button>
+</view>

@@ -1,0 +1,11 @@
+<template name="attr-coupon">
+    <view class="layout-column2" bindtap="onShowCoupon">
+      <view class="title">{{coupleTitle?coupleTitle:'领券'}}：</view>
+      <view class="content nowrap">
+          <view class="item" wx:for="{{list}}" wx:key="{{index}}">
+            <view class="text">{{ item.coupon_desc }}</view>
+          </view>
+      </view>
+      <image class="more" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="aspectFill" />
+    </view>
+  </template>

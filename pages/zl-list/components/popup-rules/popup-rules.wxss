@@ -1,0 +1,41 @@
+.popup-mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 100;
+}
+.popup-container{
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 101;
+  width: 650rpx;
+}
+.rule-container{
+  width: 540rpx;
+  height: 730rpx;
+  overflow-y: scroll;
+  background-color: #fff;
+  margin: 30rpx auto 0;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  color: #666;
+  font-size: 26rpx;
+}
+.rule-header{
+  font-size: 34rpx;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+}
+.rule-desc{
+  max-height: 600rpx;
+  overflow-y: scroll;
+}
+.rule-desc view{
+    margin-bottom: 4rpx;
+}

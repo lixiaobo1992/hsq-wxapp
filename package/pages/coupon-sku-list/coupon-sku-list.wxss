@@ -1,0 +1,25 @@
+/* pages/coupon-sku-list/coupon-sku-list.wxss */
+@import '/components/card/index.wxss';
+@import '/components/foot/foot.wxss';
+@import '/components/pull-loading/index.wxss';
+@import '/components/search/search.wxss';
+
+page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.page-sku-list{
+  height: 100%;
+}
+scroll-view {
+  height: 100%;
+}
+
+.search {
+  position: fixed;
+}
+
+.view-list {
+  padding-top: 100rpx;
+}

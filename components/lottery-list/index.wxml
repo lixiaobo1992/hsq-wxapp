@@ -1,0 +1,26 @@
+<!--components/lottery-list/index.wxml-->
+
+<template name="lottery-item">
+<!-- 商品item -->
+  <view class="lottery-item" bindtap="onItemClick" data-form-type="detail" data-id="{{id}}" data-index="{{index}}">
+    <!--图片上半部分 包括图片 和 活动时间  -->
+    <view class="item-top">
+      <image src="{{imageSrc}}" mode="scaleToFill" lazy-load="true"></image>
+      <view>{{time}}</view>
+    </view>
+    <!-- 包含商品信息  -->
+    <view class="item-bottom">
+      <!-- 商品名字  -->
+      <view class="goods-name" >{{goodsName}}</view>
+      <view>
+        <!-- 现在价格  -->
+        <text class="goods-price">￥{{goodsPrice}}</text>
+        <!-- 原价  -->
+        <text class="goods-old-price">价格 {{goodsOldPrice}}</text>
+        <label class="goods-btn {{btnCls}}" for="formid" data-form-type="remind" data-btn-type="{{btnType}}" data-id="{{id}}" data-index="{{index}}" catchtap="onBtnClick">
+          {{btnTitle}}
+        </label>
+      </view>
+    </view>
+  </view>
+</template>

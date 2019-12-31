@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "dwd-float": "../c-float/index"
+  }
+}

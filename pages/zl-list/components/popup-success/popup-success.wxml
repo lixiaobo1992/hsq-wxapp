@@ -1,0 +1,20 @@
+<view class="component-popup">
+  <view class="popup-mask"></view>
+  <view class="popup-container">
+    <image src="https://img1.haoshiqi.net/miniapp/successful2-bg_da58703425.png" mode="widthFix" class="bg-img"></image>
+    <view class="popup-content">
+      <view class="popup-title font-normal">
+        任务已完成，快快兑换~
+      </view>
+      <view class="popup-success-icon">
+        <image src="https://img1.haoshiqi.net/miniapp/successful_bg_edc0076693.png" mode="widthFix"></image>
+      </view>
+      <view class="get-button" bindtap="exchangeTask">
+        立即兑换
+      </view>
+    </view>
+    <view class="popup-close-btn" bindtap="hidePopup">
+      <image class="close-img" src="https://img1.haoshiqi.net/miniapp/cancel_icons_6c7199f079.png"></image>
+    </view>
+  </view>
+</view>

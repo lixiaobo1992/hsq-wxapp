@@ -1,0 +1,158 @@
+<!--pages/index/index.wxml-->
+<import src="../../components/card/index.wxml" />
+<import src="../../components/foot/foot.wxml" />
+<import src="../../components/backtop/backtop.wxml" />
+<import src="../../components/pull-loading/index.wxml" />
+<import src="../../components/card-rec-pin/card-rec-pin.wxml" />
+<import src="../../components/search/search.wxml" />
+
+<dwd-page
+  id="dwd-page-index"
+  custom-class="page-index"
+  content-class="page-index-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+  <!-- <dwd-float-msg class="index-msg" msgData="{{ newMsg }}" /> -->
+  <!-- <scroll-view
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="{{lowerThreshold}}"
+    bindscroll="scrpllIndex"
+    style="height:100%"
+    > -->
+  <!-- 注意事项：1、把页面所有tap事件阻止，改为保存e为oldE，并在afterFormIdSubmit中执行原来的方法，确保formidSubmit中的afterFormIdSubmit执行一次。2、要在组件上添加data-form-type="search"；3、事件要冒泡，label只触发一次 -->
+    <form class="" bindsubmit="formidSubmit" report-submit="true">
+      <button id="formid" formType="submit"></button>
+    </form>
+    <label for="formid">
+      <!-- 收藏提示 -->
+      <view class="collection-tip" wx:if="{{ collectionTip }}">
+        <view class="close-tip" bindtap="setCollectionTip">
+          <image src="https://img1.haoshiqi.net/miniapp/liebian/close_f4946309eb.png"></image>
+        </view>
+
+        <view class="tip-content"><text>点击“</text><image src="https://img1.haoshiqi.net/miniapp/img/diandiandian_70fbf1dbc8.png" mode="widthFix" /><text>”添加到我的小程序，超值零食随时抢！</text></view>
+      </view>
+      <view class="header">
+          <template is="search" data="{{content: hotSearch.value ? hotSearch.value : '搜索您想找的商品'}}"/>
+      </view>
+
+      <!-- <button bindtap="gotoTest">去测试页</button> -->
+
+      <!-- <block wx:for="{{modules}}" wx:key="{{index}}">
+        <view style="margin:{{item.marginTop}}px 0px {{item.marginBottom}}px 0px;background-image:url({{item.bg.url}});background-size:100% 100%;">
+          <template is="{{item.typeName}}" data="{{...item}}"></template>
+        </view>
+      </block> -->
+  <!-- <dwd-image src="https://img2.haoshiqi.net/FjnOUN0d7nQI4irAlRMpwWShGWLa" mode="aspectFit" default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" ></dwd-image> -->
+      <view class="tpl-modules" wx:for="{{ modules }}" wx:key="{{ item.id }}">
+        <dwd-modules data="{{item}}" />
+      </view>
+
+      <!-- 大家都在拼 -->
+      <block wx:if="{{list && list.length}}">
+        <!-- skuList -->
+        <view class="view-list">
+          <!-- 使用注意事项， card 不实现背景，自己外层盒子实现 -->
+          <view class="product-list">
+            <dwd-product-col2 data="{{ {list: list, id: 'recommendProduct'} }}" />
+          </view>
+        </view>
+
+        <template is="pull-loading" data="{{ pullLoading }}" />
+      </block>
+
+      <!-- 底部提示数据 -->
+      <view wx:if="{{showFooter}}">
+        <template is="foot"></template>
+      </view>
+
+      <block wx:for="{{ floats }}" wx:key="{{ item.id }}">
+        <dwd-floats data="{{item}}" />
+      </block>
+      <!--底部login浮层-->
+      <view class="login-pop" wx:if="{{!logged}}" bindtap="goLogin">
+        <view class="left-title">登录好食期打开精彩世界</view>
+        <view class="btn-login">立即登录</view>
+      </view>
+
+
+      <!-- 返回顶部按钮 -->
+      <template is="backTop" data="{{showBackTop}}"></template>
+
+      <view class="tip-list">
+        <block wx:for="{{tipList}}" wx:for-item="item" wx:for-index="listIndex" wx:key="{{item.schema}}">
+          <view class="activity-tip {{listIndex == 1 ? 'tip-surface' : ''}}" wx:if="{{item.type == 'active' && activeShow}}">
+            <view class="mask"></view>
+            <view class="activity-box">
+              <view class="activity-block">
+                <view class="close-btn" bindtap="closeActiveTip" data-type="1">
+                  <image src="https://img1.haoshiqi.net/miniapp/tip-close_6d5af11fad.png" mode="scaleToFill" class="close-image"/>
+                </view>
+                <view class="activity-image" data-tiptype="active" data-form-type="onUrlPage" bindtap="onUrlPage" data-url="{{item.schema}}">
+                  <image src="{{item.imageUrl}}" mode="scaleToFill" />
+                </view>
+              </view>
+            </view>
+          </view>
+
+          <view class="coupon-tip {{listIndex == 1 ? 'tip-surface' : ''}}" wx:elif="{{item.type == 'coupon' && couponShow}}">
+            <view class="mask"></view>
+            <view class="activity-box">
+              <view class="activity-block">
+                <view class="close-btn" bindtap="closeActiveTip" data-type="2">
+                  <image src="https://img1.haoshiqi.net/miniapp/tip-close_6d5af11fad.png" mode="scaleToFill" class="close-image"/>
+                </view>
+                <view class="activity-image">
+                  <image src="{{item.imageUrl}}" mode="scaleToFill" />
+                </view>
+                <view class="coupon-tip-list">
+                  <view class="coupon-item"
+                    wx:for="{{item.list}}"
+                    wx:for-item="couponitem"
+                    wx:for-index="couponindex"
+                    data-form-type="onUrlPage"
+                    bindtap="{{couponitem.receiveType == 1 ? 'couponItemClick' : 'onUrlPage'}}"
+                    data-couponindex="{{couponindex}}"
+                    data-tipindex="{{listIndex}}"
+                    data-type="{{couponitem.type}}"
+                    data-code="{{couponitem.code}}"
+                    data-url="{{couponitem.schema}}"
+                    data-tiptype="coupon"
+                    >
+                    <image src="https://img1.haoshiqi.net/miniapp/coupon-item_b1270fd63e.png" mode="scaleToFill" />
+                    <view class="coupon-left">
+                      <view class="coupon-price">
+                        ￥<text>{{couponitem.value/100}}</text>
+                      </view>
+                      <!-- <view class="coupon-title">
+                        {{couponitem.atLeast}}
+                      </view> -->
+                    </view>
+                    <view class="coupon-right">
+                      <view class="coupon-right-top">
+                        <view class="coupon-item-tit">
+                            <text class="item-list">{{couponitem.title}}</text>
+                            <text class="item-list"> {{couponitem.atLeast}}</text>
+                            <text class="item-list">{{couponitem.termOfValidity}}</text>
+                        </view>
+                        <view class="coupon-item-status">
+                          {{couponitem.receiveType == 1 ? "领取" : "立即使用"}}
+                        </view>
+                      </view>
+                      <!-- <view class="coupon-right-bot">
+                        {{couponitem.termOfValidity}}
+                      </view> -->
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </label>
+  <!-- </scroll-view> -->
+</dwd-page>

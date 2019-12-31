@@ -1,0 +1,31 @@
+<block wx:if="{{ data.type=='c-img' }}">
+  <dwd-img data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-img-hor' }}">
+  <dwd-img-hor data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-swiper' }}">
+  <dwd-swiper data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-category' }}">
+  <dwd-category data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-tofu' }}">
+  <dwd-tofu data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-product-col1' }}">
+  <dwd-product-col1 data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-product-col2' }}">
+  <dwd-product-col2 data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-product-col3' }}">
+  <dwd-product-col3 data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-product-slider' }}">
+  <dwd-product-slider data="{{ data }}" />
+</block>
+<block wx:elif="{{ data.type=='c-product-seckill' }}">
+  <dwd-product-seckill data="{{ data }}" />
+</block>
+<view wx:else>未知类型{{data.type}}</view>

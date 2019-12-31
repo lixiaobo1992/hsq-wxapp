@@ -1,0 +1,25 @@
+<view class="component-popup">
+  <view class="popup-mask"></view>
+  <view class="popup-container">
+    <image src="https://img1.haoshiqi.net/miniapp/img/bg_90e677d593.png" mode="widthFix" class="bg-img"></image>
+    <view class="popup-content">
+      <!-- <view class="image-block">
+        <image src="https://img1.haoshiqi.net/miniapp/img/bg_90e677d593.png" mode="widthFix"></image>
+      </view> -->
+      <view class="newuser-tip">
+        恭喜！获得新人大礼～
+      </view>
+      <view bindtap="hidePopup">
+        <view class="img-btn" bindtap="onUrlPage" data-url="{{ url }}">
+          <image src="https://img1.haoshiqi.net/miniapp/img/button_ca003ff931.png"></image>
+          <view class="btn-text">
+            拆开礼盒
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="popup-close-btn" bindtap="hidePopup">
+      <image class="close-img" src="https://img1.haoshiqi.net/miniapp/cancel_icons_6c7199f079.png"></image>
+    </view>
+  </view>
+</view>

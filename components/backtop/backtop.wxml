@@ -1,0 +1,5 @@
+<template name="backTop">
+  <view class="backTop" bindtap="onBackTop" wx:if="{{showBackTop}}">
+    <image class="image" src="https://img1.haoshiqi.net/wxapp/img/back_top_91bbde488d.png" mode="aspectFit" />
+  </view>
+</template>

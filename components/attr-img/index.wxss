@@ -1,0 +1,68 @@
+/* 促销信息 */
+.attrs{
+  display: flex;
+  padding: 20rpx;
+  background-color: #fff;
+  font-size: 24rpx;
+  flex-direction: row;
+}
+
+.attrs .title {
+  width: 92rpx;
+  color: #B4B4B4;
+  white-space: nowrap;
+}
+.promotions {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.promotions-item{
+  display: flex;
+  align-items: left;
+  padding-bottom: 6rpx;
+  flex: 1;
+}
+
+.promotions-text{
+  width:460rpx;
+  flex: 1;
+  overflow: hidden;
+  line-height:32rpx;
+  display: flex;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-align:left;
+}
+.promotions-title {
+  font-size:20rpx;
+  color:rgb(251, 4, 56);
+  border:1px solid #EA594C;
+  height:32rpx;
+  line-height:30rpx;
+  margin-right:10rpx;
+  padding:0 4rpx;
+}
+.promotions-icon{
+  max-width:60rpx;
+  height:30rpx;
+  margin-right: 6rpx;
+  display: inline-block;
+  text-align: left;
+}
+.promotions-icon.icon-1{
+  max-width:100rpx;
+}
+
+.view-img {
+  width: 30rpx;
+  height: 100%;
+  align-self: center;
+}
+
+.view-img .img {
+  width: 100%;
+  height: 30rpx;
+}

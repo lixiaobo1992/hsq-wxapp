@@ -1,0 +1,7 @@
+<!--components/separator/separator.wxml-->
+<template name="separator">
+  <view class="separator">
+    <view class="line"></view>
+    <view class="title">{{ title ? title : '获奖用户'}}</view>
+  </view>
+</template>

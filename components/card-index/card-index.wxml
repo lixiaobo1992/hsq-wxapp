@@ -1,0 +1,18 @@
+<import src="/components/price/index.wxml" />
+
+<template name="card-index">
+  <view class="view-sku" data-id="{{id}}" bindtap="onClickDetail">
+    <view class="view-image">
+      <image class="image" src="{{thumbnail}}" mode="aspectFit" />
+    </view>
+    <view class="view-sku-info">
+      <view class="sku-info">
+        <text class="name max-line-2">{{name}}</text>
+        <text class="tags" wx:if="{{tags[0].text}}">{{tags[0].text}}</text>
+      </view>
+      <view class="view-price">
+        <template is="price" data="{{price: price, marketPrice: marketPrice, point: point}}"></template>
+      </view>
+    </view>
+  </view>
+</template>

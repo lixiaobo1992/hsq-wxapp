@@ -1,0 +1,17 @@
+.sec-head{
+    padding: 20rpx;
+    background-color: #fff;
+    border-bottom: 2rpx solid #e2e2e2;
+    display: flex;
+}
+.sec-head .title{
+    font-size: 32rpx;
+}
+.sec-head .desc{
+    font-size: 24rpx;
+    color: #B4B4B4;
+}
+.sec-head .arrow{
+    width: 30rpx;
+    height: 30rpx;
+}

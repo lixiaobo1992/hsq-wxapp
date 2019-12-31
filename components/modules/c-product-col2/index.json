@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "dwd-tpl": "../tpl/index",
+    "dwd-image": "../../load-image/index"
+  }
+}

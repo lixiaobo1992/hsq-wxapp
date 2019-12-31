@@ -1,0 +1,8 @@
+<template name="coupon-toast">
+  <view class="pop-suc">
+      <view>
+          <image src="../../img/smile-icon.png" mode="aspectFit" class="icon-suc"></image>
+      </view>
+        <text class="sub-text">恭喜领取成功！</text>
+    </view>
+</template>

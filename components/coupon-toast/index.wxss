@@ -1,0 +1,29 @@
+.pop-suc{
+  background: rgba(0,0,0,0.80);
+  border-radius:10rpx;
+  width:342rpx;
+  height:172rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  position:fixed;
+  left:0;
+  right:0;
+  margin:86rpx auto;
+  top:50%;
+  z-index:999;
+}
+.pop-suc .icon-suc{
+  width:66rpx;
+  height:66rpx;
+  display:block;
+  margin: 0 auto;
+}
+.pop-suc .sub-text{
+  font-size:32rpx;
+  height:44rpx;
+  line-height:44rpx;
+  color:#fff;
+  text-align:center;
+  margin-top:10rpx;
+}

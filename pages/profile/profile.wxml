@@ -1,0 +1,140 @@
+<import src="../../components/card/index.wxml" />
+<import src="../../components/foot/foot.wxml" />
+<import src="../../components/pull-loading/index.wxml" />
+
+<dwd-page
+  id="dwd-page-profile"
+  custom-class="page-profile"
+  content-class="page-profile-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+  <scroll-view
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="{{lowerThreshold}}"
+    style="height:100%"
+    >
+    <!-- 头像 -->
+    <view class="user-card">
+      <view class="view-user">
+        <block wx:if="{{ logged }}">
+          <view class="avatar">
+            <view wx:if="{{ memberInfo.status == 2 }}" class="cap-icon"></view>
+            <image src="{{userInfo.avatar}}" mode="widthFix"  class="avatar-img"/>
+          </view>
+          <view class="view-info">
+            <text class="name">{{userInfo.username}}</text>
+            <view class="user-id">ID:{{userInfo.user_id || '无'}}</view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="logo-img">
+            <image src="https://img1.haoshiqi.net/hsq/img/icons/apple-touch-icon-152x152.png" mode="widthFix" />
+          </view>
+          <view class="logo-btn"><button class="auth-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击登录</button></view>
+        </block>
+      </view>
+      <view class="member-card">
+          <view class="member-main">
+            <view class="left-text">
+              <image src="https://img1.haoshiqi.net/miniapp/profile/vip-text_91db2e865a.png" class="text-img" mode="widthFix" />
+              <text class="save-text">{{memberInfo.desc}}</text>
+            </view>
+            <view class="btn-check" bindtap="gotoVipCenter" data-url="{{memberInfo.url}}" data-piwik="c_vipentry">{{ memberInfo.status == 1?'立即查看':'继续省钱' }}</view>
+          </view>
+          <view class="benefits-item">
+            <view wx:for="{{ memberInfo.benefits }}" wx:key="{{index}}" class="item">
+              <image src="{{ item.logo }}" class="item-img" mode="widthFix"/>
+              <span class="benefits-text">{{ item.text }}</span>
+            </view>
+          </view>
+        </view>
+    </view>
+
+    <view class="touchBox"
+      bindtouchstart="startDrag"
+      bindtouchmove="{{dragSts?'changeBox':''}}"
+      capture-bind:touchmove="{dragSts?'changeBox':''}}"
+      bindtouchend="endDrag"
+      style = "{{ dragStyle }}"
+    >
+      <view class="view-bg-header" wx:if="{{ logged && !userInfo.authPhone }}"></view>
+      <view class="bind-phone-tip" wx:if="{{ logged && !userInfo.authPhone }}">
+          <image src="https://img1.haoshiqi.net/miniapp/laba_06d8f547ff.png" mode="widthFix" ></image>
+          <view class="tip-text">为您能够及时获取订单信息和专属优惠，<button class="auth-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">请授权手机号</button></view>
+        </view>
+      <view class="save-money" wx:if="{{savePrice > 0}}">
+        <image src="https://img1.haoshiqi.net/miniapp/save-money_b725d66be7.png" mode="aspectFit" />
+        <view class="save-text">好食期已为您节省<text>￥{{savePrice}}</text></view>
+      </view>
+      <view class="view-bg-header"></view>
+      <!-- 我的订单 -->
+      <view class="view-section sell-box order-card" wx:if="{{userOrder && userOrder.length}}">
+        <view class="cell-header" bindtap="onClickItem" data-id="all">
+          <text class="title">我的订单</text>
+          <view class="view-sub">
+            <view class="sub-title">查看全部</view>
+            <image class="more" mode="{{scale}}" src="{{arrow}}"/>
+          </view>
+        </view>
+        <view class="view-list sell-box">
+          <view class="view-item"
+            wx:for="{{userOrder}}"
+            wx:key="{{item.itemId}}"
+            bindtap="onClickItem"
+            data-id="{{item.itemId}}"
+          >
+            <view class="item-mark">
+              <view class="mark" wx:if="{{item.num > 0}}">{{item.num}}</view>
+              <image class="img" mode="{{scale}}" src="{{item.image}}"></image>
+            </view>
+            <text class="item-tile">{{item.title}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 我的服务 -->
+      <view class="view-section sell-box" wx:if="{{userService && userService.length}}">
+        <view class="cell-header">
+          <text class="title">我的服务</text>
+        </view>
+        <view class="view-list sell-box view-wrap">
+          <view
+          class="view-item change-width"
+          wx:for="{{userService}}"
+          wx:key="{{item.itemId}}"
+          bindtap="onClickItem"
+          data-id="{{item.itemId}}"
+          >
+            <view class="item-mark">
+              <view class="mark" wx:if="{{item.num > 0}}">{{item.num}}</view>
+              <image class="img" mode="aspectFit" src="{{item.image}}"></image>
+            </view>
+            <text class="item-tile">{{item.title}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 精选推荐 -->
+      <view class="view-recomment" wx:if="{{list && list.length}}">
+        <view class="header-img">
+          <image class="img" mode="aspectFit" src="{{imgRecomment}}"></image>
+        </view>
+
+        <!-- 使用注意事项， card 不实现背景，自己外层盒子实现 -->
+        <view class="product-{{listMode}}">
+          <block wx:for="{{list}}" wx:key="{{item.id}}">
+            <template is="card" data="{{index,...item}}" />
+          </block>
+        </view>
+
+        <template is="pull-loading" data="{{ pullLoading }}" />
+        <!-- 底部提示数据 -->
+        <view wx:if="{{showFooter}}">
+          <template is="foot"></template>
+        </view>
+      </view>
+  </view>
+  </scroll-view>
+</dwd-page>

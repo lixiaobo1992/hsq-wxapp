@@ -1,0 +1,46 @@
+<!--pages/coupon-sku-list/coupon-sku-list.wxml-->
+<import src="../../../components/card/index.wxml" />
+<import src="../../../components/foot/foot.wxml" />
+<import src="../../../components/pull-loading/index.wxml" />
+<import src="../../../components/search/search.wxml" />
+
+
+<dwd-page
+  id="dwd-page-sku-list"
+  custom-class="page-sku-list"
+  content-class="page-sku-list-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <scroll-view
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="{{lowerThreshold}}"
+    style="height:100%">
+    <!-- 搜索框 -->
+    <view class="search" wx:if="{{!params.q}}">
+      <template is="search" data="{{id : params.couponId, content:'搜索可使用券的商品'}}"/>
+    </view>
+
+    <!-- skuList -->
+    <view class="{{params.q ? '' : 'view-list'}}" wx:if="{{list && list.length}}">
+      <!-- 使用注意事项， card 不实现背景，自己外层盒子实现 -->
+      <view class="product-{{listMode}}">
+        <block wx:for="{{list}}" wx:key="{{item.id}}">
+          <template is="card" data="{{...item}}" />
+        </block>
+      </view>
+    </view>
+
+    <template is="pull-loading" data="{{pullLoading}}" />
+
+    <!-- 底部提示数据 -->
+    <view class="{{ (list && list.length) ? '' : 'view-footer' }}" wx:if="{{list.length && showFooter}}">
+      <template is="foot"></template>
+    </view>
+    <view wx:if="{{!list.length && !isLoading}}">
+      <image class="empty-img" src="/img/tip-img/not-search-result.png" mode="aspectFit" />
+      <view class="empty-text">暂无数据</view>
+    </view>
+  </scroll-view>
+</dwd-page>

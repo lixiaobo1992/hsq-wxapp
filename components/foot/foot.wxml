@@ -1,0 +1,7 @@
+<template name="foot">
+  <view class="foot">
+    <view class="footer">
+      <text class="tip">{{text.length ? text : "没有更多商品了"}}</text>
+    </view>
+  </view>
+</template>

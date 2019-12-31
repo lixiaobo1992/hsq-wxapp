@@ -1,0 +1,5 @@
+<!--components/zone-list.wxml-->
+<view class="zone-item" wx:for="{{zones}}" wx:key="id" bindtap="onSelecting" data-city="{{item}}">
+  <label class="zone-label">{{item.currentAddress}}</label>
+  <image class="zone-arrow" hidden="{{arrowHidden}}" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="scaleToFill" />
+</view>

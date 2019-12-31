@@ -1,0 +1,57 @@
+<dwd-tpl custom-class="c-product-seckill" data="{{data}}" data-type="{{data.type}}">
+    <view
+    class="goods-top-title"
+    style="padding-top: {{(data.header.image.h * 100) / data.header.image.w + '%' }}"
+    data-url="{{data.header.link}}" data-form-Type="onUrlPage" onTap="onUrlPage">
+    <image class="img-more" src="{{ data.header.image.url }}" mode="scaleToFill" />
+    <view class="time-left" wx:if="{{ isShowTime }}" style="left:{{ data.text_left + '%'}}; top:{{data.text_top + '%' }}">
+      <text class="time-space-left" style="color:{{data.text_color}}">{{ kill_house }}</text>
+      <text class="time-space-right" style="border-color:{{ data.border_color }}">{{ countDown }}</text>
+    </view>
+  </view>
+  <view class="slider-box" style="{{data.bg.url ? 'padding-left: 0.2rem' : ''}}">
+    <view class="slider-goods-box">
+      <view
+        class="goods-box"
+        wx:for="{{data.list}}"
+        wx:key="{{index}}"
+        data-index="{{index}}"
+        data-form-Type="onUrlPage"
+        data-url="{{data.activity_link ? data.activity_link :item.link}}"
+        data-title="{{ data.moduleName }}"
+        data-group="{{ item.flow }}"
+        data-piwik-event="{{ item.piwikEvent }}"
+        data-piwik-data="{{ item.piwikData }}"
+        data-module-id="{{ data.id }}"
+        bindtap="onDetailPage"
+      >
+        <view class="goods-img-box">
+          <!-- <image src="{{item.thumbnail}}" class="img-box" lazy-load /> -->
+          <dwd-image
+            src="{{ item.thumbnail }}"
+            custom-class="img-box"
+            mode="scaleToFill"
+            lazy-load="{{ true }}"
+            default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" />
+          <!-- 商品状态 -->
+          <image
+            class="row3-status-img"
+            src="{{ item.invalid_img }}"
+            wx:if="{{ item.invalid_img }}"
+          />
+        </view>
+        <view class="goods-text-box">
+          <view class="goods-title max-line-2">{{ item.title }}</view>
+          <view class="goods-price-box">
+            <text class="price-integer">￥{{ item.price.price_yuan }}</text>
+            <text class="price-decimals">.{{ item.price.price_fen }}</text>
+          </view>
+          <text class="market-price">￥{{ item.market_price }}</text>
+        </view>
+      </view>
+      <view class="more-box" wx:if="{{data.more.link}}" bindtap="onUrlPage" data-form-Type="onUrlPage" data-url="{{data.more.link}}" data-piwik-event="c-more">
+        <image src="{{data.more.image.url}}" lazy-load class="img-box" style="{ width: data.more.image.w }" />
+      </view>
+    </view>
+  </view>
+</dwd-tpl>

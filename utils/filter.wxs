@@ -1,0 +1,35 @@
+
+
+/**
+ * 处理价格，默认是元，分第二个参数传100
+ * dealPrice(5) => 5.00；dealPrice(500, 100) => 5.00；
+ */
+function dealPrice(x, d = 100, issupp = true) {
+  console.log(x);
+  var f = parseFloat(x);
+  if (isNaN(f)) {
+    return;
+  }
+  if (f == 0) {
+    return f;
+  }
+  d = d ? d * 100 : 100;
+  f = Math.round(f * 100) / d;
+  var s = f.toString();
+  var rs = s.indexOf('.');
+  if (rs < 0 && issupp) {
+    rs = s.length;
+    s += '.';
+  }
+  if (issupp) {
+    while (s.length <= rs + 2) {
+      s += '0';
+    }
+  }
+  return s;
+}
+
+
+module.exports = {
+  dealPrice: dealPrice,
+};

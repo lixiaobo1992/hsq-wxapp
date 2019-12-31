@@ -1,0 +1,13 @@
+module.exports = function (price, len = 2, isSplit = false) {
+  if (!price) {
+    return "0.00";
+  }
+  var temp = price / 100.0;
+
+  if (isSplit) {
+    // console.log('jjjj'+temp.toFixed(len).split('.'));
+    return temp.toFixed(len).split('.');
+  }
+  return temp.toFixed(len);
+}
+

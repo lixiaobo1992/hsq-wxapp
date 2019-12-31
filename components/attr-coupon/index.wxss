@@ -1,0 +1,70 @@
+/* 领取优惠券 */
+/* TIP: template 之间样式未隔离 */
+.layout-column2 {
+  position: relative;
+  display: flex;
+  padding: 28rpx 20rpx;
+  background-color: #fff;
+  font-size: 24rpx;
+  align-items: center;
+  overflow: hidden;
+}
+.layout-column2 .title{
+  align-self: flex-start;
+  flex-shrink: 0;
+  flex-grow: 0;
+  white-space: nowrap;
+  color: #333;
+  margin-top: 4rpx;
+}
+.layout-column2 .content{
+  flex: 1;
+  overflow: hidden;
+}
+.layout-column2 .more{
+  justify-self: flex-end;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 36rpx;
+  height: 36rpx;
+  margin-top: -10rpx;
+}
+
+.layout-column2 .item {
+  display: inline-block;
+  margin-left:15rpx;
+  white-space: nowrap;
+  color: #fff;
+  background: #FB0438;
+}
+.layout-column2 .item .text{
+  font-size:20rpx;
+  padding: 0rpx 10rpx;
+  position:relative;
+  height:30rpx;
+  line-height:30rpx;
+}
+.layout-column2 .item .text::before{
+  content: '';
+  display:block;
+  position:absolute;
+  left:0;
+  top:0;
+  width:0;
+  height:0;
+  border-top:16rpx solid transparent;
+  border-bottom:16rpx solid transparent;
+  border-left:5rpx solid #fff;
+}
+.layout-column2 .item .text::after{
+  content: '';
+  display:block;
+  position:absolute;
+  right:0;
+  top:0;
+  width:0;
+  height:0;
+  border-top:16rpx solid transparent;
+  border-bottom:16rpx solid transparent;
+  border-right:5rpx solid #fff;
+}

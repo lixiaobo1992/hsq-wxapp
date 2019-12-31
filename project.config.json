@@ -1,0 +1,180 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"minified": false,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": false,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.4",
+	"appid": "wxa090d3923fde0d4b",
+	"projectname": "hsq",
+	"svr": "server/",
+	"qcloudRoot": "server/",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/zl-list/zl-list",
+					"pathName": "pages/zl-list/zl-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "order-commit",
+					"pathName": "pages/order-commit/order-commit",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&pinActivitiesId=12781&skuId=34738&orderType=3&amount=1&refer=pages%2Fdetail%2Fdetail",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "detail2",
+					"pathName": "pages/detail2/detail2",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&id=35269&refer=pages%2Findex%2Findex",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "shopping-cart",
+					"pathName": "pages/shopping-cart/shopping-cart",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&refer=pages/detail2/detail2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "order-list",
+					"pathName": "pages/order-list/order-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&id=2250&refer=pages%2Findex%2Findex",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "order-commit2",
+					"pathName": "pages/order-commit2/order-commit2",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&skus_info=[{\"s\":34008,\"c\":1,\"p\":12000}]&orderType=1&isFastbuy=1&refer=pages/detail2/detail2",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/merchant/merchant",
+					"pathName": "pages/merchant/merchant",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&id=138&refer=pages%2Fdetail%2Fdetail",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "web-view",
+					"pathName": "pages/web-view/web-view",
+					"query": "url=https%3A%2F%2Fm.dev.haoshiqi.net%2Fv2%2Fmember-center",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/profile/profile",
+					"pathName": "pages/profile/profile",
+					"query": "url=https%3A%2F%2Fm.dev.haoshiqi.net%2Fv2%2Fmember-open",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/today-new-list/today-new-list",
+					"pathName": "pages/today-new-list/today-new-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "spm",
+					"pathName": "pages/index/index",
+					"query": "spm=zz/ss",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "order-result",
+					"pathName": "pages/order-result/order-result",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&id=2190227536&refer=pages%2Forder-commit2%2Forder-commit2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "demo/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "order-commit2",
+					"pathName": "pages/order-commit2/order-commit2",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&skus_info=%5B%7B%22s%22%3A35161%2C%22c%22%3A1%2C%22p%22%3A1%7D%5D&orderType=1&isFastbuy=1&refer=pages%2Fdetail2%2Fdetail2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "full-reduction",
+					"pathName": "package/pages/full-reduction/full-reduction",
+					"query": "spm=hsq_wxapp&channel_id=hsq_wxapp&id=26&merchantId=139&refer=pages%2Fdetail%2Fdetail",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,6 @@
+
+<!-- <view>ssss</view> -->
+<block>
+  <image class="custom-class" wx:if="{{!loadFlag}}" mode="aspectFill" src="{{defaultImage}}"></image>
+  <image class="custom-class {{loadFlag ? '' : 'before-load'}}" src="{{src}}" data-src="{{src}}" lazy-load="{{ lazyLoad }}" mode="{{mode}}" bindload="imgLoad" binderror="imgErr"></image>
+</block>

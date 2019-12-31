@@ -1,0 +1,26 @@
+<view data="{{ data }}">
+  <view class="lose-top-box">
+    <view class="lose-title">失效商品</view>
+    <view class="lose-btn" bindtap="clearLoseGoods">清空失效商品</view>
+  </view>
+  <view class="lose-goods-list">
+    <view class="s-product-lose">
+      <view class="lose-goods-box"
+        wx:for="{{ data.list }}"
+        wx:key="{{ index }}"
+      >
+        <text class="lose-tag-text">失效</text>
+        <view class="lose-goods">
+          <view class="goods-img-box">
+            <image src="{{ item.pic }}" class="goods-img" alt="" />
+          </view>
+          <view class="goods-text-box">
+            <view class="goods-title">{{ item.name }}</view>
+            <view class="goods-status-text">商品已下架</view>
+            <view class="find-alike-goods" data-name="{{ item.category_name }}" bindtap="findAlikeGoods">找相似</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

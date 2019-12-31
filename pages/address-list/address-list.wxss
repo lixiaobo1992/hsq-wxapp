@@ -1,0 +1,113 @@
+/* pages/address-list/address-list.wxss */
+.page-address{
+  height: 100vh;
+}
+.address-box {
+  padding-bottom: 120rpx;
+}
+
+.address-list {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+
+.address-detail {
+  padding: 0rpx 20rpx 15rpx;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.address-info {
+  flex: 1;
+  display: flex;
+  padding: 15rpx 0rpx;
+}
+
+.address-name {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.address-name {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.address-operate {
+  flex: 1;
+  display: flex;
+  padding: 0rpx 20rpx;
+  line-height: 80rpx;
+}
+
+.address-select-box {
+  flex: 4;
+  display: flex;
+  align-items: flex-start;
+}
+
+.address-select {
+  position: relative;
+  padding-left: 40rpx;
+  white-space: nowrap;
+}
+
+.address-radio {
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: -15rpx;
+  border-radius: 50%;
+  border: 1px solid #cdcdcd;
+}
+
+.address-choose {
+  background-color: red;
+  border: none;
+}
+
+.address-choose:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://img1.haoshiqi.net/wxapp/img/check_1dadd7aa09.png") no-repeat center center;
+  background-size: cover;
+}
+
+.address-edit-box, .address-delete-box {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  align-content: center;
+}
+
+.address-edit {
+  padding-left: 50rpx;
+  background: url("https://img1.haoshiqi.net/wxapp/img/edit_71926b0168.png") no-repeat left center;
+  background-size: 30rpx auto;
+}
+
+.address-delete {
+  padding-left: 50rpx;
+  background: url("https://img1.haoshiqi.net/wxapp/img/delete_a43be5a439.png") no-repeat left center;
+  background-size: 38rpx auto;
+}
+
+.address-add-box {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  text-align: center;
+  background-color: red;
+  z-index: 999;
+}

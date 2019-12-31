@@ -1,0 +1,18 @@
+<template name="ErrorView">
+  <view class="a-error-view-wrapper">
+    <image wx:if="{{errorImg}}"
+      class="a-error-view-pic"
+      src="{{errorImg}}"
+    />
+    <view class="a-error-view-title">{{title}}</view>
+    <view class="a-error-view-result-view">{{content}}</view>
+    <view class="a-error-view-action" wx:if="{{button}}">
+      <view
+        class="a-error-view-button"
+        hover-class="a-error-view-button-hover"
+        bindtap="{{onButtonTap || 'handleErrorButtonTap'}}"
+        data-href="{{href}}"
+      >{{button}}</view>
+    </view>
+  </view>
+</template>

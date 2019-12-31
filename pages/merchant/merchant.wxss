@@ -1,0 +1,259 @@
+@import '/components/card/index.wxss';
+@import '/components/foot/foot.wxss';
+@import '/components/attr-coupon/index.wxss';
+@import '/components/coupon-toast/index.wxss';
+
+page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page-merchant{
+  height: 100%;
+}
+.page-merchant-content{
+  z-index: 1;
+}
+
+
+.scroll-view {
+  height: 100%;
+}
+
+.store-box{
+  overflow: hidden;
+  font-size: 24rpx;
+}
+.store-box .store-header{
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+.store-box .store-header .store-info{
+  position: relative;
+  overflow: hidden;
+  height: 180rpx;
+}
+.store-box .store-header .store-info::before{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  position: absolute;
+}
+.store-box .store-header .store-info .info-box{
+  position: absolute;
+  bottom: 15rpx;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  padding: 0 20rpx;
+  background-size: 100% auto;
+}
+.store-box .store-header .store-info .info-box .store-img{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 10rpx;
+  float: left;
+}
+.store-box .store-header .store-info .info-box .store-text{
+  float: left;
+  color: #fff;
+}
+.store-box .store-header .store-info .info-box .store-text .store-title{
+  margin-top: 5rpx;
+  font-weight: bold;
+  font-size: 28rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.store-box .store-header .store-info .info-box .store-text .store-site{
+  margin-top: 10px;
+}
+.store-box .store-header .store-info .info-box .store-text .store-site .prov-text{
+  margin-right: 10rpx;
+}
+
+.store-box .store-header .store-info .info-box .store-collect{
+  float: right;
+  color: #fff;
+  height: 90rpx;
+  width: 90rpx;
+  position: relative;
+}
+
+.store-box .store-header .store-info .info-box .store-collect::before{
+  content: '';
+  border-left:1px solid #fff;
+  position: absolute;
+  left: 0rpx;
+  height: 90rpx;
+}
+
+.store-box .store-header .store-info .info-box .store-collect .collect-img{
+  margin-left: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.store-box .store-header .store-info .info-box .store-collect .collect-ok-img{
+  margin-left: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.store-box .store-header .store-info .info-box .store-collect .collect-text{
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.store-box .store-cont{
+  overflow: hidden;
+  padding: 20rpx;
+  border-bottom: 1px slid #e2e2e2;
+  background: #fff;
+}
+.store-box .store-cont .cont-inform .cont-title{
+  color: #959595;
+  float: left;
+  width: 130rpx;
+}
+.store-box .store-cont .cont-inform .infrom-text{
+  float: left;
+  width: 570rpx;
+}
+.store-box .store-cont .cont-brand{
+  padding-top: 20rpx;
+  clear: both;
+  display: flex;
+}
+.store-box .store-cont .cont-brand .cont-title{
+  color: #959595;
+  width: 130rpx;
+}
+.store-box .store-cont .cont-brand .brand-text{
+  flex: 1;
+  padding-right:10rpx;
+  text-align:justify;
+  position:relative;
+}
+.store-box .store-cont .cont-brand .more{
+  height:34rpx;
+  overflow:hidden;
+}
+.store-box .store-cont .cont-brand .left-arrow{
+  color:#666;
+  font-size:24rpx;
+  width:120rpx;
+  padding-left:10rpx;
+  display:flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+.store-box .store-cont .cont-brand .brand-text .border{
+  display:block;
+  position:absolute;
+  width:2rpx;
+  height:90%;
+  right:1rpx;
+  top:5%;
+  background: #C1C1C1;
+  z-index:22;
+}
+.store-box .store-cont .cont-brand .brand-text.more .border{
+  height:70%;
+  top:20%;
+}
+.store-box .store-cont .cont-brand .left-arrow .arrow{
+  width:36rpx;
+  height:36rpx;
+  background:url('https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png') no-repeat center;
+  background-size: 100% auto;
+  display:inline-block;
+  transform: rotate(90deg);
+}
+.store-box .store-cont .cont-brand .left-arrow .arrow.up{
+  transform: rotate(-90deg);
+}
+.store-box .store-list{
+  margin-top: 20rpx;
+  overflow: hidden;
+  background: #fff;
+}
+
+.store-box .store-list{
+  margin-top: 20rpx;
+  overflow: hidden;
+  background: #fff;
+}
+.store-box .store-list .store-list-titile{
+  width: 100%;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  margin-top: 10rpx;
+  border-bottom: 1px solid #f2f2f2;
+  line-height: 60rpx;
+  height: 60rpx;
+}
+
+.seckill-list{
+  background: #fff;
+}
+/* 秒杀专区 */
+.seckill-title{
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  color: #333;
+  padding: 0 20rpx;
+  font-weight: bold;
+}
+.e-title{
+  margin-left: 10rpx;
+  color: #ccc;
+  font-size: 24rpx;
+  font-weight: normal;
+}
+.shop-all-btn{
+  position: fixed;
+  right: 28rpx;
+  bottom: 200rpx;
+  width: 128rpx;
+  height: 128rpx;
+  background: rgba(0, 0, 0, .8);
+  border-radius: 128rpx;
+}
+.btn-text{
+  font-size: 24rpx;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  margin-top: 28rpx;
+}
+.btn-e-text{
+  font-size: 18rpx;
+  color: rgba(255, 255, 255, .5);
+  width: 100%;
+  text-align: center;
+}
+.btn-img{
+  margin: 0 auto;
+  width: 46rpx;
+  height: 24rpx;
+  display: block;
+}
+.copple-desc{
+  margin-top:16rpx;
+}
+/* 弹层 */
+.hidden{ display: none !important }
+.popup-outbox,.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 120;
+}

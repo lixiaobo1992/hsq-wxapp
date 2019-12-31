@@ -1,0 +1,18 @@
+<template name="attr-img">
+    <view class="attrs" bindtap="onShowPromotionCon">
+      <view class="title">{{text.length ? text : '促销：'}}</view>
+      <view class="promotions">
+        <view
+        class='promotions-item'
+        wx:for="{{labels}}"
+        wx:key="{{index}}"
+        >
+          <view class="promotions-title">{{item.title}}</view>
+          <view class="promotions-text">{{ item.text }}</view>
+        </view>
+      </view>
+      <view class="view-img" wx:if="{{showArrow || showConArrow }}">
+        <image class="img" src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="aspectFit" />
+      </view>
+    </view>
+</template>

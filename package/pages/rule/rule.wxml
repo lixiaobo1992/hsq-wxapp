@@ -1,0 +1,6 @@
+<view class="page">
+  <image class="{{ruleImageCls}}" src="{{imageSrc}}" mode="{{mode}}" />
+  <view class="{{ruleDescCls}}">
+    <text>{{ruleDesc}}</text>
+  </view>
+</view>

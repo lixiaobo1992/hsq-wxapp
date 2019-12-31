@@ -1,0 +1,129 @@
+<!--pages/couple-search-list/couple-search-list.wxml-->
+
+<import src="../../components/card/index.wxml" />
+<import src="../../components/foot/foot.wxml" />
+<import src="../../components/pull-loading/index.wxml" />
+<import src="../../components/swiper/swiper.wxml" />
+
+<dwd-page
+  id="dwd-page-search-result"
+  custom-class="page-search-result"
+  content-class="page-search-result-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <view class="container">
+    <scroll-view
+      scroll-y
+      enable-back-to-top
+      bindscrolltolower="onScrollToLower"
+      lower-threshold="{{lowerThreshold}}"
+      style="height:100%">
+
+      <view
+        class="category-list {{category && category.length > 4 ? 'more-oneline' : ''}}"   wx:if="{{category && category.length > 0}}">
+        <view class="category-item-block" wx:for="{{ category }}" wx:key="{{ index }}">
+          <view class="category-item {{index == categoryIndex ? 'active' : ''}}" bindtap='goSearchText' data-text="{{item}}" data-index="{{ index }}">
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <template is="swiper" data="{{...swiperInfo}}"></template>
+
+      <!-- skuList -->
+      <view class="view-list" wx:if="{{list && list.length}}">
+        <!-- 使用注意事项， card 不实现背景，自己外层盒子实现 -->
+        <view class="product-{{listMode}}">
+          <block wx:for="{{list}}" wx:key="{{item.id}}">
+            <template is="card" data="{{...item}}" />
+          </block>
+        </view>
+      </view>
+      <view wx:if="{{!list.length && !isLoading}}">
+        <image class="empty-img" src="/img/tip-img/not-search-result.png" mode="aspectFit" />
+        <view class="empty-text">暂无结果</view>
+      </view>
+
+      <!-- 推荐商品列表 -->
+      <view class="product-list" wx:if="{{recommendList && recommendList.length}}">
+        <view class="list-text">
+          <text class="chn-text">猜你喜欢</text>
+          <text class="eng-text">GUESS YOU LIKE</text>
+        </view>
+        <dwd-product-col2 data="{{ {list: recommendList} }}" />
+      </view>
+
+      <template is="pull-loading" data="{{pullLoading}}" />
+
+      <!-- 底部提示数据 -->
+      <view wx:if="{{(recommendList.length || list.length) && showFooter}}">
+        <template is="foot" data="{{text : '没有更多商品了'}}"></template>
+      </view>
+
+    </scroll-view>
+    <view class="view-tab {{ showSort ? '' : 'tab1'}}">
+      <!-- 综合排序、销量  -->
+      <view class="tab">
+        <view
+          class="tab-sub"
+          wx:for="{{ tab }}"
+          wx:key="{{ item.text }}"
+          data-index="{{ index }}"
+          data-piwik-event="c_fttab"
+          bindtap="onClickTab">
+          <view class= "view-tap">
+            <text class="sub-title {{ clickIndex == index ? 'sub-title-red' : ''}}">{{ item.text }}</text>
+            <view wx:if="{{item.topImg || item.botImg}}" class="img-block">
+              <block wx:if="{{item.topImg}}">
+                <image
+                  class="sub-img top"
+                  mode="aspectFit"
+                  src="{{ clickIndex == index ? item.topImg : icons }}"
+                  >
+                </image>
+              </block>
+              <block wx:if="{{item.botImg}}">
+                <image
+                  class="sub-img bottom"
+                  mode="aspectFit"
+                  src="{{ clickIndex == index ? item.botImg : icons }}"
+                  >
+                </image>
+              </block>
+            </view>
+          </view>
+        </view>
+        <view class="tab-sub" bindtap='toggleViewSort'>
+          <view class= "view-tap no-border">
+            <text class="sub-title {{expiryIndex > 0 || showSort ? 'sub-title-red' : ''}} {{searchHasExpiryDate == 1 ? 'no-active' : ''}}">{{ expiryIndex > 0 ? sort[expiryIndex] : lastTab.text }}</text>
+            <view class="img-block">
+              <image
+                class="sub-img top"
+                mode="aspectFit"
+                src="{{ lastTab.topImg }}"
+                hidden="{{ !showSort }}"></image>
+              <image
+                class="sub-img bottom"
+                mode="aspectFit"
+                src="{{lastTab.botImg}}"
+                hidden="{{ showSort }}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!--  综合排序、价格从高到低、价格从低到高  -->
+      <view class="view-sort" wx:if="{{ showSort }}">
+        <view class="bg-alpha" bindtap='toggleViewSort'></view>
+        <view class="sort"
+          wx:for="{{ sort }}"
+          wx:key="{{ item }}"
+          bindtap="onClickSort"
+          data-index="{{ index }}">
+          <text class="sort-title {{ sortClickIndex == index ? 'sort-title-red' : '' }}"> {{ item }} </text>
+          <image class="sort-img" wx:if="{{ sortClickIndex == index }}" mode="aspectFit" src="{{ iconSelected }}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</dwd-page>

@@ -1,0 +1,92 @@
+<!--pages/view-history/view-history.wxml-->
+
+<import src="../../../components/card/index.wxml" />
+<import src="../../../components/foot/foot.wxml" />
+<import src="../../../components/pull-loading/index.wxml" />
+
+<dwd-page
+  id="dwd-page-history"
+  custom-class="page-history"
+  content-class="page-history-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <scroll-view
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="{{lowerThreshold}}"
+    style="height:100%">
+    <view wx:if="{{!isHaveViewHistory}}" class='emptyContainer'>
+      <text class='noGoodsDesc'>
+      您还没有浏览任何商品
+      赶快去看看有没有心仪商品~
+      </text>
+      <view class='goShopping' bindtap='onShopping'>立即去逛逛</view>
+    </view>
+    <block wx:else>
+      <!-- 浏览记录条数  -->
+      <view class='view-count'>
+        共{{viewHistoryList.length}}条浏览记录
+        <view class='manager-btn' bindtap='onManager'>{{editing ? "完成" : "管理"}}</view>
+      </view>
+      <view wx:for="{{viewHistoryList}}" wx:key="{{index}}" class='cell' bindtap='onClickCell' data-index='{{index}}'>
+        <view class='left-content'>
+          <!-- 选择框  -->
+          <image class='select {{!editing ? "invisible" : ""}}' src='{{item.selected ? "https://img1.haoshiqi.net/miniapp/check_selected_5275f8ef99.png" : "https://img1.haoshiqi.net/miniapp/check_normal_9ab5ac2014.png"}}'></image>
+          <!-- 图片icon  -->
+          <view class='icon_view'>
+          <image class='icon' src='{{item.thumbnail}}'></image>
+          <image class='no_sell {{item.no_sell == 1 ? "" : "invisible"}}' src='https://img1.haoshiqi.net/miniapp/out_992c3399f3.png'></image>
+          </view>
+        </view>
+        <view class='right-content'>
+          <!-- 商品描述 -->
+          <view class='desc'>{{item.title}}</view>
+          <!-- 价格  -->
+          <view class='price'>￥<text>{{item.yuan}}</text>.{{item.fen}}</view>
+          <!-- 找相似  -->
+          <view class='find-similar {{editing ? "invisible" : ""}}'
+          catchtap='onFindSimilar'
+          data-category-name='{{item.category_name}}'
+          data-category-id='{{item.category_id}}'>找相似</view>
+          <!-- 马上抢  -->
+          <view class='buy {{editing ? "invisible" : ""}} {{item.no_sell == 1 ? "bggray" : "bgred"}}'>{{(item.no_sell == 1) ? "已抢光" : "马上抢"}}</view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{!editing}}">
+      <!-- 精选推荐  -->
+      <view class='title-bar'>
+        <image src='https://img1.haoshiqi.net/miniapp/icon_recomment_14f173bcbc.png'></image>
+      </view>
+      <block wx:if="{{list && list.length}}">
+        <!-- skuList -->
+        <view class="view-list">
+          <!-- 使用注意事项， card 不实现背景，自己外层盒子实现 -->
+          <view class="product-card">
+            <block wx:for="{{list}}" wx:key="{{item.id}}">
+              <template is="card" data="{{index,...item}}" />
+            </block>
+          </view>
+        </view>
+        <template is="pull-loading" data="{{ pullLoading }}" />
+      </block>
+
+      <!-- 底部提示数据 -->
+      <view wx:if="{{showFooter}}">
+        <template is="foot"></template>
+      </view>
+    </block>
+  </scroll-view>
+  <!-- 管理栏  -->
+  <view class='manager-panel {{!editing ? "invisible" : ""}}'>
+    <!-- 全选  -->
+    <view class='select-all' bindtap='onSelectAll'>
+      <image src='{{selectAll ? "https://img1.haoshiqi.net/miniapp/check_selected_5275f8ef99.png" : "https://img1.haoshiqi.net/miniapp/check_normal_9ab5ac2014.png"}}'></image>
+      <text>全选</text>
+    </view>
+    <!-- 删除  -->
+    <view class='delete' bindtap='onDelete'>删除</view>
+  </view>
+</dwd-page>

@@ -1,0 +1,62 @@
+<!--pages/lottery-detail-share/lottery-detail-share.wxml-->
+
+<import src="../../../components/lottery-list/index.wxml" />
+<import src='../../../components/separator/separator.wxml' />
+
+
+
+<dwd-page
+  id="dwd-page-lottery-detail-share"
+  custom-class="page-lottery-detail-share"
+  content-class="page-lottery-detail-share-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <scroll-view scroll-y>
+    <!--顶部banner  -->
+    <view class="top-banner">
+      <image src="https://img1.haoshiqi.net/miniapp/lottery_yeah_eeceb0d071.png"></image>
+      <text>中奖率很高哦！！\n你要不要来试一下</text>
+    </view>
+
+    <!--中奖信息  -->
+    <view class="lottery-content">
+      <view class="info" bindtap="onInfoViewClick">
+        <image class="goods-icon" src="{{goodsInfo.goodsIcon}}"></image>
+        <view class="info-text">
+          <view class="goods-title">{{goodsInfo.title}}</view>
+          <view>
+            <view class="price">
+              {{goodsInfo.groupPrice}}
+              <text>{{goodsInfo.marketPrice}}</text>
+            </view>
+            <view class="p-num">已有<text>{{goodsInfo.joinCount}}</text>人参加</view>
+          </view>
+          <image class="lottery-win-icon" src="https://img1.haoshiqi.net/miniapp/couple-order/lottery_win_855127f729.png"></image>
+        </view>
+      </view>
+
+      <view class="lottery-users">
+        <template is="separator"></template>
+        <view class="users-avatar" bindtap="userAvatarClick">
+          <!--头像列表  -->
+          <block wx:for="{{users.icons}}" wx:key="*this">
+            <image src="{{item.userAvatar}}"></image>
+          </block>
+          <!--更多  -->
+          <view class="more">更多</view>
+        </view>
+      </view>
+    </view>
+
+    <!--更多抽奖团  -->
+    <view class="more-lottery">
+      <view class="more-text">更多抽奖团</view>
+      <block wx:for="{{list}}" wx:key="{{item.id}}">
+        <template is="lottery-item" data="{{...item}}" />
+      </block>
+    </view>
+  </scroll-view>
+
+  <!--更多拼团  -->
+  <view class="more-btn" bindtap="onMore">更多拼团</view>
+</dwd-page>

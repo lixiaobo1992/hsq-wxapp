@@ -1,0 +1,33 @@
+{
+  "name": "@xmini/wxapp-component-base",
+  "version": "0.0.49",
+  "description": "wxapp-component-base",
+  "miniprogram": "./",
+  "main": "./index.js",
+  "publishConfig": {
+    "registry": "http://maven.doweidu.com/repository/npm-hosted/"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d ./ --ignore __test__",
+    "prepublish": "npm run build"
+  },
+  "author": "dwd",
+  "license": "MIT",
+  "jest": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/helper-module-imports": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-syntax-export-namespace-from": "^7.2.0",
+    "@babel/plugin-transform-classes": "^7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "@babel/plugin-transform-template-literals": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-plugin-add-module-exports": "^1.0.2"
+  },
+  "gitHead": "152d7b68a1efc667f8d59a554f925addc5f9b133"
+}

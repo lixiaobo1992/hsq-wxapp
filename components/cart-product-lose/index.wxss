@@ -1,0 +1,95 @@
+
+.lose-top-box{
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 20rpx;
+}
+.lose-title{
+  color: #333;
+  font-size: 28rpx;
+  float: left;
+}
+.lose-btn{
+  float: right;
+  padding: 0 20rpx;
+  line-height: 48rpx;
+  border-radius: 6rpx;
+  border: 1px solid #ccc;
+  color: #666;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.lose-goods-list{
+  padding: 0 20rpx;
+}
+.s-product-lose{
+  width: 100%;
+  height: auto;
+}
+.lose-goods-box{
+  position: relative;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.lose-tag-text{
+  display: block;
+  font-size: 20rpx;
+  color: #fff;
+  background: #999;
+  padding: 2rpx 10rpx;
+  text-align: center;
+  min-width: 52rpx;
+  border-radius:14rpx;
+}
+.lose-goods{
+  flex: 1;
+  display: flex;
+  box-shadow: 0 2rpx 10rpx 0 rgba(0,0,0,0.10);
+  padding: 15rpx;
+  margin-left: 15rpx;
+}
+.goods-img-box{
+  width: 180rpx;
+  height: 180rpx;
+}
+.goods-img{
+  width: 180rpx;
+  height: 180rpx;
+}
+.goods-text-box{
+  margin-top: 10rpx;
+  margin-inline-start: 0px;
+  margin-left: 20rpx;
+  position: relative;
+  width: 100%;
+}
+.goods-title{
+  font-size: 24rpx;
+  line-height: 34rpx;
+  height: 68rpx;
+  color: #ccc;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+.goods-status-text{
+  margin-top: 6rpx;
+  font-size: 24rpx;
+}
+.find-alike-goods{
+  position: absolute;
+  bottom: 15rpx;
+  right: 20rpx;
+  width: 108rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border: 1px solid #cdcdcd;
+  border-radius: 21rpx;
+  color: #666;
+  font-size: 24rpx;
+}

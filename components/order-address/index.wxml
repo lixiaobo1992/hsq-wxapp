@@ -1,0 +1,18 @@
+<template name="order-address">
+  <view class="address-box">
+    <block wx:if="{{address && address.contacter && address.mobile && address.detail}}">
+      <view class="layout-address {{address.contacter ? 'address-info' : ''}}" data-type="0" bindtap="{{onClick}}">
+        <view class="info-user">
+          <view class="info-user-name">收货人: {{address.contacter}}</view>
+          <view class="info-user-mobile">{{address.mobile}}</view>
+        </view>
+        <view class="info-addr">{{address.detail}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="layout-address" data-type="1" bindtap="{{onClick}}">
+        <view style="padding: 10rpx 0rpx;">添加收货地址</view>
+      </view>
+    </block>
+  </view>
+</template>

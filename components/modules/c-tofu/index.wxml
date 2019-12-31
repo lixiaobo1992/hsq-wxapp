@@ -1,0 +1,25 @@
+<dwd-tpl custom-class="c-tofu" data="{{ data }}">
+  <view class="c-tofu-box {{ data.layout ? 'layout-' + data.layout : '' }}">
+    <view
+      wx:for="{{data.list}}"
+      class="c-tofu-item"
+      wx:key="{{index}}"
+      data-index="{{index}}"
+      data-url="{{item.link}}"
+      data-title="{{ data.moduleName }}"
+      data-group="{{ item.flow }}"
+      data-form-Type="onUrlPage"
+      bindtap="onUrlPage"
+      data-piwik-event="{{ item.piwikEvent }}"
+      data-piwik-data="{{ item.piwikData}}"
+      data-module-id="{{ data.id }}">
+      <!-- <image class="image" lazy-load src="{{item.image.url}}"></image> -->
+      <dwd-image
+        src="{{ item.image.url }}"
+        custom-class="image"
+        mode="scaleToFill"
+        lazy-load="{{ true }}"
+        default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" />
+    </view>
+  </view>
+</dwd-tpl>

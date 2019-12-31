@@ -1,0 +1,4 @@
+<!--pages/pay/pay.wxml-->
+<view>
+  支付中...
+</view>

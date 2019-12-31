@@ -1,0 +1,16 @@
+{
+  "name": "haoshiqi",
+  "version": "0.0.1",
+  "description": "专注食品特卖平台，品牌食品2折起~",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jskit/kit-wxapp.git"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@xmini/wxapp-component-base": "0.0.55",
+    "@xmini/x-mini": "2.2.1"
+  },
+  "devDependencies": {}
+}

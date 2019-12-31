@@ -1,0 +1,19 @@
+<template name="card-comment">
+    <view class="card-comment">
+        <view class="space-between">
+            <view class="v-center user">
+                <image wx:if="{{avatar}}" class="head" src="{{avatar}}" mode="aspectFit" />
+                <image wx:else="{{true}}" class="head" src="https://img1.haoshiqi.net/wxapp/img/user_head.png" mode="aspectFit" />
+                <text class="username">{{username}}</text>
+                <text class="time">{{created_at}}</text>
+            </view>
+            <view class="stars">
+            <block wx:for="{{stars}}">
+                <image wx:if="{{item == 1}}" class="star" src="https://img1.haoshiqi.net/wxapp/img/star_full_ef84985e8e.png" mode="aspectFill" />
+                <image wx:else="{{true}}" class="star" src="https://img1.haoshiqi.net/wxapp/img/star_empty_4091059b5c.png" mode="aspectFill" />
+            </block>
+            </view>
+        </view>
+        <view class="content">{{content}}</view>
+    </view>
+</template>

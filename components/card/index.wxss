@@ -1,0 +1,189 @@
+@import '../../components/price/index.wxss';
+
+/* 外层嵌套支持两种模式
+ * 默认 product-list
+ * 可选 product-card
+ */
+
+.product-list .product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+}
+
+.product-list .product-row {
+  height: 100%;
+}
+
+.product-list .product-media {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.product-card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card .product-item {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border: 1px solid rgb(226, 226, 226);
+  border-top: none;
+  border-left: none;
+  padding: 16rpx 0;
+}
+
+.product-card .product-row {
+  width: 100%;
+}
+.product-card .product-media {
+  width: 80%;
+  padding-top: 80%;
+  margin: 0 0 20rpx 0;
+}
+.product-card .product-num {
+  display: none;
+}
+
+.product-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(226, 226, 226);
+  background-color: #fff;
+}
+
+ .product-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-media {
+  position: relative;
+  flex-shrink: 0;
+  margin: 0 40rpx 0 20rpx;
+}
+
+.product-media .image-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center; */
+}
+
+.product-media .image-lootAll{
+  position: absolute;
+  width:70%;
+  height:70%;
+  left:15%;
+  top:15%;
+}
+
+.product-intro {
+  width: 100%;
+  padding: 16rpx;
+  flex-shrink: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info {
+  line-height: 1.4;
+  min-height: 90rpx;
+  flex: 1;
+}
+.product-title {
+  font-size: 28rpx;
+  max-height: 75rpx;
+  overflow: hidden;
+}
+
+.product-info .title-zy {
+  font-size: 22rpx;
+  color: #ed0000;
+  border: 1px solid #ed0000;
+  margin-right: 10rpx;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.product-desc {
+  font-size: 24rpx;
+}
+
+.product-sub {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.product-tags {
+  width: 100%;
+  overflow: hidden;
+  height: 36rpx;
+  display: flex;
+  margin-bottom: 6rpx;
+}
+
+.product-tags .tags {
+  height: 32rpx;
+  line-height: 32rpx;
+  border: 1px solid #EA594C;
+  border-radius: 4rpx;
+  color: #EA594C;
+  padding: 0 8rpx;
+  font-size: 20rpx;
+  margin-right: 4rpx;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  min-width: 20rpx;
+  max-width:266rpx;
+}
+.product-tags .tags:first-child{
+  flex-shrink: 0;
+}
+.product-tags .remain-time{
+  color: #ed0000;
+  font-size: 22rpx;
+  border: 1px solid #ed0000;
+  border-radius: 2px;
+  padding:0 2px;
+}
+
+.product-countdown {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 48rpx;
+  background-color: rgba(53, 53, 53, 0.6);
+  text-align: center;
+  line-height: 48rpx;
+  color: white;
+  font-size: 24rpx;
+}
+.row-expire-day{
+  height:28rpx;
+  line-height:28rpx;
+  font-size:20rpx;
+  color: #999999;
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

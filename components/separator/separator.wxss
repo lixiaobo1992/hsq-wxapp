@@ -1,0 +1,30 @@
+/* components/separator/separator.wxss */
+/* list title */
+.separator {
+  position: relative;
+  background-color: white;
+  height: 100rpx;
+  color: rgb(33, 33, 33);
+  font-size: 32rpx;
+}
+
+.separator .line {
+  position:absolute;
+  left:10%;
+  border-bottom:1px solid rgb(153, 153, 153);
+  width:80%;
+  top:50%;
+}
+
+.separator .title {
+  position:absolute;
+  width:270rpx;
+  background-color:#fff;
+  text-align: center;
+  left:50%;
+  top:0;
+  margin-left:-135rpx;
+  height:100rpx;
+  line-height: 100rpx;
+}
+/* end  */

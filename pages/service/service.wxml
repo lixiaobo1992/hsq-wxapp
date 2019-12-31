@@ -1,0 +1,7 @@
+<view class="full-page">
+  <view wx:if="{{showWebView}}">
+    <web-view src="{{serviceUrl}}"></web-view>
+  </view>
+  <view wx:if="{{showTip}}" class="err-tip">出问题了，请到好食期公众号联系客服</view>
+  <view class="phone" bindtap="makePhoneCall">热线电话：400-185-8058</view>
+</view>

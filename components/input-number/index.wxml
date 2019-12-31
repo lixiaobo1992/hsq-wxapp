@@ -1,0 +1,10 @@
+<view class="input-number input-number-{{ size }} input-number-{{ styleType }} {{ disabled ? 'disabled' : '' }}" catchtap='_getFocus'>
+  <input class="input" type="number" value="{{ num }}" bindblur="_bindblur" disabled="{{ disabled }}" />
+  <view class="input-btn reduce {{ num === min && !disabled ? 'disabled' : '' }}" data-action="reduce" catchtap="_onClick">
+    <text class="input-btn-line line-horizon"></text>
+  </view>
+  <view class="input-btn plus {{ num === max && !disabled ? 'disabled' : '' }}" data-action="plus" catchtap="_onClick">
+    <text class="input-btn-line line-horizon"></text>
+    <text class="input-btn-line line-vertical"></text>
+  </view>
+</view>

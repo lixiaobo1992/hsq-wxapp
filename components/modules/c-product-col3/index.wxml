@@ -1,0 +1,52 @@
+<dwd-tpl custom-class="c-product-col3" data="{{data}}" data-type="{{data.type}}">
+  <view class="col3-box">
+    <view
+      class="row3-box"
+      wx:for="{{data.list}}"
+      wx:key="{{index}}"
+      data-index="{{index}}"
+      data-form-Type="onUrlPage"
+      data-url="{{item.link}}"
+      data-title="{{ data.moduleName }}"
+      data-group="{{ item.flow }}"
+      data-piwik-event="{{ item.piwikEvent }}"
+      data-piwik-data="{{ item.piwikData }}"
+      data-module-id="{{ data.id }}"
+      bindtap="onDetailPage"
+    >
+      <view class="row3-container">
+        <view class="row3-img-box">
+          <!-- 商品图片 -->
+          <!-- <image class="row3-img" src="{{item.thumbnail}}" lazy-load /> -->
+          <dwd-image
+            src="{{ item.thumbnail }}"
+            custom-class="row3-img"
+            mode="scaleToFill"
+            lazy-load="{{ true }}"
+            default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" />
+          <!-- 商品状态 -->
+          <image
+            class="row3-status-img"
+            src="{{ item.invalid_img }}"
+            wx:if="{{ item.invalid_img }}"
+          />
+        </view>
+        <view class="row3-text-box">
+          <view class="row3-title max-line-2">{{ item.title }}</view>
+          <view class="row3-price-box">
+            <view class="row3-vip-price" wx:if="{{ item.member_price > 0 }}">
+                <view class="vip-bg"><image src="https://img1.haoshiqi.net/miniapp/vip-icon_1be7bb7dd2.png" class="img-vip" mode="scaleToFill" />
+                </view>
+                <text class="vip-price">￥{{ item.member_price }}</text>
+            </view>
+            <view class="row3-market" wx:else>￥{{ item.market_price }}</view>
+            <text class="row3-price">
+              <text class="price-integer">￥{{ item.price.price_yuan }}</text>
+              <text class="price-decimals">.{{ item.price.price_fen }}</text>
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</dwd-tpl>

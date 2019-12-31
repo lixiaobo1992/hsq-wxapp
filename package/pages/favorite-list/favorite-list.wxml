@@ -1,0 +1,93 @@
+<import src="../../../components/foot/foot.wxml" />
+
+<dwd-page
+  id="dwd-page-favorite"
+  custom-class="page-favorite"
+  content-class="page-favorite-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+
+  <scroll-view
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="{{lowerThreshold}}"
+    style="height:100%"
+    >
+    <view class="page">
+      <!-- tabs -->
+      <view class="collect-tabs">
+        <text class="tab-text {{ tabsType === 1 ? 'red-border' : '' }}" data-type="1" data-name="商品" bindtap="tabsBtn">商品</text>
+        <text class="tab-text {{ tabsType === 2 ? 'red-border' : '' }}" data-type="2" data-name="店铺" bindtap="tabsBtn">店铺</text>
+      </view>
+      <view class="summary-tit" wx:if="{{totalCnt > 0}}">
+        <view class="summary-test">共{{totalCnt}}条收藏{{tabData[tabsType].name}}记录</view>
+        <view class="edit-btn" bindtap='goNext'  data-type='edit'>{{editText}}</view>
+      </view>
+      <!-- 商品收藏列表 -->
+      <view wx:if="{{tabsStatus == 1}}" class="list {{ noEditState ? '' : 'pad-bottom' }}">
+        <view class="item" wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-skuid="{{item.skuId}}" data-url="{{item.schema}}" data-index="{{index}}"  bindtap="goNext" data-type="detail">
+          <view class="state-icon" hidden='{{noEditState}}'>
+            <image src='{{item.isSelect ? selectedImg : selectImg}}' mode='aspectFit'></image>
+          </view>
+          <view class="left-img">
+            <image src='{{item.thumbnail}}' class="product-img" mode='widthFix' ></image>
+            <image src='https://img1.haoshiqi.net/miniapp/out_992c3399f3.png' class="no-sell" hidden="{{!item.noStock}}"></image>
+          </view>
+          <view class="item-desc">
+            <view class="item-tit">
+              {{item.title}}
+            </view>
+            <view class="item-tip">
+              <block wx:if="{{item.tipState == 1}}">
+              <!-- <block> -->
+                <text>限时</text> {{item.countDown}}
+              </block>
+              <block wx:if="{{item.tipState == 2}}">
+                <text>手慢无</text> 仅剩{{item.left}}件
+              </block>
+            </view>
+            <view class="price">
+              ￥<text>{{item.priceInt}}.</text>{{item.priceFloat}} <view class="del">{{item.marketPrice}}</view>
+            </view>
+            <view class="group-limit" wx:if="{{item.limit}}">
+              {{item.limit}}人团
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 店铺收藏列表 -->
+      <view wx:if="{{tabsStatus == 2}}" class="collect-list {{ noEditState ? '' : 'pad-bottom' }}">
+        <view class="item" wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-type="collect" data-index="{{index}}" bindtap='goNext'>
+          <view class="state-icon" hidden='{{noEditState}}'>
+            <image src='{{item.isSelect ? selectedImg : selectImg}}' mode='aspectFit'></image>
+          </view>
+          <view class="left-img">
+            <image src='{{item.logo}}' class="product-img" mode='widthFix' ></image>
+            <image src='https://img1.haoshiqi.net/miniapp/out_992c3399f3.png' class="no-sell" hidden="{{!item.noStock}}"></image>
+          </view>
+          <view class="item-desc">
+            <view class="item-tit">
+              {{item.name}}
+            </view>
+            <view class="site">
+              <text class="prov-text">{{item.province}}</text>
+              <text>{{item.city}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{list.length && showFooter}}">
+        <template is="foot" data="{{ text:tabData[tabsType].hint}}"></template>
+      </view>
+      <view wx:if="{{!list.length && !isLoading}}">
+        <image class="empty-img" src="/img/tip-img/not-search-result.png" mode="aspectFit" />
+        <view class="empty-text">暂无数据</view>
+      </view>
+      <view class="cancel-btn" hidden='{{noEditState}}' bindtap='goNext' data-type="cancel">
+        取消收藏
+      </view>
+    </view>
+  </scroll-view>
+</dwd-page>

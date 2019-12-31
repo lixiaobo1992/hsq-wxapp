@@ -1,0 +1,143 @@
+/* pages/search/search.wxss */
+.page {
+  width: 100%;
+  /* height: 100%; */
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 搜索框 */
+.search {
+  width: 100%;
+  height: 100rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 8rpx 0 rgba(231,231,231,0.50);
+  transform: translate3d(0,0,0);
+}
+
+.view-input {
+  display: flex;
+  align-items: center;
+  background-color: rgb(241, 241, 241);
+  margin-left: 30rpx;
+  height: 66rpx;
+  padding-left: 20rpx;
+  flex: 1;
+  border-radius: 33rpx;
+}
+
+.view-input .icon-search {
+  width: 30rpx;
+  height: 30rpx;
+  padding-right: 10rpx;
+  
+}
+.clear-icon {
+  width: 60rpx;
+  height: 100rpx;
+  position: relative;
+  padding-right: 10rpx;
+}
+.icon-delete {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* right: 15rpx; */
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.input {
+  flex:1;
+  padding-left:10rpx;
+  height:100%;
+  align-self:center;
+  color: rgb(33, 33, 33);
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 33rpx;
+}
+
+.btn-search {
+  color: rgb(99, 99, 99);
+  font-size: 28rpx;
+  padding: 0 30rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* 最近搜过 */
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0 20rpx 30rpx;
+}
+
+.section text {
+  font-size: 28rpx;
+  color: rgb(102, 102, 102);
+}
+
+.garbage {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.garbage image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.row {
+  padding: 0 30rpx; 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  color: rgb(33, 33, 33);
+  font-size: 28rpx;
+  border-radius: 6rpx;
+  border: 1px solid rgb(153, 153, 153);
+  padding: 6rpx 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+}
+
+.url {
+  border: 1px solid rgb(237, 0, 0);
+  color: rgb(237, 0, 0);
+}
+
+/* 暂无搜索记录 */
+.tip {
+  padding: 0 30rpx;
+  color: rgb(33, 33, 33);
+  font-size: 30rpx;
+}
+/* 搜索建议 */
+.search-suggest {
+  height: 100%;
+  padding: 30rpx 0 30rpx 20rpx;
+  background-color: #fff;
+}
+.search-suggest-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #F4F4F4;
+}
+.search-suggest-num {
+  min-width: 200rpx;
+}

@@ -1,0 +1,399 @@
+/*富文本样式解析样式*/
+@import "/wxparse/wxParse.wxss";
+page,
+view,
+block,
+text,
+swiper {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* wxapp 不能加 * {} */
+/* * {
+  box-sizing: inherit;
+} */
+
+page {
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+checkbox, radio{
+  margin-right: 10rpx;
+}
+button{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+form{
+  width: 100%;
+}
+
+image{
+  vertical-align: middle;
+}
+
+/* formId */
+.page-full-auto {
+  position: absolute;
+  top: -10rpx;
+  height: auto;
+  min-height: 100%;
+  width: 100%;
+  /* wxapp 不能加 -1 */
+  z-index: -1;
+}
+.formid-submit {
+  text-align: inherit;
+  font-size: inherit;
+  height: inherit;
+  line-height: inherit;
+  border-radius: inherit;
+  padding: 0;
+  margin: 0;
+  overflow: inherit;
+  text-overflow: inherit;
+  word-break: inherit;
+  white-space: inherit;
+  border: none !important;
+  outline: none !important;
+  color: inherit !important;
+  background: none !important;
+  box-shadow: inherit;
+}
+.formid-submit:active,
+.formid-submit:hover,
+.formid-submit:focus {
+  border: none !important;
+  outline: none !important;
+  color: inherit !important;
+  background: none !important;
+  /* -webkit-appearance: none; */
+}
+
+
+/* lib */
+.strong{
+  font-weight: bold;
+}
+.tc{
+  text-align: center;
+}
+
+.bc_blue {
+  background-color: #49A9EE;
+}
+
+.bc_red {
+  background-color: #F04134;
+}
+
+.bc_yellow {
+  background-color: #FFBF00;
+}
+
+.bc_green {
+  background-color: #00A854;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item-space-between,
+.item-space-around{
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-space-around{
+  justify-content: space-around;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  width: 28%;
+  text-align: center;
+  padding-top: 28%;
+  margin-left: 4%;
+  margin-bottom: 4%;
+  position: relative;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.1);
+  border-radius: 10rpx;
+  background-color: white;
+}
+
+.grid-item-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.grid-icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.grid-text {
+  color: #000;
+  font-size: 28rpx;
+  line-height: 1;
+  margin-top: 28rpx;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  opacity: 0;
+}
+
+.modal-container {
+  background-color: #fff;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 88%;
+  transform: translateY(100%);
+  /* transition: all 2s ease; */
+}
+
+/* .modal-show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-hide {
+  opacity: 0;
+  transform: scale(0);
+} */
+
+.modal-close {
+  position: absolute;
+  top: 34rpx;
+  right: 60rpx;
+  color: #888;
+  font-size: 80rpx;
+  font-weight: 200;
+}
+
+.modal-content {
+  height: 100%;
+}
+
+.grid-child {
+  padding-top: 40rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.grid-child-title {
+  height: 54rpx;
+  padding: 0 40rpx;
+}
+
+.grid-child-entitle {
+  height: 48rpx;
+  padding: 0 40rpx;
+}
+
+.c-title {
+  font-size: 48rpx;
+}
+
+.c-entitle {
+  font-size: 34rpx;
+  color: #888;
+  line-height: 1.5;
+}
+
+.clist {
+  margin-top: 50rpx;
+  padding: 0 40rpx 20rpx;
+  flex: 1;
+  overflow-y: scroll
+}
+
+.clist-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 144rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.clist-item:active {
+  background-color: #eee;
+}
+
+.clist-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.clist-item-content-title {
+  font-size: 34rpx;
+}
+
+.clist-item-content-subtitle {
+  font-size: 28rpx;
+  color: #888;
+  line-height: 2;
+}
+
+.c-list-item-extra {
+  width: 80rpx;
+}
+
+.c-list-item-arrow {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.card-line {
+  width: 100%;
+  height: 20rpx;
+}
+.clear-both {
+  clear: both;
+}
+
+/* 内联元素不起效 */
+.ellipsis,
+.max-line-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/*
+// Line clamp
+// http://dropshado.ws/post/1015351370/webkit-line-clamp
+@mixin text-max-line($lines: 2, $line-height: 1.5em) {
+  word-break: break-all;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines; // number of lines to show
+  overflow: hidden;
+  line-height: $line-height;
+  max-height: $line-height * $lines;
+  // height: $line-height * $lines;
+  // 不要使用 text-align: justify; 会导致文字和...重叠
+}
+*/
+.nowrap {
+  white-space: nowrap;
+}
+.max-line-2,
+.max-line-3 {
+  word-break: break-all;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.;
+}
+
+/* 必须自己设定 max-height 并指定单位，不同字体大小高度不同，这里无法计算max-height */
+.max-line-2 {
+  -webkit-line-clamp: 2;
+  /* max-height: 2.6; */
+}
+.max-line-3 {
+  -webkit-line-clamp: 3;
+  /* max-height: 3.9; */
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.overhidden{
+  overflow: hidden;
+}
+.gray{
+    color: #959595;
+}
+.flex{
+  display: flex;
+}
+.block-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.v-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-justify-start   { justify-content: flex-start; }
+.flex-justify-center  { justify-content: center; }
+.flex-justify-end     { justify-content: flex-end; }
+.flex-justify-between { justify-content: space-between; }
+.flex-justify-around  { justify-content: space-around; }
+
+.flex-align-start   { align-content: flex-start; }
+.flex-align-center  { align-content: center; }
+.flex-align-end     { align-content: flex-end; }
+.flex-align-between { align-content: space-between; }
+.flex-align-around  { align-content: space-around; }
+.flex-align-stretch { align-content: stretch; }
+
+
+.empty-img{
+  display: block;
+  width: 65%;
+  margin: 0rpx auto;
+}
+.empty-text{
+  font-size: 28rpx;
+  text-align: center;
+}

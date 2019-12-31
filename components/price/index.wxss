@@ -1,0 +1,97 @@
+.price-box {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: normal;
+  line-height: 44rpx;
+  font-size: 24rpx;
+  color: rgb(136, 136, 136);
+  height:44rpx;
+}
+
+.price-box + .price-box {
+  margin-top: 20rpx;
+}
+
+.price-box .item {
+  font-size: 42rpx;
+}
+.price-box .item-price{
+  font-size:42rpx;
+}
+.price-box .item-type,
+.price-box .item-rmb,
+.price-box .item-price,
+.price-box .item-point {
+  color: rgb(237, 0, 0);
+}
+
+.price-box .item-type {
+  font-size: 28rpx;
+}
+
+.price-box .item-market-price {
+  position: relative;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  color: rgb(136, 136, 136);
+}
+
+.price-box .item-price:after,
+.price-box .item-market-price:before,
+.price-box .item-point:before,
+.price-box .item-point:after {
+  position: relative;
+  top: -2rpx;
+  font-size: 24rpx;
+}
+
+.item-rmb + .item-point:before,
+.item-price + .item-point:before {
+  content: '+';
+}
+
+.price-box .item-rmb:before {
+  content: '¥';
+  font-size: 28rpx;
+}
+
+.price-box .item-price:after {
+  content: '元';
+}
+
+.item-rmb + .item-market-price,
+.item-price + .item-market-price,
+.item-point + .item-market-price {
+  margin-left: 10rpx;
+}
+
+.price-box .item-market-price:before {
+  content: '¥';
+  top: 0;
+}
+
+.price-box .item-point:after {
+  content: '积分';
+}
+
+/* 会员价 */
+.price-box .member-price{
+  margin-left:20rpx;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+.member-price .vip-icon{
+  width:24rpx;
+  height:24rpx;
+  border-radius:4rpx;
+}
+.member-price .item-member-price{
+  font-size: 24rpx;
+  color: #333333;
+  background: #FDFBEB;
+  align-self: flex-end;
+  display:inline;
+  margin-top:-4rpx;
+}

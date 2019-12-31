@@ -1,0 +1,36 @@
+.card-comment{
+    padding: 10rpx;
+    background-color: #fff;
+    font-size: 24rpx;
+}
+.card-comment .user{
+    flex: 78;
+}
+.card-comment .stars{
+    flex: 22;
+}
+.card-comment .username{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    flex: 44;
+}
+.card-comment .head{
+    width: 60rpx;
+    height: 60rpx;
+    border: 0rpx;
+    border-radius: 30rpx;
+    margin-right: 4rpx;
+}
+.card-comment .time{
+    margin-left: 20rpx;
+    color: #B4B4B4;
+    flex: 20;
+}
+.card-comment .star{
+    width: 30rpx;
+    height: 30rpx;
+}
+.card-comment .content{
+    margin-top: 20rpx;
+}

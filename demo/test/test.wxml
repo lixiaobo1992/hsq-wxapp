@@ -1,0 +1,108 @@
+<import src="/components/grid/index.wxml" />
+
+<view class="demo-block">
+  <view class="demo-title">sku test</view>
+  <view class="demo-content">
+    <!-- <button class="test-btn" data-url="https://m.dev.haoshiqi.net/v2/member-open?type=1" bindtap="onGoToView">跳转dev webview</!-->
+    <button class="test-btn" data-url="http://10.0.6.70:8085/v2/member-open?type=1" bindtap="onGoToView">跳转open</button>
+    <button class="test-btn" data-url="http://10.0.6.70:8085/v2/member-center" bindtap="onGoToView">跳转center</button>
+    <button class="test-btn" data-url="http://10.0.4.16:8085/v2/phone-cost?d_wxapp=1&isNeedLogin=true" bindtap="onGoToView">跳转话费充值</button>
+    <button class="test-btn" data-url="miniapp://pages/index/index?appid=wx51bffbeacd053ff5&spm=fromhsq" bindtap="onUrlPage">跳小程序</button>
+  </view>
+</view>
+
+<view class="demo-block">
+  <view class="demo-title">sku test</view>
+  <view class="demo-content">
+    <view class="params-box" bindtap="onSelectNorm">
+      <view wx:if="{{ !notSelectedAttrName }}">
+        <block wx:for="{{ selectedAttrName }}" wx:key="{{ index }}">
+          {{ index !== 0 ? '、' : '' }}【{{ item.attrName }}】{{ item.attrValue
+          }}{{ item.type == 2 ? '到期' : '' }}
+        </block>
+      </view>
+      <view wx:else>请选择: {{ notSelectedAttrName }}</view>
+    </view>
+    <button class="test-btn" bindtap="buyBtnClick">立即购买</button>
+    <button class="test-btn" bindtap="addShoppingCartClick">加入购物车</button>
+  </view>
+</view>
+
+<view class="demo-block">
+  <view class="demo-title">input-number</view>
+  <view class="demo-content" style="background-color: #fff;">
+    <view>
+      <dwd-input-number value="{{ currentSum }}" max="{{ maxBuySum }}" size="small" bind:onchange="countChangeVal" />
+      <dwd-input-number value="{{ currentSum }}" max="{{ maxBuySum }}" bind:bind:onchange="countChangeVal" />
+    </view>
+    <view>
+      <dwd-input-number value="{{ currentSum }}" max="{{ maxBuySum }}" size="small" styleType="border" bind:onchange="countChangeVal" />
+      <dwd-input-number value="{{ currentSum }}" max="{{ maxBuySum }}" styleType="border" bind:onchange="countChangeVal" />
+    </view>
+  </view>
+</view>
+
+<view class="demo-block">
+  <view class="demo-title">刷新login code</view>
+  <view class="demo-content" style="background-color: #fff;">
+    <input class="demo-inpu-text" type="text" placeholder="login code" value="{{ authCode }}" />
+    <button class="test-btn" type="primary" bindtap="updatedCode">刷新code</button>
+  </view>
+</view>
+
+<view class="demo-block">
+  <view class="demo-title">登录</view>
+  <view class="demo-content" style="background-color: #fff;">
+    <view>登录状态：{{ logged }}</view>
+    <view>用户信息：{{ userInfo.user_id }}</view>
+    <button class="test-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">使用微信登录</button>
+  </view>
+</view>
+
+<view class="demo-block">
+  <view class="demo-title">获取手机号</view>
+  <view class="demo-content" style="background-color: #fff;">
+    <view class="demo-input-cell">
+      <view class="demo-input-item">
+        <text>Data:</text>
+        <textarea class="demo-inpu-text" placeholder="获取的信息" auto-height value="{{ userPhoneData }}"></textarea>
+      </view>
+    </view>
+    <button class="test-btn" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  </view>
+</view>
+
+<view class="desc">页面导航</view>
+<view class="container">
+  <template is="grid" data="{{...pages}}" />
+</view>
+
+<view class="desc">代码测试</view>
+<view>
+  引用 image
+  <image src="https://img1.haoshiqi.net/wxapp/img/avatar_9dc3749044.png" style="width: 80rpx; height: 80rpx;"></image>
+  <view class="image_bg" style="width: 80rpx; height: 80rpx;"></view>
+
+</view>
+<view class="desc">代码测试</view>
+<view>
+  <text>跳转 </text>
+  <button type="default" data-type="url" bindtap="onClick">url</button>
+  <button type="default" data-type="schema" bindtap="onClick">schema</button>
+  <button type="default" data-type="test" bindtap="onClick">test</button>
+  <button type="default" data-type="store" bindtap="onClick">清除本地数据缓存</button>
+</view>
+
+<dwd-sku-select
+  isPopupShow="{{isShowPopup}}"
+  normSelectTag="{{ normSelectTag }}"
+  skuBtnStatus="{{ skuBtnStatus }}"
+  attrData="{{ attrData }}"
+  skuStocksList="{{ skuStocksList }}"
+  defaultSkuData="{{ defaultSkuData }}"
+  defaultSelectedIds="{{ defaultSelectedIds }}"
+  maxBuySum="{{ maxBuySum }}"
+  currentSum="{{ currentSum }}"
+  bind:onSetParentData="setCurrentData"
+  bind:onBtnClick="onBtnClick"
+/>

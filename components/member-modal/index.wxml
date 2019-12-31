@@ -1,0 +1,20 @@
+<view class="member-modal" bindtap="ModalClick">
+    <view class="model-content">
+      <view class="member-modal-title">
+        {{ goodMemberInfo.left_title}}
+        <text class="member-modal-num">{{goodMemberInfo.num}}</text>
+        {{goodMemberInfo.right_title}}
+      </view>
+      <view class="member-modal-con">
+        <view class="member-modal-item" wx:for="{{goodMemberInfo.content}}" >
+          <view class="left-item">
+          <image src="{{item.pic}}" mode="scaleToFill" class="left-icon" />
+            <text class="left-title">{{item.name}}</text>
+          </view>
+          <text class="right-desc">{{item.detail}}</text>
+        </view>
+      </view>
+      <view class="bottom-btn" bindtap="ModalClick">我知道了</view>
+  </view>
+      <image src="https://img1.haoshiqi.net/miniapp/icon/icon-close_476f81039c.png" mode="scaleToFill" class="close-icon" catchtap="ModalClick"/>
+  </view>

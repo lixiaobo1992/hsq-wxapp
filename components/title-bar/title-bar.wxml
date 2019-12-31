@@ -1,0 +1,6 @@
+<!--components/title-bar/title-bar.wxml-->
+<template name="title-bar">
+  <view class="title-bar">
+    <image wx:for="{{list}}" wx:key="{{index}}" src="{{item.image}}" mode="scaleToFill" style="width:100%;height:{{height}}px"></image>
+  </view>
+</template>

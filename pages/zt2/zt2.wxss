@@ -1,0 +1,197 @@
+@import '../../components/card/index.wxss';
+@import '../../components/foot/foot.wxss';
+
+page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.page-zt2{
+  height: 100%;
+}
+scroll-view {
+  height: 100%;
+}
+
+.view-image {
+  position: relative;
+  width: 100%;
+  padding-top: 54.7%;
+}
+
+.view-image image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.coupon-bg{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0,0,0,.3);
+}
+
+.coupon-box{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 600rpx;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  background: url("https://img1.haoshiqi.net/wxapp/img/reming_bg_9f5549c7b4.png") repeat-y left top;
+  background-size: 100% auto;
+  padding: 0rpx 40rpx 40rpx;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.coupon-title{
+  color: #914e07;
+  text-align: center;
+  padding: 40rpx;
+}
+
+.coupon-list{
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+  background-color: #f55;
+  color: #fff;
+  padding: 20rpx;
+  height: 178rpx;
+  box-sizing: border-box;
+}
+
+.coupon-list:before,.coupon-list:after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  background: #fe1;
+  width: 16rpx;
+  height: 32rpx;
+  margin-top: -16rpx;
+}
+
+.coupon-list:before{
+  left: 0;
+  border-radius: 0rpx 48rpx 48rpx 0rpx;
+}
+
+.coupon-list:after{
+  right: 0;
+  border-radius: 48rpx 0rpx 0rpx 48rpx;
+}
+
+.coupon-price{
+  font-size: 46rpx;
+  width: 110rpx;
+  height: 138rpx;
+  line-height: 138rpx;
+  text-align: center;
+}
+.coupon-price text{
+  font-size: 24rpx;
+  margin-right: 4rpx;
+}
+
+.coupon-detail{
+  position: relative;
+  flex: 1;
+  width: 100rpx;
+  padding-right: 30rpx;
+}
+
+.coupon-detail:after{
+  content: '';
+  position: absolute;
+  right: 16rpx;
+  top: 61rpx;
+  display: inline-block;
+  transform-origin: center;
+  width: 16rpx;
+  height: 16rpx;
+  color: inherit;
+  border-color: #fff;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  border-width: 1px 1px 0 0;
+  margin-bottom: 8rpx;
+  margin-left: -8rpx;
+}
+
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coupon-name{
+  font-size: 38rpx;
+  padding: 20rpx 0rpx;
+}
+
+.coupon-date{
+  font-size: 28rpx;
+  padding-bottom: 20rpx;
+}
+
+.coupon-more{
+  color: #914e07;
+  text-align: center;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.coupon-more text{
+  position: relative;
+  display: inline-block;
+  padding-right: 30rpx;
+}
+.coupon-more text:after{
+  content: '';
+  position: absolute;
+  right: 0rpx;
+  top: 10rpx;
+  display: inline-block;
+  transform-origin: center;
+  width: 16rpx;
+  height: 16rpx;
+  border-color: #914e07;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  border-width: 1px 1px 0 0;
+  margin-bottom: 8rpx;
+  margin-left: -8rpx;
+}
+
+.coupon-close{
+  position: absolute;
+  right: -20rpx;
+  top: -20rpx;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.coupon-close:before,.coupon-close:after{
+  content: '';
+  position: absolute;
+  width: 28px;
+  left: -5px;
+  top: 9px;
+  border: 1px solid #989898;
+}
+
+.coupon-close:before{
+  transform: rotate(45deg) scale(0.5);
+}
+.coupon-close:after{
+  transform: rotate(-45deg) scale(0.5);
+}

@@ -1,0 +1,79 @@
+.popup-mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 100;
+}
+.popup-container{
+  position: fixed;
+  top: 50%;
+  left: 15%;
+  width: 70%;
+  transform: translateY(-50%);
+  z-index: 101;
+}
+.popup-close-btn{
+  margin: 30rpx auto 0;
+  width: 60rpx;
+  height: 60rpx;
+  background: #333333;
+  border-radius: 50%;
+}
+.popup-close-btn image{
+    width: 100%;
+    height: 100%;
+}
+.popup-container .bg-img{
+    width: 100%;
+}
+.popup-container .popup-content{
+  position: absolute;
+  top: 39%;
+  left: 15%;
+  width: 70%;
+  height: 50%;
+}
+.image-block{
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+.image-block image{
+      width: 100%;
+}
+.newuser-tip{
+    text-align: center;
+    font-size: 38rpx;
+    color: #FFFFFF;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 35%;
+    font-weight: bold;
+}
+.img-btn{
+    position: absolute;
+    width: 350rpx;
+    height: 100rpx;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+}
+.img-btn image{
+      width: 100%;
+      height: 100%;
+}
+.btn-text{
+      text-align: center;
+      font-size: 30rpx;
+      color: #F4051A;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+      line-height: 90rpx;
+}

@@ -1,0 +1,42 @@
+<!--components/pin-buy/pin-buy.wxml-->
+<!-- data-type: 2拼团单人购，3拼团多人团，5抽奖团单人购，4抽奖团多人团   -->
+<wxs src="../../components/price/index.wxs" module="format" />
+
+<template name="pin-buy">
+  <view class="view-buy">
+    <view class="view-service" bindtap="goService">
+      <image class="icon" src="https://img1.haoshiqi.net/miniapp/detail_service_8900f3fbb9.png" mode="aspectFit"></image>
+      <text class="title">联系客服</text>
+    </view>
+
+    <view class="view-service" wx:if="{{isCouple}}" bindtap="toggleCollection">
+      <image class="icon" src="{{collectionImg}}" mode="aspectFit"></image>
+      <text class="title">{{is_like ? '已收藏' : '收藏'}}</text>
+    </view>
+    <view class="view-service" bindtap="goCart" wx:if="{{cartStatus}}">
+        <image src="https://img1.haoshiqi.net/miniapp/cart_6f59ff59a0.png" mode="scaleToFill" class="icon"/>
+        <text class="title">购物车</text>
+        <view class="badge {{ cartNumber ? '' : 'hidden' }}" ></view>
+    </view>
+    <block wx:if="{{ !showActivity || left_stock > 0 }}">
+      <view class="view-pin cart-color {{canSingle ? '' : 'gray-single'}}" bindtap="{{isLottery ? 'toOrderCommitOld' : 'buyBtnClick'}}" data-type="{{isLottery ? '5' : '2'}}">
+        <text class="pin-price">￥{{format(singlePrice)}}</text>
+        <text class="pin-title">单独购</text>
+        <!-- <text class="addCart">加入购物车</text> -->
+      </view>
+
+      <view class="view-pin group {{canGroup ? '' : 'gray-group'}}" bindtap="{{isLottery ? 'toOrderCommitOld' : 'buyBtnClick'}}" data-type="{{isLottery ? '4' : '3'}}">
+        <view class="pin-price">￥{{format(groupPrice)}}</view>
+        <view class="pin-title">{{count}}人团</view>
+      </view>
+    </block>
+    <view class="view-pin activity-ready" wx:else>
+      <view class="activity-price">
+        {{activityType == 1 ? '活动价' : '秒杀价'}}￥{{ format(activityPrice) }}
+      </view>
+      <view class="activity-time">
+        {{ activityTime }}
+      </view>
+    </view>
+  </view>
+</template>

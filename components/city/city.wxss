@@ -1,0 +1,73 @@
+/* components/city/city.wxss */
+
+.city-view {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 7;
+}
+
+.city-view-title {
+  background: #fff;
+  width: 100%;
+  height: 8%;
+  padding: 30rpx;
+  text-align: center;
+}
+
+.sendto {
+  font-size: 32rpx;
+}
+
+.close {
+  position: absolute;
+  right: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.transparent {
+  height: 30%;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.city-type {
+  background-color: #fff;
+  height: 62%;
+  width: 100%;
+}
+
+.swipe-item {
+  width: 100%;
+  height: 100%;
+}
+
+.add-bottom {
+  height: 140rpx;
+}
+
+.choose-others {
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  width: 100%;
+  background-color: #ed0000;
+  text-align: center;
+  font-size: 40rpx;
+  padding-top: 14rpx;
+  color: #fff;
+}
+
+.address-back {
+  position: absolute;
+  left: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
+  transform: rotate(180deg);
+}

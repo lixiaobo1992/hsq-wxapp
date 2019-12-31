@@ -1,0 +1,40 @@
+<import src="../price/index.wxml" />
+<!-- 
+hidden:boolean
+
+ -->
+<template name="order-commit-pop">
+  <view class="modal" wx:if="{{!hidden}}">
+    <view class="modal-pop-mask" bindtap="{{data.listenBack}}" />
+    <view class="modal-container">
+      <view class="view-title">
+        <text class="c-title">{{data.title}}</text>
+      </view>
+      <scroll-view scroll-x class="model-content">
+        <block wx:for="{{data.itemList}}" wx:key="index" wx:for-item="item" bindtab="onSkuItemClick">
+          <view class="product-item pop-product-item">
+            <view class="product-media" wx:if="{{item.skuThumbnail}}">
+              <image class="pop-thumbnail" src="{{item.skuThumbnail}}" mode="aspectFit" />
+            </view>
+            <view class="product-intro">
+              <view class="product-info">
+                <view class="product-title max-line-2 pop-color">{{item.name}}</view>
+                <view class="product-desc pop-color" wx:if="{{desc}}">{{desc}}</view>
+              </view>
+              <view class="product-sub pop-color">
+                <template is="price" data="{{price:item.price,point:item.point}}" />
+                <text class="product-num pop-color" wx:if="{{item.orderAmount}}">x {{item.orderAmount}}</text>
+              </view>
+            </view>
+            <block wx:if="{{item.statusIcon}}">
+              <image class="pop-label-icon" src="{{item.statusIcon}}" mode="aspectFit" />
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+      <view class="btn-back" data-event-id="{{data.eventId}}" data-action-id="{{data.backText}}" bindtap="{{data.listenBack}}">
+        <text>{{data.backText}}</text>
+      </view>
+    </view>
+  </view>
+</template>

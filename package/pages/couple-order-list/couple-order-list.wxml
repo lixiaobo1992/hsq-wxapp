@@ -1,0 +1,57 @@
+<import src="../../../components/foot/foot.wxml" />
+<wxs src="../../../components/price/index.wxs" module="format" />
+
+<dwd-page
+  id="dwd-page-couple-order"
+  custom-class="page-couple-order"
+  content-class="page-couple-order-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <scroll-view style="height:100%;" scroll-y bindscrolltolower="onScrollToLower" lower-threshold="300">
+
+    <view class="page {{hiddenTabs ? 'change-foot' : ''}}">
+        <view class="couple-content" wx:for="{{list}}" wx:key="{{ item.eventId }}">
+          <view class="content" data-orderid="{{item.id}}" data-eventid="{{item.eventId}}" data-listtype="{{listType}}" bindtap="goCoupleShare">
+            <view class="content-img">
+              <image class="img" src="{{item.img}}" mode="{{scale}}" />
+            </view>
+            <view class="content-title">
+              <text class="title max-line-2">{{item.title}}</text>
+              <view class="sub-title">
+                <view class="price">¥
+                  <view class="price-int">
+                  {{format(item.price, 2, true)[0]}}</view>
+                  .{{format(item.price, 2, true)[1]}}
+                </view>
+                <text class="count-down" wx:if="{{item.status === 1}}">还剩：{{item.countDownInfo ? item.countDownInfo : '00:00:00'}}</text>
+              </view>
+              <image class="tags" src="{{item.tags}}" mode="{{scale}}" />
+            </view>
+          </view>
+          <view class="operate">
+            <view class="pin-detail" wx:if="{{listType == 2 && type == 2 && item.lotteryStatus != 1}}" bindtap="goWinDetail" data-id="{{item.pinActivityId}}">中奖详情</view>
+            <view class="join" wx:if="{{item.status === 1}}" data-eventid="{{item.eventId}}" data-listtype="{{listType}}" data-status="{{ item.status }}" bindtap="goCoupleShare">邀请好友拼团</view>
+            <view class="pin-detail" wx:if="{{item.status > 1}}" data-eventid="{{item.eventId}}" data-listtype="{{listType}}" data-status="{{ item.status }}"  bindtap="goCoupleShare">拼团详情</view>
+            <view class="pin-detail" data-orderid="{{item.id}}" bindtap="goOrderDetail">订单详情</view>
+          </view>
+        </view>
+    </view>
+    <!-- <view class="btn-back-home" bindtap="goIndex">
+      <image src="https://img1.haoshiqi.net/miniapp/pin-back-home_d58ecfed24.png" mode="aspectFit"/>
+    </view> -->
+    <view wx:if="{{list.length && showFooter}}">
+      <template is="foot" data="{{text:'没有更多拼团了~'}}"></template>
+    </view>
+    <view wx:if="{{!list.length && !isLoading}}">
+      <image class="empty-img" src="/img/tip-img/not-search-result.png" mode="aspectFit" />
+      <view class="empty-text">您还没有相关订单~</view>
+    </view>
+
+  </scroll-view>
+
+  <view class="tabs" wx:if="{{!hiddenTabs}}">
+    <view class="tab {{clickIndex == index ? 'switch' : ''}}" wx:for="{{tabs}}" wx:key="{{ item }}" data-index="{{index}}" data-name="{{ item }}" bindtap="switchTab">{{item}}
+      <view class="line {{clickIndex == index ? 'switch-line' : ''}}"></view>
+    </view>
+  </view>
+</dwd-page>

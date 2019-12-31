@@ -1,0 +1,9 @@
+<template name="sec-head">
+    <view class="sec-head space-between">
+        <text class="title">{{title}}</text>
+        <view wx:if="{{more}}" class="v-center">
+            <text class="desc">{{more}}</text>
+            <image class="arrow" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="aspectFill" />
+        </view>
+    </view>
+</template>

@@ -1,0 +1,25 @@
+<dwd-tpl custom-class="c-img" data="{{ data }}">
+  <view
+    class="c-img-item"
+    wx:for="{{ data.list }}"
+    wx:key="{{ index }}"
+    data-url="{{ item.link }}"
+    data-title="{{ data.moduleName }}"
+    data-index="{{ index }}"
+    data-group="{{ item.flow }}"
+    data-form-Type="onUrlPage"
+    data-piwik-event="{{ item.piwikEvent }}"
+    data-piwik-data="{{ item.piwikData }}"
+    data-module-id="{{ data.id }}"
+    bindtap="onUrlPage"
+    style="padding-top: {{(item.image.h * 100) / item.image.w + '%' }}"
+  >
+    <!-- <image class="image" src="{{ item.image.url }}" lazy-load mode="scaleToFill" /> -->
+    <dwd-image
+      src="{{ item.image.url }}"
+      custom-class="image"
+      mode="scaleToFill"
+      lazy-load="{{ true }}"
+      default-image="https://img1.haoshiqi.net/miniapp/not-img1_dab4753322.png" />
+  </view>
+</dwd-tpl>

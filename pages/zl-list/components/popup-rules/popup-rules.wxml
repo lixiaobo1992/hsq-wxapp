@@ -1,0 +1,13 @@
+<view class="component-popup">
+  <view class="popup-mask" bindtap="hidePopup"></view>
+  <view class="popup-container popup-rules">
+    <view class="rule-container">
+      <view class="rule-header">规则</view>
+      <view class="rule-desc">
+        <view wx:for="{{ rules }}" wx:key="{{ index }}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

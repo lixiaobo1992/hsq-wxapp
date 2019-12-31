@@ -1,0 +1,65 @@
+/* @import "/components/lifecycle.wxss"; */
+@import '../../components/grid/index.wxss';
+
+/*
+@import '/components/price/index.wxss';
+@import '/components/list/index.wxss'; */
+
+
+.demo-block{
+  padding: 12px;
+}
+.demo-block .demo-title{
+  font-size:16px;
+  color: #333;
+}
+.demo-block .demo-content{
+  padding: 20rpx 10rpx;
+  border: 1px solid #ccc;
+}
+.test-btn{
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: 100px;
+  background-color: #999;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.demo-inpu-text{
+  width: 100%;
+  min-height: 80rpx;
+  background-color: #fff;
+  border: 1px solid #999;
+}
+
+.demo-input-cell{}
+.demo-input-item{
+
+}
+
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.desc {
+  margin: 40rpx 0 20rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.container {
+  margin: 40rpx 0;
+  width: 100%;
+}
+.grid-item {
+  padding-top: 12% !important;
+}
+.grid-text {
+  margin-top: 0;
+}
+
+.image_bg {
+  background: url('https://img1.haoshiqi.net/wxapp/img/avatar_9dc3749044.png');
+}

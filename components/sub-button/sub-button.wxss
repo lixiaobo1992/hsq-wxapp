@@ -1,0 +1,26 @@
+/* components/sub-button/sub-button.wxss */
+.sub-button {
+  display: flex;
+}
+
+.sub-button .item {
+  flex: 20%;
+}
+
+.sub-button .item .w-image {
+  justify-content: center;
+}
+
+.sub-button .image {
+  align-self: center;
+  width: 70rpx;
+  height: 70rpx;
+}
+
+
+.sub-button .text {
+  font-size: 24rpx;
+  text-align: center;
+  color: #333;
+  margin-top: 0rpx;
+}

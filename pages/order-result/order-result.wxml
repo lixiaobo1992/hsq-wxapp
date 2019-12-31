@@ -1,0 +1,24 @@
+<dwd-page
+  id="dwd-page-refund-detail"
+  custom-class="page-refund-detail"
+  content-class="page-refund-detail-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <view class="page page-result">
+    <view class="result-desc {{ higePage ? 'hidden' : '' }}">
+      <view class="result-tit">
+        <image src="https://img1.haoshiqi.net/miniapp/icon-success_0ad47518c9.jpg" mode="scaleToFill" class="icon"/>
+        <view class="order-status-text">支付成功</view>
+      </view>
+      <view class="price" wx:if="payPrice">￥{{payPrice}}</view>
+      <view class="btn-box block-center">
+        <view class="btn-sure" bindtap="goContinue">
+          返回首页
+        </view>
+        <view class="btn-info" bindtap="goOrderDetail">
+          查看订单
+        </view>
+      </view>
+    </view>
+  </view>
+</dwd-page>

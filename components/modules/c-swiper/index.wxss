@@ -1,0 +1,37 @@
+/* components/modules/c-img/index.wxss */
+.c-swiper-box{
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  background: #fff;
+}
+.c-swiper swiper {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+.c-swiper-item{
+  height: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.c-swiper-1 .c-swiper-item{
+  padding:0 5px 0rpx 5px;
+  box-sizing: border-box;
+}
+.c-swiper-img{
+  width: 100% !important;
+  height: 100% !important;
+}
+.c-swiper-1 .c-swiper-img {
+  border-radius: 10rpx;
+  box-shadow: 0 4rpx 8rpx 0 rgba(224,224,224,0.50);
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img1_dab4753322.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center; */
+}

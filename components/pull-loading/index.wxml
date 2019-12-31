@@ -1,0 +1,6 @@
+<!--components/pullLoading/pullLoading.wxml-->
+<template name="pull-loading">
+  <view class="list-loading" wx:if = '{{ pullLoading }}'>
+    <image src="https://img1.haoshiqi.net/wxapp/img/loading_9602a579c2.gif" mode="aspectFit" />
+  </view>
+</template>

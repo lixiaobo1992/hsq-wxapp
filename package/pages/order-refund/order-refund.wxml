@@ -1,0 +1,73 @@
+<dwd-page
+  id="dwd-page-order-refund"
+  custom-class="page-order-refund"
+  content-class="page-order-refund-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <form class="order-refund" data-orderid="orderId" bindsubmit="formSubmit" onReset="">
+    <view class="prod-box" wx:if="{{product.skuName}}">
+      <image class="prod-img" src="{{product.imgUrl}}" mode="aspectFit" />
+      <view class="prod-right">
+        <view class="prod-name max-line-2">{{product.skuName}}</view>
+        <view class="prod-attrs" wx:for="{{product.attrs}}" wx:for-index="idx" wx:for-item="attr" wx:key="{{idx}}">{{attr}}</view>
+      </view>
+    </view>
+
+    <view class="content">
+      <view class="refund-style">
+        <label>
+          <text class="refund badge">*</text>
+          <view class="refund style-title">处理方式:</view>
+          <text class="refund style" data-refundmothod="{{refundMethod}}">{{refundMethodName}}</text>
+        </label>
+      </view>
+      <view class="refund-reason" bindtap="chooseReason">
+        <label>
+          <text class="refund badge">*</text>
+          <view class="refund reason-title">退款原因:</view>
+          <text class="refund style" data-reasonid="{{reasonId}}" wx:if="{{reason}}">{{reason}}</text>
+          <text class="refund style" wx:else>请选择退款原因</text>
+          <view class="right">
+            <image src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="{{scale}}" class="right-link"/>
+          </view>
+        </label>
+      </view>
+      <view class="refund-style refund-money" wx:if="{{product.pay_price}}">
+        <label>
+          <text class="refund badge">*</text>
+          <view class="refund style-title">退款金额:</view>
+          <text class="refund style">￥{{product.pay_price}}</text>
+        </label>
+      </view>
+      <view class="refund-explain">
+        <view class="explain">
+          <view class="refund explain-title">退款说明:</view>
+          <textarea class="refund" name="comment" style="min-height:34rpx;line-height:32rpx; font-size:24rpx; color:rgbrgb(153, 153, 153);" placeholder="最多可填写500个字" maxlength="500" auto-height />
+        </view>
+      </view>
+      <view class="refund-img">
+        <text class="refund badge" wx:if="{{salesRefundType === 'AFTER_SALES'}}">*</text>
+        <view class="img-title">
+          <text class="upload-title">最多可上传3张</text>
+          <text class="upload-rule">（建议产品照片、内包装盒照片、含快递单的外包装箱照片各一张）</text>
+        </view>
+        <view class="upload-img">
+          <view  wx:for="{{imageList}}" wx:key="{{index}}">
+            <view class="imgView" data-index="{{index}}" bindtap="previewImage">
+              <image class="img" src="{{imageList[index]}}" mode="{{scale}}" />
+              <view data-index="{{index}}" catchtap="clearImage">
+                <icon type="clear" size="15"/>
+              </view>
+            </view>
+          </view>
+          <view class="upload" bindtap="uploadImage" wx:if="{{imageList.length < imageMax}}">
+            <view class="line1"></view>
+            <view class="line2"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </form>
+</dwd-page>
+<!-- fixed底部元素不能放在层级内,ios8内不显示 -->
+<button class="submit {{reason ? 'submit-ok' : ''}}" form-type="submit" bindtap="formSubmit">提交</button>

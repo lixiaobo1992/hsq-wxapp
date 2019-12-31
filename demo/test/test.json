@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "demo",
+  "usingComponents": {
+    "dwd-sku-select": "../../components/sku-select1/index",
+    "dwd-input-number": "../../components/input-number/index"
+  }
+}

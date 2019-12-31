@@ -1,0 +1,46 @@
+/* .full-page {
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+} */
+.line {
+    border-bottom: 2rpx solid #e2e2e2;
+}
+.err-tip{
+  width:100%;
+  text-align:center;
+  padding-top:45vh;
+}
+
+.content {
+    padding: 32rpx;
+    font-size: 28rpx;
+    line-height: 1.5;
+    background: #fff;
+}
+
+.important {
+    color: red;
+}
+
+.tip {
+    margin: 32rpx auto;
+}
+.tit {
+    margin: 16rpx auto;
+    color: #666;
+}
+image {
+    width: 100%;
+    margin: 16rpx auto 32rpx;
+}
+
+.phone {
+    position: absolute;
+    bottom: 60rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #999;
+    font-size: 24rpx;
+    text-decoration: underline;
+}

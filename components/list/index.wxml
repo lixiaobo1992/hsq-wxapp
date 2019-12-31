@@ -1,0 +1,9 @@
+<template name="list">
+  <scroll-view scroll-y
+  onScrollToUpper="{{onScrollToUpper}}"
+  onScrollToLower="{{onScrollToLower}}"
+  onScroll="{{onScroll}}"
+  style="height: 100%;"
+  >
+  </scroll-view>
+</template>

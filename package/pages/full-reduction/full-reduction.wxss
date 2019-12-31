@@ -1,0 +1,202 @@
+@import '/components/foot/foot.wxss';
+/* .pin-shopping{
+  padding:16rpx 32rpx;
+} */
+.page-pin-shopping{
+  height:100%;
+  background: #f5f6f5;
+}
+.header-text{
+  font-size:28rpx;
+  color:#333333;
+  padding:16rpx 32rpx;
+  background: #fff;
+}
+.product-list{
+  display:flex;
+  flex-direction: column;
+  /* margin:16rpx 32rpx; */
+}
+.flex-start{
+  align-self: flex-start;
+}
+.flex-end{
+  align-self: flex-end;
+}
+.product-item{
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+  margin-bottom:20rpx;
+  background: #fff;
+  padding:16rpx 32rpx;
+}
+.product-item  .product-image{
+  width:160rpx;
+  height:160rpx;
+  border:1px solid #f4f4f4;
+  line-height: 160rpx;
+  margin-right:20rpx;
+  text-align:center;
+}
+.product-item  .product-image .left-img{
+  width:128rpx;
+  height:128rpx;
+}
+.product-right-detail{
+  position: relative;
+  flex:1;
+}
+.product-right-detail .is-tag{
+  background:#FB0438;
+  color:#fff;
+  border-radius: 4rpx;
+  display: inline;
+  font-size:20rpx;
+  padding:2rpx 4rpx;
+}
+.product-right-detail .product-title{
+  font-size:24rpx;
+  color:#333333;
+  max-height: 80rpx;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis
+}
+.product-right-detail .product-title .r-title{
+  margin-left:10rpx;
+}
+.product-tag{
+  overflow: hidden;
+  line-height: 32rpx;
+  margin-top:6rpx;
+  display: flex;
+  height:36rpx;
+  padding-right:30rpx;
+  width:418rpx;
+}
+.product-tag .tag{
+  color:#EA594C;
+  border:1px solid #EA594C;
+  font-size:20rpx;
+  padding:0rpx 4rpx;
+  margin-right:2rpx;
+  height:33rpx;
+  line-height:32rpx;
+  display: inline-block;
+  border-radius:4rpx;
+  min-width: 40rpx;
+  overflow: hidden;
+}
+.product-tag .tag:first-child{
+  flex-shrink: 0;
+}
+.product-price{
+  margin-top:32rpx;
+  display:flex;
+  flex-direction: row;
+  height:44rpx;
+}
+.product-price .original-price{
+  font-size: 16px;
+  color: #F21833;
+  margin-right:10rpx;
+}
+.product-price .marking-price{
+  font-size: 20rpx;
+  color: #999999;
+  text-decoration: line-through;
+  margin-left:10rpx;
+  align-self: flex-end;
+}
+.expire-data{
+  height:28rpx;
+  line-height:28rpx;
+  font-size:20rpx;
+  color:#999999;
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.cart-icon{
+  width:60rpx;
+  height:60rpx;
+  border-radius: 50%;
+  position: absolute;
+  right:20rpx;
+  bottom:20rpx;
+  background-image: url('https://img1.haoshiqi.net/miniapp/pin-cart-default_adf1060f46.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+}
+.cart-icon.active{
+  background-image: url('https://img1.haoshiqi.net/miniapp/pin-cart_4f5221afd4.png');
+}
+
+/* 收缩与展开 */
+.product-item .tag-overflow{
+  display:inline-block;
+  position: relative;
+}
+
+.tag-overflow .left-arrow {
+  width:100%;
+  height:80rpx;
+  display:inline-block;
+  position: absolute;
+  right:0;
+  top:4rpx;
+}
+
+.tag-overflow .arrow{
+  position: absolute;
+  right:0;
+  top:0;
+  width:24rpx;
+  height:24rpx;
+  background:url('https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png') no-repeat center;
+  background-size: 100% auto;
+  right:60rpx;
+  top:6rpx;
+}
+.tag-overflow .arrow.up {
+  transform: rotate(-90deg);
+}
+.tag-overflow .arrow.down {
+  transform: rotate(90deg);
+}
+
+.product-tag.tagH{
+  height:36rpx;
+}
+
+.product-price .row-vip-price{
+  display:block;
+  font-size:24rpx;
+  line-height:44rpx;
+}
+.product-price .vip-bg{
+  background: #333;
+  line-height:24rpx;
+  display:inline-block;
+  border-top-left-radius:4rpx;
+  border-bottom-left-radius:4rpx;
+}
+.product-price .img-vip{
+  width:24rpx;
+  height:24rpx;
+  border-radius: 4rpx;
+  display:inline-block;
+}
+.product-price .vip-price {
+  font-size:24rpx;
+  color:#333;
+  background: #FDFBEB;
+  height:24rpx;
+  padding:0 4rpx;
+  border-radius:4rpx;
+}

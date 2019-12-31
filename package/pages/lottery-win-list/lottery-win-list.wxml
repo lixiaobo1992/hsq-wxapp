@@ -1,0 +1,53 @@
+<!--pages/lottery-win-list/lottery-win-list.wxml-->
+<import src='../../../components/separator/separator.wxml' />
+
+<dwd-page
+  id="dwd-page-lottery-win"
+  custom-class="page-lottery-win"
+  content-class="page-lottery-win-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+
+  <scroll-view
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="{{lowerThreshold}}"
+    style="height:100%">
+    <block wx:if="{{lotteryStatus == 4}}">
+      <view class="view-expired">
+        <image class="icon" src="{{headerIcon}}" mode="aspectFit"></image>
+        <text class="title">{{headerTitle}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <!-- header -->
+      <view class="view-header">
+        <view class="view-img">
+          <image class="header-img {{(lotteryStatus == 3) ? 'change-size' : ''}}" src="{{headerIcon}}" mode="apsectFit"></image>
+        </view>
+        <view class="header-sub">
+          <text class="header-title">{{headerTitle}}</text>
+          <text class="header-sub-title">{{headerSubTitle}}</text>
+        </view>
+        <view class="view-arrow" wx:if="{{lotteryStatus == 3}}">
+          <image class="share-arrow" src="https://img1.haoshiqi.net/miniapp/share_arrow_286a87365a.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <!-- 中奖list -->
+      <view class="view-list" wx:if="{{lotteryList && lotteryList.length}}">
+        <!-- separator -->
+        <template is="separator"></template>
+        <view class="list-item" wx:for="{{lotteryList}}" wx:key="{{index}}">
+          <view class="view-user">
+            <image class="user-img" src="{{item.avatar}}" mode="aspectFit"></image>
+            <text class="user-name">{{item.name}}</text>
+          </view>
+          <view class="view-order">订单号：{{item.orderId}}</view>
+        </view>
+      </view>
+    </block>
+
+    <view class="view-footer" bindtap="onMoreLotter">更多抽奖团</view>
+  </scroll-view>
+</dwd-page>

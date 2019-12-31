@@ -1,0 +1,44 @@
+<!--components/card-rec-pin/card-rec-pin.wxml-->
+<import src="../../components/price/index.wxml" />
+<import src="../../components/price-camel/price-camel.wxml" />
+
+<template name="card-rec-pin">
+  <view class="card-rec-pin">
+    <view
+      class="item flex"
+      wx:for="{{list}}"
+      wx:key="{{item.id}}"
+      bindtap="onDetailPage"
+      data-index="{{index}}"
+      data-piwik-event="{{ item.piwikName }}"
+      data-piwik-data="{{ item.piwikData }}"
+      data-id="{{item.pin_activities_id}}"
+      data-can-bought="{{item.can_bought}}" data-form-type="cardRecPin">
+      <view class="media">
+        <image class="image" src="{{item.sku_pic}}" mode="scaleToFill"></image>
+        <image class="icon" src="{{item.sub_image}}" mode="scaleToFill"></image>
+      </view>
+      <view class="info flex-v">
+        <view class="intro">
+          <view class="title max-line-2">
+            <text class="title-zy" wx:if="{{item.merchantType == 2}}">自营</text>
+            {{item.couple_title}}
+          </view>
+          <view wx:if="{{item.sub_title}}" class="sub-tag">
+            <view class="sub-tag-shadow">
+              <view class="sub-tag-text ellipsis"> {{item.sub_title}} </view>
+            </view>
+          </view>
+        </view>
+        <view class="other">
+          <view class="del-price"><text class="del">{{item.market_price}}</text></view>
+          <view class="flex flex-justify-between flex-align-end">
+            <template is="price-camel" data="{{yuan: item.yuan, fen: item.fen}}"></template>
+            <image wx:if="{{item.can_bought && item.left_stock > 0}}" class="rec-btn" src="https://img1.haoshiqi.net/miniapp/ic_btn_new_recommend_buy_eeb430b90a.png"  mode="scaleToFill"></image>
+            <image wx:else="{{item.can_bought && item.left_stock > 0}}" class="rec-btn" src="https://img1.haoshiqi.net/miniapp/ic_btn_new_recommend_buy_gray_bf32b9bdbe.png"  mode="scaleToFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

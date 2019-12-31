@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "好食期",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "dwd-modules": "../../components/modules/index/index",
+    "dwd-floats": "../../components/floats/index/index",
+    "dwd-product-col2": "../../components/modules/c-product-col2/index",
+    "dwd-float-msg": "../../components/float-msg/index"
+  }
+}

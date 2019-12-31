@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "select-city": "../../components/select-city/select-city",
+    "coupon-list": "../../components/coupon-list/index",
+    "card-promotion": "../../components/card-promotion/index",
+    "dwd-sku-select": "../../components/sku-select/index",
+    "member-modal": "../../components/member-modal/index"
+  }
+}

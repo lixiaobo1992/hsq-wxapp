@@ -1,0 +1,8 @@
+<template name="labels">
+  <view class="labels">
+    <view class="label" wx:for="{{labels}}" wx:key="{{labels}}" data-type='{{item.text}}'>
+      <image class="image" src="{{item.icon}}" mode="aspectFit"/>
+      <text class="text" style="font-size:{{fontSize || 28}}rpx;">{{item.text}}</text>
+    </view>
+  </view>
+</template>

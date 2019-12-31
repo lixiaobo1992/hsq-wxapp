@@ -1,0 +1,38 @@
+/* 新人首单立减 */
+.view-new {
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx 20rpx 10rpx 20rpx;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    font-size: 28rpx;
+    color: rgb(33, 33, 33);
+}
+
+.text-color {
+    color: rgb(153, 153, 153);
+}
+
+.user-benefit {
+    padding-bottom: 10rpx;
+    display: flex;
+    align-items: center;
+}
+
+.user-benefit .img {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.user-benefit .title {
+    flex: 1;
+    padding: 0 10rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.user-benefit .value {
+    color: rgb(237, 0, 0);
+    white-space: nowrap;
+    overflow: hidden;
+}

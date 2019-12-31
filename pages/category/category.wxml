@@ -1,0 +1,74 @@
+<import src="../../components/search/search.wxml" />
+
+<dwd-page
+  id="dwd-page-category"
+  custom-class="page-category"
+  content-class="page-category-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <view class="category-page">
+
+    <!-- 搜索框 -->
+    <view class="search-box">
+      <template is="search" data="{{content: hotSearch.value ? hotSearch.value : '搜索您想找的商品'}}"/>
+    </view>
+
+    <!-- 产品分类 -->
+    <view class="category-box">
+      <scroll-view
+        class="sort-sides-scroll"
+        style="height:100%"
+        scroll-y="true">
+        <view
+          wx:for="{{leftClassList}}"
+          wx:key="{{ item.id }}"
+          class="sort-item {{ index == currentIndex ?'active':''}}"
+          data-index="{{index}}"
+          bindtap="sideItemTap">
+          <view class="text">
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+
+      </scroll-view>
+
+      <scroll-view
+        class="sort-main-scroll"
+        scroll-y="true"
+        style="height:100%"
+        >
+        <view>
+          <view
+            class="category-ad"
+            wx:if="{{leftClassAd[leftClassList[currentIndex].id]}}"
+            data-piwik-event="c_cateadvert"
+            data-piwik-data="{{leftClassAd[leftClassList[currentIndex].piwikData]}}"
+            data-url="{{ leftClassAd[leftClassList[currentIndex].id].redirect_url }}"
+            bindtap="onUrlPage">
+            <image class="ad-image" src="{{ leftClassAd[leftClassList[currentIndex].id].banner_url }}" lazyLoad mode="scaleToFill" />
+          </view>
+          <view wx:for="{{listData}}" wx:key="{{ item.id }}" class="sort-box" data-id="{{item.name}}" id="mainView_{{item.id}}">
+            <view class="sort-title">
+              <text class="sort-name">{{item.name}}</text>
+              <!-- <view class="sort-more">
+                <text>查看全部</text>
+                <image src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="widthFix" />
+              </view> -->
+            </view>
+            <view class="child-sort">
+
+              <view wx:for="{{item.subCategories}}" wx:for-item="subItem" class="child-item" wx:key="{{ subItem.id }}" data-id="{{subItem.id}}" data-category="{{subItem.name}}" data-index="{{index}}" bindtap="onCategoryTap">
+                <view class="item-img">
+                  <image lazyLoad src="{{subItem.thumbnail}}" mode="aspectFit" />
+                </view>
+                <view class="max-line-2 sort-name">{{subItem.name}}</view>
+              </view>
+
+            </view>
+          </view>
+          <!-- <view style="height:{{whiteSpace}}px"></view> -->
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</dwd-page>

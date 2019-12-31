@@ -1,0 +1,21 @@
+@import "/components/error-view/index.wxss";
+
+/* .page-err {
+  padding: 32rpx;
+  width: 100%;
+  padding-top: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
+/*
+.page-err-img {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+}
+
+.page-err-text {
+  margin-top: 32rpx;
+} */

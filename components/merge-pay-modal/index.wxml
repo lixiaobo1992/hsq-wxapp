@@ -1,0 +1,50 @@
+<!--支付拦截弹窗-->
+<wxs src="../../utils/filter.wxs" module="filter" />
+<block wx:if="{{isMergePay }}">
+  <view class="order-mask"  bindtap="handlePayModal"> </view>
+  <view class="mask-container">
+    <view class="mask-header">
+      <text class="header-title">{{ mergeInfo.desc }}</text>
+    </view>
+    <view class="member-title-price" wx:if="{{mergeInfo.member_price > 0}}">
+      <view class="image-title">
+        <image src="{{ mergeInfo.member_icon }}" mode="aspectFit" class="member-image" />
+        <text class="member-title">{{ mergeInfo.member_title }}</text>
+      </view>
+      <view class="member-price">
+          ￥{{filter.dealPrice(mergeInfo.member_price)}}
+      </view>
+    </view>
+    <view class="mask-content">
+      <view class="merchant-list" wx:for="{{mergeInfo.list}}" wx:key="{{index}}" wx:for-item="merchantItem">
+        <view class="merchant-item" >
+          <image src="{{ merchantItem.merchant_icon }}" mode="aspectFit" class="merchant-image" />
+          <text class="merchant-name">{{ merchantItem.merchant_name }}</text>
+        </view>
+        <view class="list-item" >
+          <view class="left-text" wx:for="{{merchantItem.list}}" wx:key="{{index}}" wx:for-item="skuItem">
+            <view class="name-price">
+              <text class="sku-name">{{ skuItem.sku_name }}</text>
+              <text class="sku-price">￥{{ filter.dealPrice(skuItem.price) }}</text>
+            </view>
+            <view class="num"> （共{{ skuItem.amount }}件，共优惠<text class="item-price">{{filter.dealPrice(skuItem.discount_price)}}</text>元） </view>
+          </view>
+        </view>
+        <view class="delivery-name-price" wx:if="{{merchantItem.delivery_price > 0}}">
+          <view class="delivery-name">运费</view>
+          <view class="delivery-price">￥{{filter.dealPrice(merchantItem.delivery_price)}}</view>
+        </view>
+        <view class="merchant-num-price">
+            共<text class="merchant-num">{{merchantItem.total_amount}}</text>件商品,
+            小计：
+            <text class="merchant-price">¥{{filter.dealPrice(merchantItem.total_price)}}</text>
+        </view>
+      </view>
+      <view class="footer-total-price">合计:<text class="total-price">￥{{filter.dealPrice(mergeInfo.pay_price)}}</text></view>
+    </view>
+    <view class="footer-btn">
+      <view class="btn btn-cancel" catchtap="handlePayModal">取消</view>
+      <view class="btn btn-confirm" catchtap="checkOrder" data-id="{{mergeInfo.order_ids}}">付款</view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,21 @@
+/* components/price-camel/price-camel.wxss */
+.price-camel {
+  display: flex;
+  color: #EA594C;
+  align-items: baseline;
+}
+
+.price-camel .rmb {
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+
+.price-camel .yuan {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.price-camel .fen {
+  font-size: 24rpx;
+  line-height: 24rpx;
+}

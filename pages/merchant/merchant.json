@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "店铺详情",
+	"usingComponents": {
+    "dwd-seckill-col1": "../../components/modules/c-seckill-col1/index",
+    "coupon-list": "../../components/coupon-list/index"
+	}
+}

@@ -1,0 +1,18 @@
+<template name="detail-store">
+    <view class="store-box" bindtap="goStore">
+      <view class="store-info">
+        <image class="store-img" wx:if="{{merchantData.logo}}" src="{{merchantData.logo}}" mode="aspectFill" />
+        <view class="store-text">
+          <view class="store-title" wx:if="{{merchantData.name}}">{{merchantData.name}}</view>
+          <view class="store-site"><text class="prov-text" wx:if="{{merchantData.province}}">{{merchantData.province}}</text><text wx:if="{{merchantData.city}}">{{merchantData.city}}</text></view>
+        </view>
+      </view>
+      <view class="store-icon">
+        <image class="store-more" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="aspectFill" />
+      </view>
+    </view>
+    <view class="store-public" wx:if="{{merchantData.notice}}">
+      <text class='public-title'>店铺公告：</text>
+      <text class="public-text">{{merchantData.notice}}</text>
+    </view>
+</template>

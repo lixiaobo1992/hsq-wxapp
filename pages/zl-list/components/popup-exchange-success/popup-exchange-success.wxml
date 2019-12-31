@@ -1,0 +1,36 @@
+<view class="component-popup">
+  <view class="popup-mask" bindtap="hidePopup"></view>
+  <view class="popup-container">
+    <image src="https://img1.haoshiqi.net/miniapp/exchange-success-bg_da32863d15.png" mode="widthFix" class="bg-img"></image>
+    <view class="popup-content">
+      <view class="popup-title">
+        年货兑换成功
+      </view>
+      <view class="popup-content-center">
+        <view class="coupon-price">
+          {{ exchangeSuccessObj.value }}
+        </view>
+        <view class="coupon-title-1">
+          {{ exchangeSuccessObj.title }}
+        </view>
+        <view class="coupon-title-2">
+          {{ exchangeSuccessObj.sub_title }}
+        </view>
+      </view>
+      <view class="coupon-date">
+        有效期 {{ exchangeSuccessObj.date }}
+      </view>
+      <view class="popup-btn-block" bindtap="hidePopup">
+        <view class="buy-btn" bindtap="onUrlPage" data-url="{{ exchangeSuccessObj.redirectUrl }}">
+          立即使用
+        </view>
+        <view class="buy-btn-desc">
+          可在我的-<text>我的优惠券</text>，查看优惠券
+        </view>
+      </view>
+    </view>
+    <!-- <view class="popup-close-btn" bindtap="hidePopup">
+      <image class="close-img" src="https://img1.haoshiqi.net/miniapp/cancel_icons_6c7199f079.png"></image>
+    </view> -->
+  </view>
+</view>

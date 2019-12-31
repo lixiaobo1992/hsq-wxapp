@@ -1,0 +1,15 @@
+/* pages/lottery-list/lottery-list.wxss */
+
+@import '/components/lottery-list/index.wxss';
+@import '/components/foot/foot.wxss';
+
+.page-lottery{
+  height: 100%;
+}
+.page-lottery-content{
+  z-index: 1;
+}
+.lottery-scrollview {
+  width: 100%;
+  height: 100%;
+}

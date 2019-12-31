@@ -1,0 +1,14 @@
+<template name="footer-bar">
+  <view class="ali-footer">
+    <view class="flex">
+      <view class="footer-item" bindtap="goPortal">
+        <image src="{{portal_icon}}" mode="aspectFit" class="footer-icon"/>
+        <text class="footer-text" style="color: {{text_color_1}}">首页</text>
+      </view>
+      <view class="footer-item" bindtap="goProfile">
+        <image src="{{profile_icon}}" mode="aspectFit" class="footer-icon"/>
+        <text class="footer-text" style="color: {{text_color_2}}">我的订单</text>
+      </view>
+    </view>
+  </view>
+</template>

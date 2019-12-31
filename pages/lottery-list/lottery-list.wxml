@@ -1,0 +1,35 @@
+<!--pages/lottery-list/lottery-list.wxml-->
+
+<import src="../../components/lottery-list/index.wxml" />
+<import src="../../components/foot/foot.wxml" />
+
+
+<dwd-page
+  id="dwd-page-lottery"
+  custom-class="page-lottery"
+  content-class="page-lottery-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+
+  <scroll-view class="lottery-scrollview" scroll-y scroll-with-animation enable-back-to-top bindscrolltolower="onScrollToLower">
+
+    <form class="" bindsubmit="formidSubmit" report-submit="true">
+      <button id="formid" formType="submit"></button>
+    </form>
+    <label for="formid">
+      <block wx:for="{{list}}" wx:key="{{item.id}}">
+        <template is="lottery-item" data="{{...item}}" />
+      </block>
+
+      <view wx:if="{{list.length && showFooter}}">
+        <template is="foot"></template>
+      </view>
+      <view wx:if="{{!list.length && !isLoading}}">
+        <image class="empty-img" src="/img/tip-img/not-search-result.png" mode="aspectFit" />
+        <view class="empty-text">暂无数据</view>
+      </view>
+    </label>
+
+  </scroll-view>
+ </dwd-page>

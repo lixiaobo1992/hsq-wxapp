@@ -1,0 +1,91 @@
+<!--pages/coupon-list/coupon-list.wxml-->
+<import src="../../../components/foot/foot.wxml" />
+<import src="../../../components/pull-loading/index.wxml" />
+
+
+<dwd-page
+  id="dwd-page-coupon-list"
+  custom-class="page-coupon-list"
+  content-class="page-coupon-list-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <view class="page-coupon">
+    <view class="coupon-header">
+      <!-- 添加优惠券码 -->
+      <form bindsubmit="formSumbit">
+        <view class="add-coupon-input">
+          <view class="add-scan" bindtap="onScan">
+            <image src="https://img1.haoshiqi.net/miniapp/coupon-list/scan_dfed472d24.png" mode="aspectFit"></image>
+          </view>
+          <view class="line"></view>
+          <view class="add-input">
+            <input
+              name="code"
+              value='{{inputValue}}'
+              class="input"
+              placeholder="请输入活动码"
+              placeholder-style="color: rgb(153, 153, 153); font-size: 24rpx; align-content: center;"
+              >
+            </input>
+          </view>
+          <button class="add-btn" form-type="submit">添加券</button>
+        </view>
+      </form>
+      <view class="coupon-type">
+        <view wx:for="{{ couponType }}" class="type-item {{ (index+1) == type ? 'active' : ''}}" data-type="{{ index+1 }}" bindtap="onTabTypeChange">{{ item.name }}({{ item.num }})</view>
+      </view>
+    </view>
+
+    <scroll-view
+      scroll-y
+      enable-back-to-top
+      bindscrolltolower="onScrollToLower"
+      lower-threshold="300"
+      style="height:100%"
+      >
+
+      <!-- 使用说明|已失效优惠券 -->
+      <view class="help-box">
+        <view class="desc" bindtap="onDesc">优惠券使用说明</view>
+        <view class="more icon-arrow icon-arrow-right icon-arrow-big"></view>
+      </view>
+
+      <!-- 优惠券列表 -->
+      <view class="coupon-list">
+        <view
+          wx:for="{{ list }}"
+          wx:key="{{ item.id }}"
+          class="coupon-cell {{ item.coupon_status == 1 ? 'available' : item.coupon_status == 3 ? 'used' : '' }}"
+          data-url="{{ item.schema }}"
+          data-index="{{index}}"
+          data-piwik-event="{{ item.piwikEvent }}"
+          data-piwik-data="{{ item.piwikData }}"
+          bindtap="{{ item.coupon_status == 1 ? 'onUrlPage' : '' }}">
+          <view class="coupon-left">
+            <view class="coupon-head">
+              <view class="coupon-pirce">¥{{ item.value }}</view>
+              <view class="ellipsis coupon-name">{{ item.title }}</view>
+            </view>
+            <view class="coupon-sub-title">{{ item.sub_title }}</view>
+            <view class="coupon-end-time">有效期: {{ item.startStr }}-{{ item.endStr }}</view>
+            <view class="coupon-detail-btn" data-index="{{ index }}" data-name="{{ item.title  }}" catchtap="onRule">详细信息</view>
+            <view class="coupon-detail" wx:if="{{ item.isShowRule }}">{{ item.usage_desc }}</view>
+          </view>
+          <view class="coupon-right">
+            <view class="coupon-btn">{{ item.btnText }}</view>
+          </view>
+        </view>
+      </view>
+
+      <template is="pull-loading" data="{{pullLoading}}" />
+      <!-- 底部提示数据 -->
+      <view wx:if="{{list.length && showFooter}}">
+        <template is="foot" data="{{text:'没有更多优惠券了'}}"></template>
+      </view>
+      <view wx:if="{{!list.length && !isLoading}}">
+        <image class="empty-img" src="/img/tip-img/not-search-result.png" mode="aspectFit" />
+        <view class="empty-text">您还没有优惠券哦</view>
+      </view>
+    </scroll-view>
+  </view>
+</dwd-page>

@@ -1,0 +1,53 @@
+<!--components/page/index.wxml-->
+<!-- 先放放 -->
+
+<!-- <form class="" bindsubmit="formidSubmit" report-submit="true">
+  <button id="formid" formType="submit"></button>
+</form>
+<label for="formid" class="page-box custom-class">
+  <view class="page-content content-class">
+    <slot></slot>
+  </view>
+  <slot name="sub-block"></slot>
+</label> -->
+
+<view class="page-box custom-class">
+  <view class="page-content content-class" hidden="{{ isLoading }}">
+    <slot />
+  </view>
+  <view class="error-result" wx:if="{{ isShowError }}">
+    <view class="error-img">
+      <image mode="widthFix" src="/img/tip-img/error-img{{type ? ('-' + type) : ''}}.png"/>
+    </view>
+    <view class="error-tip-text">{{ content }}</view>
+    <view class="error-button-view">
+      <view class="error-button" bindtap="errorBtnEvent">{{ btnText }}</view>
+    </view>
+  </view>
+  <view class="a-cp-wrapper" hidden="{{ !isLoading }}">
+    <view class="a-cp-loading-indicator" aria-hidden="true">
+      <view class="a-cp-loading-item"></view>
+      <view class="a-cp-loading-item"></view>
+      <view class="a-cp-loading-item"></view>
+    </view>
+  </view>
+  <view class="dwd-popup login-popup" hidden="{{ !isShowLoginPopup }}">
+    <view class="dwd-popup-mask" data-popup-type="login" bind:tap="closePopup"></view>
+    <view class="dwd-popup-content dwd-popup--center login-popup-conent {{ isShowLoginPopup ? 'show': '' }}">
+      <image class="auth-img" src="https://img2.haoshiqi.net/FqPKVOfMBZGBFe9yeJXO1r5aBn4_" mode="widthFix"></image>
+      <view class="auth-tit">欢迎来到好食期小程序</view>
+      <view class="auth-sub">- 效期越近越便宜 -</view>
+      <button class="auth-btn hong" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权登录</button>
+    </view>
+  </view>
+  <view class="dwd-popup phone-popup" hidden="{{ !isShowPhonePopup }}">
+    <view class="dwd-popup-mask" data-popup-type="phone" bind:tap="closePopup"></view>
+    <view class="dwd-popup-content dwd-popup--center phone-popup-conent {{ isShowPhonePopup ? 'show': '' }}">
+      <image class="auth-img" src="https://img2.haoshiqi.net/Fu7QH3rqYiNjipQZMaQh8Ft8YQpG" mode="widthFix"></image>
+      <view class="auth-tit">好食期需要您的手机号</view>
+      <view class="auth-sub">- 更好的售后服务，更多的优惠信息 -</view>
+      <button class="auth-btn huang" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信授权</button>
+    </view>
+  </view>
+  <slot name="sub-block"></slot>
+</view>

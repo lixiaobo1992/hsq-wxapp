@@ -1,0 +1,34 @@
+
+<!-- swiper实现，需要以下规则（swiper 有时出现 从0到100%宽度的弹性视觉问题）
+  swiper组件 必须加高度（可以由css替代）
+  swiper-item组件 必须设置内联高度，但不能是100%
+  image组件 必须设置宽高100%(可以css替代)，建议使用 scaleToFill 模式，填充满父容器
+  circular 加此属性，手机预览不出图
+  swiper 不能放在一个容器，先hide，后再显示，这会出问题
+-->
+
+<template name="swiper">
+  <view class="swiper" wx:if="{{list && list.length}}" style="padding-top:{{paddingTop}}%">
+    <swiper
+    interval="{{delay || 6000}}"
+    indicator-dots="{{list.length > 1}}"
+    circular="true"
+    autoplay
+    >
+      <block wx:for="{{list}}" wx:key="item.id">
+        <swiper-item style="height: {{height}}px;">
+          <image
+          style="width:100%;"
+          bindtap="onUrlPage"
+          data-url="{{item.url}}"
+          data-index="{{index}}"
+          data-piwik-event="{{item.piwikName}}"
+          data-piwik-data="{{item.piwikData}}"
+          data-form-type="onUrlPage"
+          src="{{item.image}}"
+          mode="scaleToFill" class='banner-img'/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>

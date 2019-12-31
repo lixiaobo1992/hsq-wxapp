@@ -1,0 +1,4 @@
+<block wx:if="{{ data.type=='c-float' }}">
+  <dwd-float data="{{ data }}" />
+</block>
+<view wx:else>未知类型{{data.type}}</view>

@@ -1,0 +1,287 @@
+<wxs src="../../utils/filter.wxs" module="filter" />
+<dwd-page
+  id="dwd-page-zl-list"
+  custom-class="page-zl-list"
+  content-class="page-zl-list-content"
+  isLoading="{{ false }}"
+  bind:onRefresh="refresh">
+  <view class="page zl-list">
+    <view class="rule-icon" bindtap="showRules">
+      规则
+    </view>
+    <view class="more-icon-link" wx:if="{{ popToIndex }}" bindtap="onUrlPage" data-url="{{ popToIndex.pages }}">
+      <image src="{{ popToIndex.image }}"></image>
+    </view>
+    <view class="my-block block-1">
+      <image class="block-bg" src="https://img1.haoshiqi.net/miniapp/speed_pic_cd4f7418c6.png" mode="widthFix"></image>
+      <view class="block-tip-1" wx:if="{{ taskStatus === 0 || taskStatus === 4 }}">
+        领取后加速卡即生效，每次为您加速{{ baseInfo.speed }}倍
+      </view>
+      <view class="block-tip-1" wx:else>
+        只需4步完成抢免单商品
+      </view>
+    </view>
+    <view class="my-block block-1" wx:if="{{ taskStatus === 1 || taskStatus === 2 || taskStatus === 4 }}">
+      <image class="block-bg" src="https://img1.haoshiqi.net/miniapp/ongoing-1_eb1f9c9fd3.png" mode="widthFix"></image>
+      <view class="block-tip-1 block-tip-3">
+        {{ taskStatus === 1 ? '加速卡生效中' : '加速卡已结束' }}，累计为你加速前进{{ baseInfo.speedRate }}米
+      </view>
+      <view class="product-info" bindtap="goLink" data-id="{{ baseInfo.taskSkuInfo.skuId }}">
+        <view class="product-info-left">
+          <image src="{{ baseInfo.taskSkuInfo.thumbnail }}"></image>
+          <view class="small-icon" wx:if="{{ taskStatus === 4 }}">
+            <image src="https://img1.haoshiqi.net/miniapp/fail_2a45d78c76.png"></image>
+          </view>
+        </view>
+        <view class="product-info-right">
+          <view class="product-info-title max-line-2">
+            {{ baseInfo.taskSkuInfo.skuActivityName }}
+          </view>
+          <view class="product-right-bottom">
+            <view class="price-info">
+              <view class="price-block">
+                <view class="price-num">
+                  ￥{{ filter.dealPrice(baseInfo.taskSkuInfo && baseInfo.taskSkuInfo.activityPrice || 0) }}
+                </view>
+                <view class="del-price">
+                  {{ filter.dealPrice(baseInfo.taskSkuInfo && baseInfo.taskSkuInfo.marketPrice || 0) }}
+                </view>
+              </view>
+            </view>
+            <view class="flex process-block">
+              <view class="product-process-img">
+                <view class="product-process">
+                  <view class="process-bg-active" style="left: {{ baseInfo.taskSkuInfo.sellNumPercent-100+'%' }}"></view>
+                </view>									
+              </view>
+              <view class="product-process-tip">
+                已送{{ baseInfo.taskSkuInfo.sellNum }}件
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="my-block block-3" wx:if="{{taskStatus !== 4}}">
+      <view class="process-block page-block">
+        <view class="express-tip-1" wx:if="{{taskStatus === 0}}">
+          领取任务即前进{{ baseInfo.taskRate * 100 }}米
+        </view>
+        <view class="express-tip-1" wx:elif="{{ taskStatus === 2 }}">
+          任务已完成快去兑换
+        </view>
+        <view class="express-tip-1" wx:else>
+          已前进{{ baseInfo.taskRate * 100 }}米
+        </view>
+        <view class="express-block" style="right: {{100-baseInfo.taskRate+'%'}}">
+          <view class="express-icon">
+            <image src="https://img1.haoshiqi.net/miniapp/kuaidiyuan_37a3367f27.png" mode="widthFix"></image>
+          </view>
+        </view>
+        <view class="process-strip">
+          <view class="process-strip-bg">
+            <image src="https://img1.haoshiqi.net/miniapp/no_pic_6168b437ed.png"></image>
+          </view>
+          <view class="process-strip-bg active-bg" style="left: {{baseInfo.taskRate - 100 + '%'}}">
+            <image src="https://img1.haoshiqi.net/miniapp/all_pic_f47a4b32d0.png"></image>
+          </view>
+        </view>
+        <view class="process-tip">
+          <view class="tip-left">
+            已打包
+          </view>
+          <view class="tip-right">
+            发货寄回家
+          </view>
+        </view>
+      </view>
+      <view class="count-down-tip" wx:if="{{taskStatus === 1 && showCountDown}}">
+        <text>{{ countDownInfo.h }} : {{countDownInfo.f}} : {{countDownInfo.s}} </text> 后任务未完成订单失效
+      </view>
+      <view class="bfc-block" wx:if="{{taskStatus === 1 || taskStatus === 2}}">
+        <view class="status-title" wx:if="{{ taskStatus === 2 }}">
+          兑换后可在 <text>我的-我的优惠券</text> 查看
+        </view>
+        <button
+          type="primary" 
+          class="share-btn-item scale-animation" 
+          wx:if="{{taskStatus === 1}}"
+          open-type="share"
+        >
+          <image src="https://img1.haoshiqi.net/miniapp/img/share-btn-bg_b03574dc70.png" mode="widthFix"></image>
+          <view class="share-btn-text">
+            立即邀好友助力
+          </view>
+        </button>	
+        <view class="share-btn-item" bindtap="exchangeProduct" wx:else>
+          <image src="https://img1.haoshiqi.net/miniapp/img/share-btn-bg_b03574dc70.png" mode="widthFix"></image>
+          <view class="share-btn-text">
+            立即兑换
+          </view>
+        </view>
+      </view>
+      <view class="block-link">
+        <image class="block-link-img" src="https://img1.haoshiqi.net/miniapp/link_pic_7a5b04b449.png" mode="widthFix"></image>
+        <image class="block-link-img" src="https://img1.haoshiqi.net/miniapp/link_pic_7a5b04b449.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="my-block block-2" wx:if="{{ taskStatus === 1 && watchTaskInfo && watchTaskInfo.list && watchTaskInfo.list.length }}">
+      <view class="watch-task-title">
+        {{ watchTaskInfo.title && watchTaskInfo.title.des }}<text>{{ watchTaskInfo.title && watchTaskInfo.title.rate }}</text>
+      </view>
+      <view class="watch-task-list">
+        <view class="task-item" wx:for="{{ watchTaskInfo.list }}" wx:key="{{ item.taskId }}" data-url="{{ item.redirectUrl }}" bindtap="onUrlPage">
+          <view class="task-image">
+            <image src="{{ item.taskImage }}"></image>
+          </view>
+          <view class="task-text">
+            {{ item.taskTitle }}
+          </view>
+          <view class="task-btn {{ item.isDone ? 'disabled' : '' }}">
+            {{ item.isDone ? '再逛逛' : '去浏览'}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="my-block block-4 bg-gray" wx:if="{{ taskStatus !== 1 && taskStatus !== 2 }}">
+      <view class="block-header" style="justify-content: center;">
+        <image src="https://img1.haoshiqi.net/miniapp/title_pic_8f39ab19e9.png" mode="widthFix"></image>
+        <view class="block-title">
+          {{ taskStatus === 0 ? '立即领取年货任务' : '继续领取好物' }}
+        </view>
+        <image class="img-rotate" src="https://img1.haoshiqi.net/miniapp/title_pic_8f39ab19e9.png" mode="widthFix"></image>
+      </view>
+      <view class="product-list">
+        <view class="product-item" wx:for="{{ taskSkuList }}" wx:key="{{ item.id }}" bindtap="goLink" data-id="{{ item.skuId }}">
+          <view class="product-item-left">
+            <image src="{{ item.thumbnail }}"></image>
+            <view class="all-sell" wx:if="{{ item.skuStock < 1 || item.couponNum < 1 }}">
+              <image src="https://img1.haoshiqi.net/miniapp/yiqiangguang_ab0e945a20.png"></image>
+            </view>
+          </view>
+          <view class="product-item-right">
+            <view class="product-title max-line-2">
+              {{ item.skuActivityName }}
+            </view>
+            <view class="flex margin-b-1">
+              <view class="product-process-img">
+                <view class="product-process">
+                  <view class="process-bg-active" style="left: {{ item.sellNumPercent-100+'%' }}"></view>
+                </view>									
+              </view>
+              <view class="product-process-tip">
+                已送{{ item.sellNum }}件
+              </view>
+            </view>
+            <view class="product-right-bottom">
+              <view class="price-info">
+                <view class="price-block">
+                  <view class="price-num">
+                    ￥{{ filter.dealPrice(item.activityPrice) }}
+                  </view>
+                </view>
+                <view class="del-price">
+                  {{ filter.dealPrice(item.marketPrice) }}
+                </view>
+              </view>
+              <view class="other-info">
+                <view class="buy-btn {{ (item.skuStock < 1 || item.couponNum < 1) ? 'disabled' : 'scale-animation get-btn-bg' }}" catchtap="startTask" data-index="{{ index }}">
+                  立即领取
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="my-block block-4 block-bg-red" style="padding-bottom: 0;" wx:if="{{ taskStatus === 1 || taskStatus === 2 }}">
+      <view class="block-header">
+        <view 
+          class="block-header-item {{showTab === 1 ? 'active' : ''}}" 
+          bindtap="switchTab"
+          data-index="1"
+        >
+          好友助力
+        </view>
+        <view 
+          class="block-header-item {{showTab === 2 ? 'active' : ''}}" 
+          bindtap="switchTab"
+          data-index="2"
+        >
+          好货晒单
+        </view>
+      </view>
+      <view class="block-dividing-line">
+        <view class="dividing-line"></view>
+      </view>
+      <view class="receive-list" wx:if="{{showTab === 2}}">
+        <view class="receive-list-1" style="transition: {{ currentIndex === 0 ? 'none' : 'top 1s ease-in-out' }}; top: {{ '-' + currentIndex * 269 + 'rpx' }}">
+          <view class="flex recrive-item" wx:for="{{ historyTaskList }}" wx:key="{{item.id}}" bindtap="goLink" data-id="{{ item.skuId }}">
+            <view class="user-avatar">
+              <image src="{{ item.avatar }}"></image>
+            </view>
+            <view class="receive-item-desc">
+              <view class="receive-item-username">
+                {{ item.userName}}
+              </view>
+              <view class="receive-item-time">
+                {{ item.times }} <text>{{ item.money }}</text>
+              </view>
+              <view class="flex receive-item-product">
+                <view class="flex">
+                  <view class="receive-product-left">
+                    <image src="{{ item.thumbnail }}"></image>
+                  </view>
+                  <view class="receive-product-right">
+                    <view class="receive-product-title max-line-2">
+                      {{ item.skuActivityName }}
+                    </view>
+                    <view class="receive-price-info">
+                      <view class="receive-price-num">
+                        ￥{{ filter.dealPrice(item.activityPrice) }}
+                      </view>
+                      <view class="receive-num">
+                        已送{{ item.sellNum }}件
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="invite-list" wx:if="{{ showTab === 1 }}">
+        <view class="invite-item" wx:for="{{ zlUserList }}" wx:key="{{ item.id }}">
+          <view class="invite-item-left">
+            <view class="invite-avatar">
+              <image src="{{ item.avatar }}"></image>
+            </view>
+            <view class="invite-username">
+              {{ item.userName }}
+            </view>
+          </view>
+          <view class="invite-item-right">
+            助力{{ item.boostPercents }} <text>x{{ baseInfo.speed }}倍</text>
+          </view>
+        </view>
+        <view class="no-more-text" wx:if="{{ zlUserListHasNextPage }}" bindtap="zlUserListNextPage">
+          查看更多
+        </view>
+        <view class="no-more-text" v-else>
+          没有更多助力记录啦
+        </view>
+      </view>
+    </view>
+    <popup-new-user bind:hidePopup="hidePopup" url="{{ newUserUrl }}" wx:if="{{ !showExchangeSuccess && !showGetSuccessPopup && !showFailPopup && !showSuccessPopup && !showStartPopup && (showNewUserPopup && newUserUrl) }}"></popup-new-user>
+    <popup-start bind:hidePopup="hidePopup" showPrizeInfo="{{ showPrizeInfo }}" wx:if="{{ showStartPopup }}"></popup-start>
+    <popup-success bind:hidePopup="hidePopup" bind:exchange="exchangeProduct" wx:if="{{ showSuccessPopup }}"></popup-success>
+    <popup-fail bind:hidePopup="hidePopup" baseInfo="{{ baseInfo }}" wx:if="{{ !showStartPopup && showFailPopup }}"></popup-fail>
+    <popup-get-success bind:hidePopup="hidePopup" startHasBoostPercent="{{ startHasBoostPercent }}" wx:if="{{ showGetSuccessPopup }}"></popup-get-success>
+    <popup-rules bind:hidePopup="hidePopup" rules="{{ rules }}" wx:if="{{ showRulePopup }}"></popup-rules>
+    <popup-exchange-success bind:hidePopup="hidePopup" exchangeSuccessObj="{{ exchangeSuccessObj }}" wx:if="{{ showExchangeSuccess }}"></popup-exchange-success>
+  </view>
+  <view class="tpl-modules" wx:for="{{ modules }}" wx:key="{{ item.id }}">
+    <dwd-modules data="{{item}}" />
+  </view>
+</dwd-page>

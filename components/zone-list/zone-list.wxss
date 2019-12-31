@@ -1,0 +1,23 @@
+/* components/zone-list.wxss */
+
+.zone-item {
+  height: 80rpx;
+  padding: 0rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+  background-color: #fff;
+}
+
+.zone-label {
+  font-size: 28rpx;
+  height: 79rpx;
+  line-height: 79rpx;
+  padding-left: 40rpx;
+}
+
+.zone-arrow {
+  float: right;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+  margin-top: 14rpx;
+}

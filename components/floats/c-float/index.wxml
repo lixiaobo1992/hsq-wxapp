@@ -1,0 +1,10 @@
+<view
+  class="c-float-box"
+  wx:if="{{ isValid }}"
+  data-url="{{ link }}"
+  data-index="1"
+  data-form-Type="onUrlPage"
+  bindtap="onUrlPage"
+  style="{{ styles }}"
+>
+</view>

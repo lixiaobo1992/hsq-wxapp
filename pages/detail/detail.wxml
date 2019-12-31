@@ -1,0 +1,299 @@
+<import src="/components/price/index.wxml" />
+<import src="/components/labels/labels.wxml" />
+<import src="/components/swiper/swiper.wxml" />
+<import src="/components/sec-head/index.wxml" />
+<import src="/components/attr-img/index.wxml" />
+<import src="/components/attr-coupon/index.wxml" />
+<import src="/components/pin-buy/pin-buy.wxml" />
+<import src="/components/detail-store/index.wxml" />
+<wxs src="../../utils/filter.wxs" module="filter" />
+
+<import src="/wxparse/wxParse.wxml" />
+<import src="/components/coupon-toast/index.wxml"/>
+<dwd-page
+  id="dwd-page-detail"
+  custom-class="page-detail"
+  content-class="page-detail-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+
+  <view class="page" hidden="{{isLoading}}">
+
+    <!-- swiper -->
+    <template is="swiper" data="{{...swiperInfo}}"></template>
+
+    <view
+      class="activity-block {{activityPreheat.activityStatus == 'start' ? 'activity-block-active' : ''}}"
+      wx:if="{{ showAct }}">
+      <view class="activity-no-stock" wx:if="{{ activityPreheat.activityStock < 1 && left_stock < 1}}">
+        <image src="https://img1.haoshiqi.net/miniapp/img/sold_a64f1921fd.png" mode="scaleToFill"/>
+      </view>
+      <view class="act-left">
+        <view class="act-left-left">
+          <view class="act-icon-box">
+            <view class="icon-box">
+              <image class="act-icon" src="https://img1.haoshiqi.net/miniapp/clock-icon_fc5be66142.png" mode="scaleToFill" />
+            </view>
+            <text class="act-icon-text">{{activityPreheat.activityType == 1 ? '活动价' : '秒杀价'}}</text>  <!-- 2种价格文案，活动价、秒杀价 -->
+          </view>
+          <view class="act-left-right">
+            <view class="act-ac-price">￥{{activityPreheat.price[0]}}.{{activityPreheat.price[1]}}</view>
+            <view class="act-mark-price">划线价￥{{ activityPreheat.activityMarketPrice }}</view>
+          </view>
+          <view class="act-inventory-box" wx:if="{{ activityPreheat.activityStatus != 'end' ? 'true' : '' }}">
+            <view class="act-stock">
+              <text>{{ activityPreheat.activityStatus == 'start' ? '仅剩' : '限量' }}</text>{{ activityPreheat.activityStock }}件
+            </view>
+            <view class="act-stock-rate" wx:if="{{ activityPreheat.activityStatus == 'start' ? 'true' : '' }}">
+              <view class="act-rate-box" style="width: {{activityPreheat.rateNumber}}%"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="act-right">
+        <view class="act-right-top {{activityPreheat.activityStatus == 'start' ? 'activity-block-text' : ''}}">
+          {{ activityPreheat.activityCountTip }}
+        </view>
+        <view class="act-countdown">
+          <view
+            class="count-number-day {{activityPreheat.activityStatus == 'start' ? 'activity-block-text' : ''}}"
+            wx:if="{{activityPreheat.activityTime.d > 0}}"
+          >
+            {{ activityPreheat.activityTime.d }}天
+          </view>
+          <view class="count-number {{activityPreheat.activityStatus == 'start' ? 'activity-block-bg' : ''}}">
+            {{ activityPreheat.activityTime.h }}
+          </view>
+          :
+          <view class="count-number {{activityPreheat.activityStatus == 'start' ? 'activity-block-bg' : ''}}">
+            {{ activityPreheat.activityTime.f }}
+          </view>
+          :
+          <view class="count-number {{activityPreheat.activityStatus == 'start' ? 'activity-block-bg' : ''}}">
+            {{ activityPreheat.activityTime.s }}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 商品基本信息 -->
+    <view class="info">
+      <view class="info-title max-line-2">
+        <text class="title-zy" wx:if="{{merchantType == 2}}">自营</text>
+        {{name}}
+        </view>
+      <!-- 轻会员价格 -->
+      <view class="mt member-price" wx:if="{{isMember}}">
+          <view class="market-price">
+              ￥{{filter.dealPrice(priceObj.price)}}
+          </view>
+          <view class="member-price-box">
+            <view class="member-price">
+              <image src="https://img1.haoshiqi.net/miniapp/vip-icon_1be7bb7dd2.png" class="vip-icon" mode="scaleToFill" />
+              <view class="item-member-price">￥{{filter.dealPrice(priceObj.memberPrice)}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="mt" wx:else>
+            <template is="price" data="{{...priceObj}}" />
+          </view>
+      <view class="mt info-desc">{{desc}}</view>
+    <!-- 好会员入口 -->
+    <view class="member-detail mt" wx:if="{{ goodMemberInfo.showMember && goodMemberInfo.discountPrice}}">
+        <view class="left-icon" bindtap="ModalClick">
+          <image src="https://img1.haoshiqi.net/miniapp/vip-icon_1be7bb7dd2.png" alt="" mode="scaleToFill" class="vip-icon" />
+          <view class="vip-text">{{goodMemberInfo.memberText}}<text class="red">{{goodMemberInfo.discountPrice}}</text>元
+            <text wx:if="{{goodMemberInfo.possessionPrice}}">,{{goodMemberInfo.possessionPrice}}</text>
+          </view>
+
+          <image src="../../img/tips.png" mode="scaleToFill" class="vip-tips" />
+        </view>
+        <view class="btn-icon" bindtap="gotoVipCenter" data-url="{{goodMemberInfo.url}}"  data-piwik="c_vipprodetentry">
+          <text>{{goodMemberInfo.type }}</text>
+          <image class="rule-more" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="aspectFill" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 参数列表 -->
+    <view class="mt">
+      <view class="attr-text">
+        <text class="title">参数：</text>
+        <view class="params-box">
+          <view wx:if="{{ !notSelectedAttrName }}">
+            <block wx:for="{{ selectedAttrName }}" wx:key="{{ item.attr_name }}">
+              {{ index !== 0 ? '、' : '' }}【{{ item.attr_name }}】{{ item.value
+              }}{{ item.type == 2 ? '到期' : '' }}
+            </block>
+          </view>
+          <view wx:else>请选择: {{ notSelectedAttrName }}</view>
+        </view>
+      </view>
+    </view>
+
+    <!--领券消息-->
+    <view class="coupon-desc" wx:if="{{coupleList.length}}"  bindtap="showCoupons">
+      <template is="attr-coupon" data="{{ list:coupleList }}" ></template>
+    </view>
+    <!-- 促销信息 -->
+    <view wx:if="{{promotions.length}}">
+      <template is="attr-img" data="{{labels:promotions, showConArrow:true, showArrow}}" ></template>
+    </view>
+
+    <!-- 送至 -->
+    <view class='mt city' bindtap='onSelectCity'>
+      <view class='city-front'>
+        <label class='city-label'>送至：</label>
+        <image class="city-img" src="https://img1.haoshiqi.net/miniapp/address/location_e7c4dc70ce.png" mode="scaleToFill" />
+        <view class='city-name'>{{currentCity.currentAddress}}</view>
+        <image class="city-arrow" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="scaleToFill" />
+      </view>
+    </view>
+    <!-- 运费信息 -->
+    <view class="white-bg">
+      <view class='city-cost white-bg'>
+        <label class='city-label'>运费：</label>
+        <view class="city-name {{ canDelivery ? '' : 'cannot-delivery' }}" >{{ freightInfo }}</view>
+      </view>
+    </view>
+
+    <!-- 质保标签 -->
+    <view class="mt labels" wx:if="{{labels.length}}">
+      <template is="labels" data="{{labels, fontSize:24}}"></template>
+    </view>
+
+    <!-- 拼团规则 -->
+    <view class="rule mt v-center space-between" bindtap="toRule">
+      <text>{{rule}}</text>
+      <view>
+        <image class="rule-more" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="aspectFill" />
+      </view>
+    </view>
+
+    <!-- 一键参团 -->
+    <view class="couple-fast" wx:if="{{fastInfo.list && fastInfo.list.length}}">
+      <view class="couple-fast-title">{{fastInfo.head}}</view>
+      <view class="couple-fast-list">
+        <block wx:for="{{fastInfo.list}}" wx:key="{{item.id}}">
+          <view class="item flex-between couple-fast-item" data-index='{{ index }}' data-id="{{item.id}}" data-type="couple-share" bindtap="goNext">
+            <view class="user flex-between">
+              <image class="avatar" width="40" height="40" src="{{item.avatar || 'https://img1.haoshiqi.net/wxapp/img/avatar_9dc3749044.png'}}" mode="scaleToFill" />
+              <view class="name">{{item.username}}</view>
+            </view>
+            <view class="oper flex-between">
+              <view class="status">
+                <view class="st">还差{{ (item.countLimit - item.joinCount) }}人成团</view>
+                <view class="times">{{item.countDown}}</view>
+              </view>
+              <view class="btn-join">去参团</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 店铺信息 -->
+    <view class="store">
+      <template is="detail-store" data="{{merchantData}}"></template>
+    </view>
+
+    <!-- 功能按钮 -->
+    <view class="couple-go-home" data-type="home" >
+      <view class="home-icon-box {{showHome? 'show' : 'none'}}" bindtap="goIndex">
+        <image src="https://img1.haoshiqi.net/miniapp/index2_515801ed8d.png" mode="scaleToFill" class="home-icon" />
+      </view>
+      <view class='jump-app-box' wx:if="{{sceneData == 1036}}">
+        <button open-type="launchApp" class='jump-btn' app-parameter="{{jumpAppData}}" binderror="launchAppError">返回App</button>
+        <image src="https://img1.haoshiqi.net/miniapp/app_98085a87a9.png" class='app-icon'></image>
+      </view>
+    </view>
+
+    <view class="mt white-bg">
+      <view class="sec-head-box">
+        <template is="sec-head" data="{{title:'图文详情'}}"></template>
+      </view>
+      <template is="wxParse" data="{{wxParseData:textData.nodes}}"/>
+    </view>
+
+
+    <!-- 底部按钮 -->
+    <view class="view-footer">
+      <view class="view-buy">
+        <view class="view-service" bindtap="goService">
+          <image class="icon" src="https://img1.haoshiqi.net/miniapp/detail_service_8900f3fbb9.png" mode="aspectFit"></image>
+          <text class="title">联系客服</text>
+        </view>
+
+        <view class="view-service" bindtap="toggleCollection">
+          <image class="icon" src="{{collectionImg}}" mode="aspectFit"></image>
+          <text class="title">{{is_like ? '已收藏' : '收藏'}}</text>
+        </view>
+        <view class="view-service" bindtap="goCart">
+          <image src="https://img1.haoshiqi.net/miniapp/cart_6f59ff59a0.png" mode="scaleToFill" class="icon"/>
+          <text class="title">购物车</text>
+          <view class="badge {{ cartNumber ? '' : 'hidden' }}" ></view>
+        </view>
+        <block wx:if="{{ activityPreheat.activityStatus !== 'ready' || left_stock > 0 }}">
+          <view class="view-pin cart-color {{priceObj.canSingle ? '' : 'gray-single'}}" bindtap="buyBtnClick" data-type="2">
+            <text class="pin-price">￥{{filter.dealPrice(priceObj.singlePrice)}}</text>
+            <text class="pin-title">加入购物车</text>
+          </view>
+
+          <view class="view-pin group {{priceObj.canGroup ? '' : 'gray-group'}}" bindtap="buyBtnClick" data-type="3">
+            <view class="pin-price">￥{{filter.dealPrice(priceObj.couplePrice)}}</view>
+            <view class="pin-title">{{limitNum}}人团</view>
+          </view>
+        </block>
+        <view class="view-pin activity-ready" wx:else>
+          <view class="activity-price">
+            {{activityPreheat.activityType == 1 ? '活动价' : '秒杀价'}}￥{{ filter.dealPrice(activityPreheat.activityPrice) }}
+          </view>
+          <view class="activity-time">
+            {{ activityPreheat.activityStartTimeTip }}
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <!-- 切换城市 -->
+    <select-city didShowCitySelection="{{didShowCitySelection}}" bind:onSelectingNewCity="onSelectingNewCity" addresses="{{ addresses }}">
+    </select-city>
+    <!-- sku -->
+    <dwd-sku-select
+      custom-class="detail-sku-select"
+      isPopupShow="{{isShowPopup}}"
+      normSelectTag="{{ normSelectTag }}"
+      attrList="{{ attrList }}"
+      skuStocksList="{{ skuStocksList }}"
+
+      smallCurrentSkuData="{{ smallCurrentSkuData }}"
+
+      maxBuySum="{{ maxBuySum }}"
+      currentSum="{{ currentSum }}"
+      bind:onSetParentData="setCurrentData"
+      bind:onBtnClick="onBtnClick"></dwd-sku-select>
+    <!--促销说明弹层 -->
+    <card-promotion
+      promotions="{{promotions}}"
+      bind:handlepromotion="onShowPromotionCon"
+      bind:goFullList ="goFullList"
+      promotionTitle="促销信息"
+      wx:if="{{onShowPromotionInfo}}">
+    </card-promotion>
+
+    <!--领券列表弹层-->
+    <view class="popup-outbox {{showCoupons ? '' : 'hidden'}}">
+      <coupon-list coupons="{{coupons}}" bind:onClose="onClose" bind:getCoupon="getCoupon"></coupon-list>
+    </view>
+    <!-- 领取成功toast -->
+    <template is="coupon-toast" wx:if="{{sucToast}}"></template>
+    <!--好会员权益弹窗-->
+    <member-modal
+      bind:ModalClick="ModalClick"
+      goodMemberInfo="{{goodMemberInfo}}"
+      wx:if="{{isShowMemberModel}}">
+    </member-modal>
+  </view>
+</dwd-page>

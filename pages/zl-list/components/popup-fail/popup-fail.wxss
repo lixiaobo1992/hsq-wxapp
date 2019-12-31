@@ -1,0 +1,159 @@
+.popup-mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 100;
+}
+.popup-container{
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  width: 90%;
+  transform: translateY(-50%);
+  z-index: 101;
+}
+.popup-close-btn{
+  margin: 30rpx auto 0;
+  width: 60rpx;
+  height: 60rpx;
+  background: #333333;
+  border-radius: 50%;
+}
+.popup-close-btn image{
+    width: 100%;
+    height: 100%;
+}
+.popup-container .bg-img{
+    width: 100%;
+}
+.popup-container .popup-content{
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  width: 70%;
+  height: 50%;
+}
+.popup-title{
+  color: #333333;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 23rpx;
+}
+.popup-title.font-fail{
+  font-weight: normal;
+  font-size: 30rpx;
+  color: #666666;
+}
+.process-block{
+  position: relative;
+  margin-top: 100rpx;
+}
+.process-block.page-block{
+  overflow: hidden;
+}
+.process-block.page-block .process-strip{
+  width: 562rpx;
+  margin-bottom: 12rpx;
+}
+/* .process-block.page-block .express-block{
+  bottom: 50%;
+} */
+.express-block{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 50%;
+  z-index: 9;
+  right: 84%;
+  transition: right 1.5s ease;
+}
+.express-tip-1{
+  font-size: 26rpx;
+  background: #eb0000;
+  color: #fff;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  position: absolute;
+  bottom: 135%;
+  right: 10%;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 10rpx;
+  z-index: 6;
+}
+.express-icon{
+  width: 100rpx;
+}
+.express-icon image{
+    width: 100%;
+}
+.process-strip{
+  width: 392rpx;
+  height: 20rpx;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10rpx;
+  margin: 0 auto;
+}
+.process-tip{
+  display: flex;
+          justify-content: space-between;
+  font-size: 24rpx;
+  color: #aaa;
+  margin-bottom: 64rpx;
+  margin-top: 20rpx;
+}
+.process-strip-bg{
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.process-strip-bg image{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.process-strip-bg.active-bg{
+    position: absolute;
+    left: -100%;
+    top: 0;
+    transition: left 1.5s ease;
+}
+.get-button{
+  position: relative;
+  width: 100%;
+  height: 78rpx;
+  line-height: 78rpx;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  background: #FE9923;
+  justify-content: center;
+}
+.scale-animation{
+  animation: myScale-data-v-7f7b0df1 2s ease-in-out infinite alternate-reverse;
+}
+@-webkit-keyframes myScale-data-v-7f7b0df1 {
+from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+33% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+}
+66% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+}
+to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+}

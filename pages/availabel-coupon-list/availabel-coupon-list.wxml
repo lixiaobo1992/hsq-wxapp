@@ -1,0 +1,45 @@
+<view class="availabel-coupon">
+
+  <view class="coupon-list">
+    <view
+      wx:for="{{ listData }}"
+      wx:key="{{ item.coupon_code }}"
+      class="coupon-cell"
+      data-index="{{ index }}"
+      bindtap="onSelectedCoupon"
+    >
+    <!-- <view class="title" wx:if="{{ item.index == 0 && item.member_coupon == 2}}">会员优惠券</view> -->
+      <view class="block-box {{ item.member_coupon == 2 ?'member-bg':''}}" wx:if="{{item.member_coupon == 2}}">
+        <view class="member-coupon-left">
+          <view class="coupon-member-price"><text class="sub-sign">¥</text>{{ item.value }}</view>
+          <view class="coupon-member-bg"></view>
+        </view>
+        <view class="member-coupon-right">
+            <view class="ellipsis member-coupon-name">{{ item.title }}</view>
+            <view class="member-coupon-sub-title">{{ item.sub_title }}</view>
+            <view class="ellipsis member-coupon-sub-con" wx:if="{{item.sub_content}}">{{ item.sub_content }}</view>
+            <!-- <view class="member-coupon-end-time">{{ item.enabled_time_display }}</view> -->
+            <!-- <view class="member-coupon-btn {{ currentCoupon.coupon_code == item.coupon_code ? 'active' : '' }}"></view> -->
+        </view>
+        <view class="member-selected">
+          <view class="select-circle {{ currentCoupon.coupon_code == item.coupon_code ? 'active' : '' }}"></view>
+        </view>
+      </view>
+      <!-- <view class="title" wx:if="{{ item.index == 0 && tem.member_coupon !== 2 }}">平台优惠券</view> -->
+      <view class="block-box" wx:if="{{ item.member_coupon !== 2 }}">
+        <view class="coupon-left">
+          <view class="coupon-pirce">¥{{ item.value }}</view>
+        </view>
+        <view class="coupon-right">
+          <view class="ellipsis coupon-name">{{ item.title }}</view>
+          <view class="coupon-sub-title">{{ item.sub_title }}</view>
+          <view class="coupon-end-time">{{ item.enabled_time_display }}</view>
+          <view class="coupon-btn {{ currentCoupon.coupon_code == item.coupon_code ? 'active' : '' }}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<view class="confirm-btn" catchtap="onConfirm">确认</view>
+

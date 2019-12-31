@@ -1,0 +1,78 @@
+<!--components/sku-select/index.wxml-->
+<view class="sku-select-popup">
+  <view class="popup-mask" bindtap="onClose" wx:if="{{isPopupShow}}"></view>
+  <view class="sku-select-content clearfix {{ isPopupShow ? 'show': '' }}">
+    <!-- 商品信息 -->
+    <view class="product-complex">
+      <view class="sku-img">
+        <image src="{{ currentSkuData.thumbnail }}"></image>
+      </view>
+      <view class="complex-info">
+        <!-- 价格根据 产品类型展示 -->
+        <view class="sku-price">{{ currentSmallSkuData.priceText }}</view>
+        <view class="sku-info">库存: {{ currentSmallSkuData.stock }}件</view>
+        <view class="sku-info" wx:if="{{ !notSelectedAttrName }}">商品编号: {{ currentSkuData.skuid }}</view>
+      </view>
+      <image class="close-btn" src="https://img1.haoshiqi.net/miniapp/icon/icon-close_476f81039c.png" bindtap="onClose"></image>
+    </view>
+
+    <!-- sku 选择项 -->
+    <view class="sku-warp">
+      <!-- <view class="sku-group shelf-lefe">
+        <view class="sku-group-name">日期:</view>
+        <view class="sku-option">
+          <text class="sku-item active">草莓</text>
+          <text class="sku-item">草莓</text>
+          <text class="sku-item">草莓</text>
+          <text class="sku-item">草莓</text>
+          <text class="sku-item">草莓</text>
+          <text class="sku-item">草莓</text>
+        </view>
+      </view> -->
+
+      <view
+        wx:for="{{ attrData }}"
+        wx:key="{{ item.attrId }}"
+        class="sku-group">
+        <view class="sku-group-name">{{ item.attrName }}: <text wx:if="{{ !item.active }}">请选择{{ item.attrName }}</text></view>
+        <view class="sku-option">
+          <text
+            wx:for="{{ item.attrValues }}"
+            wx:for-item="childItem"
+            wx:key="{{ childItem.idsStr }}"
+            data-attrid="{{ item.attrId }}"
+            data-ids-str="{{ childItem.idsStr }}"
+            data-val="{{ childItem.value }}"
+            data-active="{{ childItem.active }}"
+            data-disabled="{{ childItem.disabled }}"
+            bindtap="attrSelect"
+            class="sku-item {{ childItem.active ? 'active': '' }} {{ childItem.disabled ? 'disabled': '' }}">{{ childItem.value }}</text>
+        </view>
+      </view>
+
+      <!-- 数量选择 -->
+      <view class="sku-group sum-select">
+        <view class="sku-group-name">数量:</view>
+          <!-- <text class="sum">{{ currentSum }}</text> -->
+          <dwd-input-number value="{{ currentSum }}" max="{{ maxBuySum }}" size="small" bind:onChange="countChangeVal" />
+        <!-- <view class="sum-control">
+          <view class="less">-</view>
+          <text class="sum">{{ currentSum }}</text>
+          <view class="add">+</view>
+        </view> -->
+      </view>
+    </view>
+
+    <!-- 底部按钮组 -->
+    <view class="btns-group">
+      <view
+        class="sku-btn add-cart {{ cartBtnStatus }}"
+        wx:if="{{ normSelectTag == 0 || normSelectTag == 1 }}"
+        bindtap="addShoppingClick">{{ normSelectTag == 0 ? skuBtnStatus.cartBtnText: '确定' }}</view>
+      <view
+        class="sku-btn buy-btn {{ buyBtnStatus }}"
+        wx:if="{{ normSelectTag == 0 || normSelectTag == 2 }}"
+        bindtap="buyClick">{{ normSelectTag == 0 ? skuBtnStatus.buyBtnText : '确定' }}</view>
+    </view>
+  </view>
+</view>

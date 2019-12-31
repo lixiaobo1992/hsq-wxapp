@@ -1,0 +1,6 @@
+<template name="lifecycle">
+<view>
+  <button bindtap="showLogs" class="lifecycle-btn">show logs</button>
+  <button bindtap="clearLogs" class="lifecycle-btn">clear logs</button>
+</view>
+</template>

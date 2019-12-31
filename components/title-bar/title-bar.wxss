@@ -1,0 +1,8 @@
+/* components/title-bar/title-bar.wxss */
+.title-bar {
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.title-bar image{
+  display: block;
+}

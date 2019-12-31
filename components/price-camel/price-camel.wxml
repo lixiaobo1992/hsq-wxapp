@@ -1,0 +1,6 @@
+<!--components/price-camel/price-camel.wxml-->
+<template name="price-camel">
+  <view class="price-camel">
+    <text class="rmb">￥</text><text class="yuan">{{yuan}}</text><text class="fen">.{{fen}}</text>
+  </view>
+</template>

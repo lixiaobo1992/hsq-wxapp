@@ -1,0 +1,35 @@
+
+.address-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e2e2e2;
+  background-color: #fff;
+}
+
+.address-item-left {
+  display: flex;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+}
+
+.address-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 8rpx;
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+}
+
+.label-address {
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+
+.address-check {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 30rpx;
+  margin-top: 24rpx;
+  flex-shrink: 0;
+}

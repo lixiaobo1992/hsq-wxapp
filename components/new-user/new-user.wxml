@@ -1,0 +1,11 @@
+<wxs src="../../components/price/index.wxs" module="format" />
+
+<template name="userBenefit">
+  <view class="view-new {{hasChangeColor ? 'text-color' : ''}}" wx:if="{{labels && labels.length}}">
+      <view class="user-benefit" wx:for="{{labels}}">
+        <image class="img" src="{{item.icon}}" mode="aspectFit" />
+          <text class="title">{{item.title}}</text>
+          <view class="value">-￥{{format(item.value)}}</view>
+        </view>
+  </view>
+</template>

@@ -1,0 +1,101 @@
+
+.input-number{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.input-number .input{
+  width: 100%;
+  font-size: 24rpx;
+  border: none;
+  box-sizing: border-box;
+  background-color: #F4F4F4;
+}
+.input-number .input-btn{
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.btn-box {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  width: 80rpx;
+  height: 50rpx;
+  opacity: 0;
+  z-index: 2;
+}
+
+.input-number .input-btn.reduce{
+  left: 0;
+}
+.input-number .input-btn.plus{
+  right: 0;
+}
+
+.input-btn-line{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 1px;
+  background-color: #333;
+}
+.line-horizon{
+  width: 26rpx;
+  height: 1px;
+}
+.line-vertical{
+  width: 1px;
+  height: 26rpx;
+}
+
+/* 大小 */
+.input-number-normal{
+  width: 260rpx;
+  height: 60rpx;
+  padding: 0rpx 80rpx;
+  vertical-align: middle;
+}
+.input-number-normal .input{
+  height: 100%;
+}
+.input-number-normal .input-btn{
+  width: 80rpx;
+}
+.input-number-small{
+  width: 200rpx;
+  height: 50rpx;
+  padding: 0rpx 60rpx;
+}
+.input-number-small .input{
+  height: 100%;
+}
+.input-number-small .input-btn{
+  width: 60rpx;
+}
+
+/* 样式 */
+.input-number-border{
+  border: 1px solid #999;
+}
+
+/* .input-number-border .input{
+  background-color: #F4F4F4;
+} */
+
+.input-number-border .input-btn.reduce{
+  border-right: 1px solid #999;
+}
+.input-number-border .input-btn.plus{
+  border-left: 1px solid #999;
+}
+
+
+.disabled{
+  opacity: 0.3;
+}

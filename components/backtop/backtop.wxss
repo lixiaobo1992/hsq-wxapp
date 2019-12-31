@@ -1,0 +1,12 @@
+.backTop {
+    width: 82rpx;
+    height: 82rpx;
+    position: fixed;
+    right: 40rpx;
+    bottom: 80rpx;
+}
+
+.backTop .image {
+    width: 100%;
+    height: 100%;
+}

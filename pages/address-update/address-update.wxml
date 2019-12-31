@@ -1,0 +1,44 @@
+<!--pages/address-update/address-update.wxml-->
+<view class="page">
+  <view class="address-item">
+    <text class="address-label">收 货 人 ：</text>
+    <input class="address-input" id="contacter" type="text" value="{{address.contacter}}" bindinput="bindInput" placeholder="请填写真实姓名" />
+  </view>
+  <view class="address-item">
+    <text class="address-label">联系方式：</text>
+    <input class="address-input" id="mobile" type="text" value="{{address.mobile}}" bindinput="bindInput" placeholder="手机号码" maxlength="11" />
+  </view>
+  <view class="address-item">
+    <text class="address-label">所在区域：</text>
+    <view class="address-select" bindtap="showAddrSelect">
+      <text wx:if="{{address.province}}">{{address.province + address.city + address.district}}</text>
+      <text wx:else style="color: #808080;">请选择城市</text>
+    </view>
+  </view>
+  <view class="address-item">
+    <text class="address-label">详细地址：</text>
+    <input class="address-input" id="detailAddress" type="text" value="{{address.detailAddress}}" bindinput="bindInput" placeholder="街道、楼号" />
+  </view>
+
+  <view class="address-content {{showAddrSelect ? 'address-content-show' : ''}}">
+    <view class="address-commit-box">
+      <text class="address-commit address-commit-cancel" bindtap="showAddrSelect">取消</text>
+      <text class="address-commit address-commit-sure" bindtap="selectCommit">确定</text>
+    </view>
+    <view class="pv-container">
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 240px;" value="{{addrIndex}}" bindchange="bindPickerChange">
+        <picker-view-column>
+          <view wx:for="{{curtProvince}}" wx:key="{{ item.id }}" style="line-height: 50px">{{item.province}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{curtCity}}" wx:key="{{ item.id }}" style="line-height: 50px">{{item.city}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{curtDistrict}}" wx:key="{{ item.id }}" style="line-height: 50px">{{item.district}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+
+  <view class="address-add-box" bindtap="checkSubmitData">保存</view>
+</view>

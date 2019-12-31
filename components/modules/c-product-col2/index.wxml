@@ -1,0 +1,70 @@
+<dwd-tpl custom-class="c-product-col2" data="{{data}}" data-type="{{data.type}}">
+  <view class="col2-box">
+    <view
+      class="row2-box"
+      wx:for="{{data.list}}"
+      wx:key="{{index}}"
+      data-index="{{index}}"
+      data-form-Type="onUrlPage"
+      data-url="{{item.link}}"
+      data-title="{{ data.moduleName }}"
+      data-group="{{ item.flow }}"
+      data-piwik-event="{{ item.piwikEvent }}"
+      data-piwik-data="{{ item.piwikData }}"
+      data-module-id="{{ data.id }}"
+      bindtap="onDetailPage"
+    >
+      <view class="row2-container">
+        <view class="row2-img-box">
+          <!-- <image class="row2-img" src="{{item.thumbnail}}" lazy-load="{{true}}" /> -->
+          <dwd-image
+            src="{{ item.thumbnail }}"
+            custom-class="row2-img"
+            mode="scaleToFill"
+            lazy-load="{{ true }}"
+            default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" />
+          <!-- <img class="row2-tag-img" src=""/> -->
+          <!-- 商品状态 -->
+          <image
+            class="row2-status-img"
+            src="{{ item.invalid_img }}"
+            wx:if="{{ item.invalid_img }}"
+          />
+        </view>
+        <view class="row2-text-box">
+          <view class="row2-title max-line-2">
+            <text class="title-tag" wx:if="{{item.merchant_type == 2}}">自营</text>
+            {{ item.title }}
+          </view>
+          <view class="row2-tag-box" wx:if="{{item.tags.length > 0}}">
+            <view
+              class="row2-text-tag"
+              wx:for="{{item.tags}}"
+              wx:for-item="tagsData"
+              wx:for-index="tagsIndex"
+              wx:key="{{tagsIndex}}"
+              wx:if="{{item.tags.length > 0}}"
+              style="{ color: tagData.color }"
+            >{{ tagsData.text }}
+          </view>
+          </view>
+          <view class="row-expire-day">
+              <text class="row2-left-day" wx:if="{{ item.expired_date_text}}">{{ item.expired_date_text}} </text>
+          </view>
+          <view class="row2-price-box">
+              <view class="row2-price">
+                  <text class="price-integer">￥{{ item.price.price_yuan }}</text>
+                  <text class="price-decimals">.{{ item.price.price_fen }}</text>
+                </view>
+              <view class="row2-vip-price" wx:if="{{ item.member_price > 0 }}">
+                  <view class="vip-bg"><image src="https://img1.haoshiqi.net/miniapp/vip-icon_1be7bb7dd2.png" class="img-vip" mode="scaleToFill" />
+                  </view>
+                <text class="vip-price">￥{{ item.member_price }}</text>
+                </view>
+            <view class="row2-market" wx:else>￥{{ item.market_price }}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</dwd-tpl>

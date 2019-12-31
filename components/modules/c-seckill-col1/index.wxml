@@ -1,0 +1,119 @@
+<dwd-tpl class="c-seckill-col1" data="{{ data }}" data-type="{{ data.type }}">
+  <view class="seckill-row1-box">
+    <view
+      class="shop-box exposure-item"
+      wx:for="{{data.list}}"
+      data-url="{{item.link}}"
+      data-title="{{ data.moduleName }}"
+      data-index="{{index}}"
+      wx:key="{{index}}"
+      data-type="detail"
+      data-group="{{ item.flow }}"
+      wx:if="{{index < moreNumber}}"
+      data-id="{{item.pin_id}}"
+      bindtap="onClick"
+    >
+      <view class="img-box">
+        <!-- <image class="shop-img" src="{{item.thumbnail}}" /> -->
+        <dwd-image
+          src="{{ item.thumbnail }}"
+          custom-class="shop-img"
+          mode="scaleToFill"
+          lazy-load="{{ true }}"
+          default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" />
+
+        <!-- 商品状态 抢光了 -->
+        <image
+          class="shop-status"
+          src="https://img1.haoshiqi.net/miniapp/img/sold_a64f1921fd.png"
+          wx:if="{{!item.left_stock || !item.can_bought}}"
+        />
+        <image
+          class="shop-status"
+          src="https://img1.haoshiqi.net/miniapp/img/attention_502921af53.png"
+          wx:if="{{item.is_subscribe && item.hintText.btnType != ''}}"
+        />
+      </view>
+      <view class="text-box">
+        <view class="flex-start">
+        <view class="shop-title">
+          <text class="title-tag" wx:if="{{item.merchant_type == 2}}">自营</text>
+          {{ item.name }}
+        </view>
+        <view class="row-expire-day" wx:if="{{ item.expired_date_text }}">
+            <text class="row-left-day">{{item.expired_date_text}} </text>
+        </view>
+        <view
+            class="row2-tag-box {{item.arrowClick?'tag-overflow':''}}"
+            style="height:{{!item.showupArrow?'100%':''}}"
+            wx:if="{{item.tags.length > 0}}"
+          >
+          <view
+            class="row2-text-tag"
+            wx:for="{{item.tags}}"
+            wx:key="{{tagIndex}}"
+            wx:for-index="tagIndex"
+            wx:for-item="tagData"
+            style="color: {{tagData.color }}"
+          >{{ tagData.text }}</view>
+          <view
+            class="left-arrow"
+            data-type="arrow"
+            data-index="{{ index }}"
+            data-id="{{ data.id }}"
+            wx:if="{{item.arrowClick}}"
+            catchtap="{{item.arrowClick ? 'onClick' : ''}}">
+              <view class = " arrow {{!item.showupArrow?'up':'down'}}"> </view>
+            </view>
+        </view>
+        <view class="shop-timer-box">
+
+          <view class="timer-countdown">
+            <view class="timer-text"> {{item.hintText.activityCountTip}}</view>
+            <view class="count-number-day" wx:if="{{item.countDownInfo.d > 0}}">{{item.countDownInfo.d}}天</view>
+            <view class="count-number">{{item.countDownInfo.h}}</view>
+            :
+            <view class="count-number">{{item.countDownInfo.f}}</view>
+            :
+            <view class="count-number">{{item.countDownInfo.s}}</view>
+          </view>
+        </view>
+        </view>
+        <view class="shop-price-box flex-end" >
+          <view class="price-box">
+            <text class="price-integer">￥{{ item.price.price_yuan }}</text>
+            <text class="price-decimals">.{{ item.price.price_fen }}</text>
+            <text
+              class="buy-btn {{item.hintText.btnType == 'clearmsg' ? 'clear-btn' : ''}} {{ item.residueTime < 300 && item.residueTime > 0 ? 'gray-btn' : '' }}"
+              catchtap="msgClick"
+              data-type="{{item.hintText.btnType}}"
+              data-index="{{index}}"
+              data-item="{{item.residueTime}}"
+              data-id="{{item.topic_id}}"
+              data-sku="{{item.sku_id}}"
+              data-url="{{item.link}}"
+              data-form-type="{{item.hintText.btnType}}"
+            >{{item.hintText.btnText}}</text>
+          </view>
+          <view class="bottom-price">
+            <view class="market-price">￥{{ item.market_price }}</view>
+            <view class="stock-progress-box" wx:if="{{item.hintText.btnText == '马上抢'}}">
+              <view class="progress-text">已抢{{ item.rate_percent + '%' }}</view>
+              <view class="progress-box">
+                <view class="current-progress" style="width: {{item.rate_percent}}%"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="unfold-more-btn" wx:if="{{moreNumber == 2 && data.list.length > 2}}" data-type="more" bindtap="onClick">
+      <text class="more-btn-text">点击展开更多</text>
+      <image class="more-btn-img" src="https://img1.haoshiqi.net/miniapp/img/down-arrows-small_094d62fa8b.png" mode="aspectFit" />
+    </view>
+    <view class="pack-up-btn" wx:if="{{moreNumber == 6 && data.list.length > 2}}" data-type="up" bindtap="onClick">
+      <text class="up-btn-text">收起</text>
+      <image class="up-btn-img" src="https://img1.haoshiqi.net/miniapp/img/down-arrows-small_094d62fa8b.png" mode="aspectFit" />
+    </view>
+  </view>
+</dwd-tpl>

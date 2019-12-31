@@ -1,0 +1,92 @@
+.c-category{
+  background-color: #fff;
+}
+
+.c-category-scroll{
+  position: relative;
+  width: 100%;
+}
+
+.c-category-scroll.row1{
+  height: 152rpx !important;
+}
+.c-category-scroll.row2{
+  height: 304rpx !important;
+}
+
+.category-wrapper{
+  position: relative;
+}
+.category-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  position: relative;
+}
+.category-item{
+  flex: 0 0 20%;
+  margin: 10rpx 0;
+  max-width: 20%;
+  display: flex;
+  align-content: flex-start;
+
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.category-item .label-image{
+  width: 90rpx;
+  height: 90rpx;
+}
+.category-item .label-image image{
+  width: 100%;
+  height: 100%;
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center; */
+}
+.category-item .label-text{
+  display: block;
+  width: 100%;
+  font-size: 24rpx;
+  text-align: center;
+  color: #666;
+  margin-top: 8rpx;
+  line-height: 34rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.category-list.col4 .category-item{
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.schedule-box{
+  width: 100%;
+  position: relative;
+  padding: 10rpx 0;
+}
+
+.schedule-bar{
+  width: 40px;
+  height: 6rpx;
+  margin: 0 auto;
+  background-color: #ccc;
+  border-radius: 6rpx;
+  position: relative;
+  overflow: hidden;
+}
+.schedule-thumb{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20rpx;
+  height: 6rpx;
+  border-radius: 6rpx;
+  background-color: #FE0137;
+}

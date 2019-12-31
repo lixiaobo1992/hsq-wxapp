@@ -1,0 +1,16 @@
+/* pages/today-new-list/today-new-list.wxss */
+@import '/components/card/index.wxss';
+@import '/components/foot/foot.wxss';
+@import '/components/pull-loading/index.wxss';
+
+page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.page-todya-new{
+  height: 100%;
+}
+scroll-view {
+  height: 100%;
+}

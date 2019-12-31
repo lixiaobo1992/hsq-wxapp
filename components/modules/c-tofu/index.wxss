@@ -1,0 +1,62 @@
+
+.c-tofu{
+  overflow: hidden;
+  padding-top: 60%;
+}
+.c-tofu-box{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+}
+.c-tofu-item {
+  float: left;
+  height: 50%;
+}
+.c-tofu-item .image{
+  width: 100%;
+  height: 100%;
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center; */
+}
+
+.c-tofu-item:nth-of-type(1) {
+  width: 40%;
+  height: 100%;
+}
+
+.layout-1-1 .c-tofu-item {
+  width: 50%;
+  height: 100%;
+}
+
+.layout-1-11 .c-tofu-item:nth-of-type(n+2) {
+  width: 60%;
+}
+.layout-1-12 .c-tofu-item:nth-of-type(2) {
+  width: 60%;
+}
+.layout-1-12 .c-tofu-item:nth-of-type(n+3) {
+  width: 30%;
+}
+.layout-1-2-2 .c-tofu-item {
+  width: 30%;
+}
+.layout-1-2-2 .c-tofu-item:nth-of-type(1) {
+  width: 40%;
+}
+.layout-2-2 .c-tofu-item {
+  width: 50%;
+  height: 50%;
+}
+.layout-2-2-2 .c-tofu-item {
+  width: 33.33%;
+  height: 50%;
+}
+

@@ -1,0 +1,41 @@
+<dwd-tpl custom-class="c-category" data="{{ data }}">
+  <scroll-view class="c-category-scroll {{ boxClassName }}" scroll-x="{{ isShowSchedule }}"  bindscroll="onScheduleScroll">
+    <!-- <view wx:for="{{categoryData}}" wx:key="{{item}}">
+      <dwd-image src="https://img2.haoshiqi.net/FjnOUN0d7nQI4irAlRMpwWShGWLa" mode="aspectFit" default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" ></dwd-image>
+    </view> -->
+
+    <view class="category-wrapper">
+      <view
+        class="category-list"
+        wx:for="{{ categoryData }}"
+        wx:for-item="itemList"
+        wx:for-index="listIndex"
+        wx:key="{{ listIndex }}">
+        <view
+          class="category-item"
+          wx:for="{{ itemList }}"
+          wx:key="{{ item.label + index }}"
+          data-url="{{ item.link }}"
+          data-index="{{ index }}"
+          data-title="{{ categoryData.moduleName }}"
+          data-group="{{ item.flow }}"
+          data-form-Type="onUrlPage"
+          data-piwik-event="{{ item.piwikEvent }}"
+          data-piwik-data="{{ item.piwikData }}"
+          data-module-id="{{ data.id }}"
+          bindtap="onUrlPage">
+          <view class="label-image">
+            <!-- <dwd-image src="{{ item.image.url }}" mode="aspectFit" default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" /> -->
+            <image src="{{ item.image.url }}" mode="aspectFit" />
+          </view>
+          <view class="label-text">{{ item.label }}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="schedule-box" wx:if="{{ isShowSchedule }}">
+    <view class="schedule-bar" id="scheduleBar{{ data.id }}">
+      <text class="schedule-thumb" style="{{ scheduleSpanStyle }}"></text>
+    </view>
+  </view>
+</dwd-tpl>

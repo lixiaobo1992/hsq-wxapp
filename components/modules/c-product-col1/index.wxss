@@ -1,0 +1,282 @@
+.c-product-col1{
+  overflow: hidden;
+  padding: 0 20rpx;
+}
+
+.c-product-col1 .product-row1-box{
+  width: 100%;
+  overflow: hidden;
+}
+
+.c-product-col1 .shop-box{
+  background: #fff;
+  width: 100%;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  display: flex;
+  align-items:center;
+}
+
+.c-product-col1 .shop-box:last-child{
+  margin-bottom: 0;
+}
+
+.c-product-col1 .img-box{
+  float: left;
+  width: 280rpx;
+  height: 280rpx;
+  position: relative;
+}
+
+.c-product-col1 .shop-img{
+  width: 280rpx;
+  height: 280rpx;
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center; */
+}
+
+.c-product-col1 .shop-status{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 128rpx;
+  height: 128rpx;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.c-product-col1 .img-label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280rpx;
+  height: 280rpx;
+  z-index: 1;
+}
+
+.c-product-col1 .icon-img{
+  width: 100%;
+}
+
+.c-product-col1 .text-box{
+  margin-left: 20rpx;
+  display:flex;
+  flex-flow:row wrap;
+  min-height:280rpx;
+}
+.c-product-col1 .shop-title{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  max-height: 84rpx;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  line-height:30rpx;
+}
+
+.c-product-col1 .title-tag{
+  display: inline-block;
+  line-height: 32rpx;
+  padding: 0 10rpx;
+  background-color: #F21833;
+  color: #fff;
+  font-size: 22rpx;
+  border-radius: 6rpx;
+  margin-right: 10rpx;
+}
+
+.c-product-col1 .row2-tag-box{
+  overflow: hidden;
+  line-height: 32rpx;
+  margin-top:6rpx;
+  display: flex;
+  height:36rpx;
+  padding-right:30rpx;
+}
+.c-product-col1 .row2-text-tag{
+  height: 32rpx;
+  line-height: 32rpx;
+  border: 1px solid #EA594C;
+  border-radius: 4rpx;
+  color: #EA594C;
+  padding: 0 8rpx;
+  font-size: 20rpx;
+  margin: 3rpx 4rpx 0 0;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  min-width: 40rpx;
+  max-width:256rpx;
+}
+.c-product-col1 .row2-text-tag:first-child{
+  flex-shrink: 0;
+}
+.c-product-col1 .shop-date{
+  margin-top: 20rpx;
+  display: inline-block;
+  height: 28rpx;
+  line-height: 28rpx;
+  padding: 0 10rpx;
+  color: #EA594C;
+  border: 1px solid #EA594C;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  margin-right: 4rpx;
+}
+.c-product-col1 .shop-price-box{
+  overflow: hidden;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+.c-product-col1 .price-box{
+  color: #F21833;
+  height: 56rpx;
+  line-height: 56rpx;
+  position: relative;
+  display: block;
+}
+.c-product-col1 .price-integer{
+  font-size: 40rpx;
+  height: 56rpx;
+  font-weight: bold;
+}
+.c-product-col1 .price-decimals{
+  font-size: 32rpx;
+}
+.c-product-col1 .buy-btn{
+  position: absolute;
+  right: 20rpx;
+  bottom: 0rpx;
+  width: 130rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  background: #FE0137;
+  border-radius: 33rpx;
+  color: #fff;
+  text-align: center;
+}
+.c-product-col1 .bottom-price{
+  margin-bottom: 10rpx;
+  position: relative;
+}
+.c-product-col1 .market-price{
+  display: inline-block;
+  font-size: 26rpx;
+  color: #999;
+  text-decoration: line-through;
+}
+.c-product-col1 .stock-progress-box{
+  position: absolute;
+  right: 20rpx;
+  bottom: 0;
+  display: inline-block;
+}
+.c-product-col1 .progress-text{
+  display: inline-block;
+  font-size: 20rpx;
+  color: #666;
+}
+.c-product-col1 .progress-box{
+  margin-left: 20rpx;
+  display: inline-block;
+  width: 128rpx;
+  height: 10rpx;
+  background: #FFB0A0;
+  box-shadow: 0 0 1px 0 rgba(255,176,160,0.53);
+  border-radius: 10rpx;
+  position: relative;
+}
+.c-product-col1 .current-progress{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  background-image: linear-gradient(90deg, #FBA592 29%, #F38371 84%);
+  border-radius: 5rpx;
+  height: 10rpx;
+}
+.row-expire-day{
+  height:32rpx;
+  line-height:32rpx;
+  font-size:20rpx;
+  color: #999999;
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.c-product-col1 .tag-overflow {
+  display:inline-block;
+  position: relative;
+}
+
+.tag-overflow .left-arrow {
+  width:100%;
+  height:80rpx;
+  display:inline-block;
+  position: absolute;
+  right:0;
+  top:4rpx;
+}
+.tag-overflow .arrow{
+  position: absolute;
+  right:0;
+  top:0;
+  width:24rpx;
+  height:24rpx;
+  background:url('https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png') no-repeat center;
+  background-size: 100% auto;
+  right:6rpx;
+  top:6rpx;
+}
+.tag-overflow .arrow.up {
+  transform: rotate(-90deg);
+}
+.tag-overflow .arrow.down {
+  transform: rotate(90deg);
+}
+.row2-tag-box.tagH{
+  height:36rpx;
+}
+.flex-start{
+  align-self:flex-start;
+}
+.flex-end{
+  align-self:flex-end;
+}
+
+/* 会员价 */
+.c-product-col1 .row-vip-price{
+  display:block;
+  font-size:24rpx;
+  line-height:44rpx;
+}
+.c-product-col1 .vip-bg{
+  line-height:24rpx;
+  display:inline-block;
+  border-top-left-radius:4rpx;
+  border-bottom-left-radius:4rpx;
+}
+.c-product-col1 .img-vip{
+  width:24rpx;
+  height:24rpx;
+  border-radius: 4rpx;
+  display:inline-block;
+}
+.c-product-col1 .vip-price {
+  font-size:24rpx;
+  color:#333;
+  background: #FDFBEB;
+  height:24rpx;
+  padding:0 4rpx;
+  border-radius:4rpx;
+}

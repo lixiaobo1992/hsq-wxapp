@@ -1,0 +1,170 @@
+<import src="/components/coupon-toast/index.wxml"/>
+<dwd-page
+  id="dwd-page-shopping-cart"
+  custom-class="page-shopping-cart"
+  content-class="page-shopping-cart-content"
+  isForceAuth="{{ true }}"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+    <view class="shopping-cart {{ shoppingCartList.length ? 'is-footer' : '' }}">
+
+      <view class="header-edit" wx:if="{{ shoppingCartList.length && !isLoading }}">
+        <view class="product-number">共{{ productCount }}件商品</view>
+        <view class="edit-btn" bindtap="onChengeEditStatus">{{ !currentEditStatus ? '编辑' : '完成' }}</view>
+      </view>
+
+      <view class="shopping-cart-content">
+        <view class="effective-product">
+          <view class="merchant-item" wx:for="{{ shoppingCartList }}" wx:for-item="merchantItem" wx:for-index="merchantItemIndex" wx:key="{{ merchantItem.merchant_id }}">
+            <view class="merchant-info">
+              <view class="select-icon {{ allMerchantStauts[merchantItem.merchant_id].isSelect ? 'active' : '' }}" data-merchantid="{{ merchantItem.merchant_id }}" bindtap="merchantAllChooseEvent"></view>
+              <view class="merchant-name" data-id="{{ merchantItem.merchant_id }}" data-type="merchant" bindtap="gotoNext">
+                <view class="merchant-icon"><image src="{{ allMerchantStauts[merchantItem.merchant_id].icon }}" /></view>
+                <text class="merchant-name-text">{{ allMerchantStauts[merchantItem.merchant_id].merchant_name }}</text>
+                <view class="right-arrow"></view>
+              </view>
+              <view class="collar-btm" wx:if="{{ allMerchantStauts[merchantItem.merchant_id].is_coupon }}" data-merchantid="{{ merchantItem.merchant_id }}" bindtap="showCoupon">领券</view>
+            </view>
+
+            <view class="merchant-activity-list">
+              <view class="merchant-activity-item" wx:for="{{ merchantItem.activity_list }}" wx:for-item="activityItem" wx:for-index="activityItemIndex" wx:key="{{ activityItem.activity_id }}">
+                <!-- 活动 -->
+                <view class="merchant-activity-header" wx:if="{{ allActivityStauts[activityItem.activity_id].activity_type != 0 }}" data-url="{{ allActivityStauts[activityItem.activity_id].link }}" data-piwik-event="{{ item.piwikEvent }}" data-piwik-data="{{ item.piwikData }}"  bindtap="onUrlPage">
+                  <view class="activity-tag">{{ allActivityStauts[activityItem.activity_id].activity_tag }}</view>
+                  <view class="ellipsis activity-desc">{{ allActivityStauts[activityItem.activity_id].activity_desc }}</view>
+                  <view class="activity-btn" wx:if="{{ allActivityStauts[activityItem.activity_id].activity_type == 1 && allActivityStauts[activityItem.activity_id].link }}">
+                    <text>{{ allActivityStauts[activityItem.activity_id].link_desc }}</text>
+                    <view class="right-arrow"></view>
+                  </view>
+                </view>
+                <!-- sku list -->
+                <view class="sku-product-list">
+                  <view class="sku-product-item-box" wx:for="{{ activityItem.sku_list }}" wx:for-item="sku_id" wx:for-index="skuItemIndex" wx:key="{{ sku_id }}">
+                    <dwd-swiper-action
+                      id="swiper-action-{{ sku_id }}"
+                      custom-class="sku-product-item-swiper"
+                      right-width="{{ 140 }}"
+                      async-close
+                      bind:close="onClose">
+                      <view class="sku-product-item">
+                        <view class="select-icon {{ allSkuStauts[sku_id].isSelect ? 'active' : '' }}" data-skuid="{{ sku_id }}" data-merchantid="{{ merchantItem.merchant_id }}" bindtap="skuChooseEvent"></view>
+                        <view class="sku-product-item-content">
+                          <view class="sku-activity-header" wx:for="{{ allSkuStauts[sku_id].shop_discount }}" wx:for-item="shopItem" wx:for-index="shopIndex" wx:key="{{ shopIndex }}" data-skuid="{{ sku_id }}" catchtap="onShowPromotion">
+                            <view class="activity-tag">{{ shopItem.title }}</view>
+                            <view class="ellipsis activity-desc">
+                              <block wx:for="{{shopItem.text}}" wx:for-item="textItem" wx:for-index="textIndex" wx:key="{{textIndex}}">
+                                <text>{{ textItem.first}}</text>
+                                <text class="red">{{ textItem.second }}</text>
+                                <text wx:if="{{ textIndex < shopItem.text.length -1  }}">, </text>
+                              </block>
+                            </view>
+                            <view class="right-arrow"></view>
+                          </view>
+                          <view class="sku-product-content">
+                            <view class="sku-img" data-id="{{ sku_id }}" data-type="detail" bindtap="gotoNext">
+                              <image mode="scaleToFill" src="{{ allSkuStauts[sku_id].pic }}" default-source="/img/tip-img/not-img2.png"/>
+                            </view>
+                            <view class="sku-item-content">
+                              <view class="max-line-2 sku-title">
+                                <text class="sku-tag" wx:if="{{allSkuStauts[sku_id].merchant_type == 2}}">自营</text>
+                                {{ allSkuStauts[sku_id].name }}
+                              </view>
+                              <view class="ellipsis sku-attr" data-skuid="{{ sku_id }}"  bindtap="getSkuAttr">
+                                {{ allSkuStauts[sku_id].attrsText }}
+                                <view class="down-arrow"></view>
+                              </view>
+
+                              <view class="sku-price-sum">
+                                  <!-- wx:if="{{allSkuStauts[sku_id].is_member_price}}" -->
+                                <view class="member-price" wx:if="{{allSkuStauts[sku_id].is_member_price}}">
+                                    <image src="https://img1.haoshiqi.net/miniapp/vip-icon_1be7bb7dd2.png" class="member-icon" mode="widthFix" />
+                                    <view class="member-sku-price">¥{{ allSkuStauts[sku_id].priceText }}</view>
+                                </view>
+                                <view class="sku-price" wx:else>¥{{ allSkuStauts[sku_id].priceText }}</view>
+                                <view class="sku-input">
+                                  <dwd-input-number value="{{ allSkuStauts[sku_id].amount }}" max="{{ allSkuStauts[sku_id].max_cart_nums }}" extra="{{allSkuStauts[allSkuStauts[sku_id].sku_id].swiper_action.extra}}"  size="small" bind:onChange="countChangeVal" />
+                                </view>
+                              </view>
+                              <view class="purchase-limit-tip" wx:if="{{ allSkuStauts[sku_id].max_cart_nums < allSkuStauts[sku_id].amount }}">本商品限购{{ allSkuStauts[sku_id].max_cart_nums }}件</view>
+                            </view>
+
+                          </view>
+                        </view>
+                      </view>
+
+                      <view class="dwd-swipe-right" slot="right">
+                        <view class="dwd-swipe-btn"
+                          wx:for="{{allSkuStauts[sku_id].swiper_action.right}}"
+                          wx:for-item="rigthItem"
+                          wx:for-index="rigthItemIndex"
+                          wx:key="{{rigthItemIndex}}"
+                          data-type="{{ rigthItem.type }}"
+                          data-index="{{ rigthItemIndex }}"
+                          data-skuid="{{ sku_id }}"
+                          style="{{rigthItem.bgColor?'background-color:' + rigthItem.bgColor + ';':''}} {{rigthItem.fColor?'color: ' + rigthItem.fColor + ';':''}}"
+                          bindtap="onRightItemClick">{{ rigthItem.text }}</view>
+                      </view>
+
+                    </dwd-swiper-action>
+                  </view>
+
+                </view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+
+        <!-- 购车为空 -->
+        <view class="content-null" wx:if="{{ !shoppingCartList.length && !loseGoodsList.length && !isLoading}}">
+          <image class="null-img" src="https://img1.haoshiqi.net/miniapp/img/cart_null_e2c176bf9e.png" mode="scaleToFill" />
+          <view class="null-title">购物车空空如也！！</view>
+          <view class="null-text">为自己挑点好吃的吧</view>
+          <view class="null-btn" data-url="{{cartJumpUrl}}" bindtap="onUrlPage">去逛逛</view>
+        </view>
+
+        <view class="invalid-product" wx:if="{{ loseGoodsList.length && !isLoading }}">
+          <dwd-cart-lose data="{{ { list: loseGoodsList } }}"></dwd-cart-lose>
+        </view>
+
+      </view>
+
+      <view class="shopping-cart-footer" wx:if="{{ shoppingCartList.length && !isLoading }}">
+        <view class="all-select-box" bindtap="allChooseEvent">
+          <view class="select-icon {{ isAllSelect ? 'active' : '' }}"></view>
+          <text class="select-text">全选</text>
+        </view>
+        <view class="total-price" wx:if="{{ !currentEditStatus }}">
+          合计 <text class="price-text">¥{{totalPriceText}}</text>
+        </view>
+        <view class="footer-btn" bindtap="footerBtnEvent">
+          {{ !currentEditStatus ? '去结算(' + selectCount + ')' : '删除'  }}
+        </view>
+      </view>
+    </view>
+
+  <!-- sku -->
+  <dwd-sku-select
+    isPopupShow="{{ isShowPopup }}"
+    normSelectTag="{{ normSelectTag }}"
+    skuBtnStatus="{{ skuBtnStatus }}"
+    attrList="{{ attrList }}"
+    skuStocksList="{{ skuStocksList }}"
+
+    smallCurrentSkuData="{{ smallCurrentSkuData }}"
+
+    maxBuySum="{{ maxBuySum }}"
+    currentSum="{{ currentSum }}"
+    bind:onSetParentData="setCurrentData"
+    bind:onBtnClick="onBtnClick"
+  />
+  <!--促销说明弹层 -->
+  <card-promotion promotions="{{promotions}}" type="shopCard" bind:handlepromotion="handlePromotion" wx:if="{{onShowPromotionInfo}}"> </card-promotion>
+  <!--领券列表弹层-->
+  <view class="popup-outbox" hidden="{{ !showCoupons }}">
+      <coupon-list coupons="{{coupons}}" bind:onClose="onHandleItem" bind:getCoupon="getCoupon"></coupon-list>
+  </view>
+
+  <template is="coupon-toast" wx:if="{{sucToast}}"></template>
+</dwd-page>

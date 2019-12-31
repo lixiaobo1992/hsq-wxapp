@@ -1,0 +1,156 @@
+/* pages/lottery-detail-share/lottery-detail-share.wxss */
+@import '/components/lottery-list/index.wxss';
+@import '../../../components/separator/separator.wxss';
+
+scroll-view {
+  height: 100%;
+}
+
+.top-banner {
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 16rpx;
+}
+
+.top-banner image {
+  float: left;
+  padding: 21rpx 24rpx 21rpx 44rpx;
+  width: 230rpx;
+  height: 138rpx;
+}
+
+.top-banner text {
+  float: left;
+  font-size: 32rpx;
+  font-family: "PingFangSC-Regular";
+  color: #212121;
+  padding-top: 49rpx;
+}
+
+.lottery-content {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.info {
+  overflow: hidden;
+}
+
+.info view {
+  box-sizing: content-box;
+}
+
+.goods-icon {
+  float: left;
+  width: 188rpx;
+  height: 188rpx;
+  padding: 16rpx 20rpx 16rpx 16rpx;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  float: left;
+  width: 465rpx;
+  height: 188rpx;
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.goods-title {
+  font-family: "PingFangSC-Medium";
+  font-size: 28rpx;
+  color: #252525;
+  line-height: 36rpx;
+}
+
+.price {
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: rgb(237, 0, 0);
+}
+
+.price text {
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #aeaeae;
+  text-decoration: line-through;
+}
+
+.p-num {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.p-num text {
+  color: rgb(237, 0, 0);
+}
+
+.lottery-win-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 176rpx;
+  height: 144rpx;
+  padding: 0;
+  float: none;
+}
+
+/*用户列表  */
+
+.users-avatar {
+  overflow: hidden;
+  padding: 0 16rpx 14rpx;
+}
+
+.users-avatar image, .users-avatar view {
+  float: left;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 0 20rpx 20rpx 0;
+}
+
+.users-avatar image {
+  background-color: #aeaeae;
+}
+
+.more {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #212121;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+/*更多抽奖团  */
+
+.more-lottery {
+  padding-bottom: 98rpx;
+}
+
+.more-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #212121;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.more-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 98rpx;
+  background: rgb(237, 0, 0);
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 98rpx;
+}

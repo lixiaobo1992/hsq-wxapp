@@ -1,0 +1,135 @@
+.popup-mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 100;
+}
+.popup-container{
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  width: 90%;
+  transform: translateY(-50%);
+  z-index: 101;
+}
+.zl-tip{
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450rpx;
+  height: 70rpx;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+}
+.zl-user-icon{
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-right: 10rpx;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  border: 2rpx solid #FFFFFF;
+}
+.zl-user-icon image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.zl-tip-text{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  background: url(https://img1.haoshiqi.net/miniapp/bubbles_5b0e1d21e0.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 0;
+  display: flex;
+          align-items: center;
+  padding-left: 40rpx;
+  font-size: 32rpx;
+  color: #333333;
+  white-space: nowrap;
+}
+.popup-container .bg-img{
+    width: 100%;
+}
+.popup-container .popup-content{
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    width: 70%;
+    height: 50%;
+}
+.popup-title{
+  color: #333333;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 23rpx;
+}
+.popup-title text{
+    color: #FF3700;
+}
+.popup-coupon{
+  position: relative;
+  margin-bottom: 37rpx;
+}
+.popup-coupon .popup-coupon-bg{
+    width: 100%;
+}
+.popup-coupon .coupon-title{
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #935303;
+    position: absolute;
+    top: 35rpx;
+    left: 45rpx;
+}
+.popup-coupon .coupon-text{
+    font-size: 26rpx;
+    color: #ff3700;
+    position: absolute;
+    left: 45rpx;
+    top: 94rpx;
+}
+.popup-coupon .coupon-text:last-child {
+      top: 133rpx;
+}
+.popup-coupon .coupon-text.color-black{
+      color: #333;
+}
+.popup-coupon .coupon-text.font-weight{
+      font-weight: bold;
+}
+.get-button{
+  position: relative;
+  width: 100%;
+  height: 78rpx;
+  line-height: 78rpx;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  background: #FE9923;
+}
+
+.popup-close-btn{
+  margin: 30rpx auto 0;
+  width: 60rpx;
+  height: 60rpx;
+  background: #333333;
+  border-radius: 50%;
+}
+.popup-close-btn image{
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "确认订单",
+  "usingComponents": {
+    "dwd-input-number": "../../components/input-number/index",
+    "merge-pay-modal": "../../components/merge-pay-modal/index",
+    "member-modal": "../../components/member-modal/index"
+  }
+}

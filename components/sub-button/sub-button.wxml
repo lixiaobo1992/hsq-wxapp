@@ -1,0 +1,11 @@
+<!--components/sub-button/sub-button.wxml-->
+<template name="sub-button">
+  <view class="sub-button">
+    <view class="item" wx:for="{{list}}">
+      <view class='w-image'>
+          <image class="image" src="{{item.icon}}" mode="scaleToFill"></image>
+      </view>
+      <view class="text"><text>{{item.label}}</text></view>
+    </view>
+  </view>
+</template>

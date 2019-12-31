@@ -1,0 +1,54 @@
+<import src="../../components/card/index.wxml" />
+<import src="../../components/foot/foot.wxml" />
+<import src="../../wxparse/wxParse.wxml" />
+
+<dwd-page
+  id="dwd-page-zt2"
+  custom-class="page-zt2"
+  content-class="page-zt2-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <scroll-view
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="{{lowerThreshold}}"
+    style="height:100%"
+    >
+    <!-- <view class="view-image" wx:if="{{banner.image}}">
+      <image class="image" src="{{banner.image}}" data-url="{{banner.url}}" bindtap="onUrlPage" mode="scaleToFill" />
+    </view> -->
+    <template is="wxParse" data="{{wxParseData:banner.nodes}}"/>
+    <view wx:if="{{list && list.length}}">
+      <!-- 使用注意事项， card 不实现背景，自己外层盒子实现 -->
+      <view class="product-{{listMode}}">
+        <block wx:for="{{list}}" wx:key="{{item.id}}">
+          <template is="card" data="{{...item}}" />
+        </block>
+      </view>
+    </view>
+
+    <!-- 底部提示数据 -->
+    <view wx:if="{{showFooter}}">
+      <template is="foot"></template>
+    </view>
+
+    <!-- 优惠券弹框 -->
+    <view wx:if="{{showCoupon}}" class="coupon-bg" bindtap="closeCoupon">
+      <view class="coupon-box" catchtap="stopProp">
+        <view class="coupon-title">领取成功！</view>
+        <view class="coupon-list" wx:for="{{couponList}}" wx:key="{{index}}" bindtap="goCoupon">
+          <view class="coupon-price">
+            <text wx:if="{{item.isNum}}">¥</text>{{item.value}}
+          </view>
+          <view class="coupon-detail">
+            <view class="ellipsis coupon-name">{{item.sub_title}}</view>
+            <view class="ellipsis coupon-date">{{item.start_at + '-' + item.end_at}}</view>
+          </view>
+        </view>
+        <view class="coupon-more" wx:if="{{couponHasMore}}" bindtap="goCoupon"><text>查看更多</text></view>
+        <view class="coupon-close" bindtap="closeCoupon"></view>
+      </view>
+    </view>
+  </scroll-view>
+</dwd-page>

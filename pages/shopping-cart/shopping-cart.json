@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "购物车",
+  "usingComponents": {
+    "dwd-swiper-action": "../../components/swipe-action/index",
+    "dwd-input-number": "../../components/input-number/index",
+    "dwd-cart-lose": "../../components/cart-product-lose/index",
+    "dwd-sku-select": "../../components/sku-select/index",
+    "coupon-list": "../../components/coupon-list/index",
+    "card-promotion": "../../components/card-promotion/index"
+  }
+}

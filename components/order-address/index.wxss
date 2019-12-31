@@ -1,0 +1,37 @@
+.icon-addr,.info-addr {
+  color: #959595;
+}
+.address-box {
+    padding: 20rpx;
+    background: url("https://img1.haoshiqi.net/wxapp/img/order-confirm/ic_address_line_c8aa1248e0.png") repeat-x left bottom;
+    background-size: auto 1px;
+    background-color: #FFFFFF;
+}
+.layout-address {
+    padding: 0rpx 35rpx;
+    background: url("https://img1.haoshiqi.net/wxapp/img/order-confirm/ic_order_location_834d556d36.png") no-repeat left center, url("https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png") no-repeat right center;
+    background-size: 25rpx auto, 35rpx auto;
+}
+.address-info{
+  background-position: left 80rpx,right center;
+}
+.info-user {
+    display: flex;
+    flex: 1;
+    font-size: 32rpx;
+    padding-right: 10rpx;
+}
+.info-user-name {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+}
+.info-user-mobile {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+.info-addr {
+    padding-top: 20rpx;
+    padding-right: 10rpx;
+}

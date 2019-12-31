@@ -1,0 +1,13 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "popup-exchange-success": "./components/popup-exchange-success/popup-exchange-success",
+    "popup-fail": "./components/popup-fail/popup-fail",
+    "popup-get-success": "./components/popup-get-success/popup-get-success",
+    "popup-start": "./components/popup-start/popup-start",
+    "popup-success": "./components/popup-success/popup-success",
+    "popup-rules": "./components/popup-rules/popup-rules",
+    "popup-new-user": "./components/popup-new-user/popup-new-user",
+    "dwd-modules": "../../components/modules/index/index"
+  }
+}

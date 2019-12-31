@@ -1,0 +1,9 @@
+<view class='address-item' wx:for="{{addresses}}" wx:key="id" bindtap='onSelecting' data-city="{{item}}" data-index="{{ index }}">
+
+  <view class='address-item-left'>
+    <image wx:if="{{item.currentAddress == currentCity.currentAddress}}" class="address-icon" src="https://img1.haoshiqi.net/miniapp/location_selected_8b4131351a.png" mode="scaleToFill" />
+    <image wx:else class="address-icon" src="https://img1.haoshiqi.net/miniapp/location@3x_a034410ec3.png" mode="scaleToFill" />
+    <label class='label-address selected'>{{item.currentAddress}}</label>
+  </view>
+
+</view>

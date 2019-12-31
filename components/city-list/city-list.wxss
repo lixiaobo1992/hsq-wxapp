@@ -1,0 +1,49 @@
+/* components/zone-list.wxss */
+.city-list {
+  padding: 0 25rpx;
+}
+
+.select-header {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #333333;
+  margin-bottom: 16rpx; 
+}
+.select-title {
+  margin: 0 25rpx;
+  font-family: PingFangSC-Regular;
+}
+.no-data {
+  margin: 0 25rpx;
+  font-family: PingFangSC-Medium;
+  border-bottom: 4rpx #FB0737 solid;
+}
+.zone-item {
+  padding: 0rpx;
+  position: relative;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  background-color: #fff;
+}
+
+.zone-label {
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 25rpx;
+}
+
+.zone-arrow {
+  float: right;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+  margin-top: 14rpx;
+}
+.select-icon {
+  position: absolute;
+  width: 26rpx;
+  height: 18rpx;
+  top: 23rpx;
+  left: -6rpx;
+}

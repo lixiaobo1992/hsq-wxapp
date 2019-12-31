@@ -1,0 +1,60 @@
+
+<dwd-page
+  id="dwd-page-refund-detail"
+  custom-class="page-refund-detail"
+  content-class="page-refund-detail-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <view class="refund-detail">
+    <view class="refund-banner">
+      <view class="banner-title">{{title}}</view>
+      {{content}}
+    </view>
+
+    <view class="audit-list" wx:if="{{auditList}}" wx:for="{{auditList}}" wx:key="{{index}}">
+      <view class="refund-title">
+        <image class="img" src="{{item.type == 1 ? 'https://img1.haoshiqi.net/wxapp/img/seller_816481ce34.png' : item.type == 2 ? 'https://img1.haoshiqi.net/wxapp/img/user_service_5c54fac867.png' : userInfo.avatar}}" mode="{{scale}}" />
+        <text class="name">{{item.type == 1 ? '卖家' : item.type == 2 ? '好食期' : '我'}}</text>
+        <text class="time">{{item.auditTime}}</text>
+      </view>
+      <view class="audit-content">
+        <view>
+          <text>{{item.statusDesc}}</text>
+        </view>
+        <view wx:if="{{item.status === 2}}">
+          <text>退款金额：<text>¥{{item.amount/100}}</text></text>
+        </view>
+        <view wx:if="{{item.note}}">
+          <text>说明：<text>{{item.note}}</text></text>
+        </view>
+      </view>
+    </view>
+    <view class="refund-info">
+      <view class="refund-title">
+        <image class="img" src="{{userInfo.avatar}}" mode="{{scale}}" />
+        <text class="name">我</text>
+        <text class="time">{{applyTime}}</text>
+      </view>
+      <view class="refund-content">
+        <view class="refund-reason">
+          <text>退款原因：<text>{{reason}}</text></text>
+        </view>
+        <view class="refund-style">
+          <text>处理方式：<text>{{method}}</text></text>
+        </view>
+        <view class="refund-style">
+          <text>退款金额：<text>{{amountDesc}}</text></text>
+        </view>
+        <view class="refund-explain">
+          <text>退款说明：<text>{{note}}</text></text>
+        </view>
+        <view class="explain" wx:if="{{refundImg}}">
+          <image class="explain-img" data-index="{{index}}" wx:for="{{refundImg}}" wx:key="{{index}}" src="{{item}}" mode="{{scale}}"  bindtap="previewImage"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="complain" wx:if="{{canComplaint}}">
+    <view class="complain-btn" data-refundid="{{refundOrderId}}" bindtap="getCanComplaint">申请平台介入</view>
+  </view>
+</dwd-page>

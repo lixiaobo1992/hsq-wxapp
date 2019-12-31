@@ -1,0 +1,22 @@
+<view class="cm-list">
+  <view class="cm-list-items">
+    <view
+      wx:for="{{ listData.data }}"
+      wx:key="{{ item.type }}"
+      class="cm-list-item cm-list-item-{{item.align || 'middle'}}"
+      hover-class="cm-list-item-hover"
+      bindtap="{{listData.onItemTap}}"
+      data-index="{{index}}"
+      data-type="{{item.type}}"
+    >
+      <view class="cm-list-item-line {{item.textMode ? 'cm-list-item-line-' + item.textMode : ''}}">
+        <image lazyLoad wx:if="{{item.thumb}}" class="cm-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
+        <text class="cm-list-item-content {{ item.badge ? 'initial' : '' }}">{{item.title}}</text>
+        <view wx:if="{{item.badge}}" class="badge"><text>{{ item.badge }}</text></view>
+        <view wx:if="{{item.extra}}" class="cm-list-item-extra" >{{item.extra}}</view>
+        <view wx:if="{{item.arrow}}" class="cm-list-arrow cm-list-arrow-{{item.arrow}}" />
+        <view class="cm-list-item-bottom" />
+      </view>
+    </view>
+  </view>
+</view>

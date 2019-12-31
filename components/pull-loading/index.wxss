@@ -1,0 +1,13 @@
+/* components/pullLoading/pullLoading.wxss */
+.list-loading{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.list-loading image{
+  width: 40rpx;
+  height: 40rpx;
+}

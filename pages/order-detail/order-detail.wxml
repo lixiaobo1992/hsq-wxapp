@@ -1,0 +1,124 @@
+<import src="/components/card/index.wxml" />
+<import src="/components/count-down/count-down.wxml"/>
+
+<dwd-page
+  id="dwd-page-commit2"
+  custom-class="page-commit2"
+  content-class="page-commit2-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+  <view class="order-page {{showFooterIndex ? '' : 'order-page-pb'}}">
+    <!-- 公告 -->
+    <view class="scroll_view_border" wx:if="{{msgStatus}}">
+      <view class="msg-img-box">
+        <image class="msg-img" src="https://img1.haoshiqi.net/miniapp/horn_9d0f9ebd2c.png" mode="aspectFit" />
+      </view>
+      <view class="msg-content-box">
+        <view class="srcoll_view">{{msgContent.content || ''}}</view>
+      </view>
+    </view>
+    <view class="banner">
+      <image src="{{statusDesc.statusLogo}}" alt="" model="scaleToFill" class="logo" />
+      <view class="state-box">
+        <view class="state">{{statusDesc.statusText}}</view>
+        <view wx:if="{{orderStatus.canPay}}" class="countdown">{{countDownInfo}}</view>
+      </view>
+    </view>
+
+    <view class="user-info-box">
+      <view class="user-name-phone {{ orderType === 16 ? 'phone-cost' : ''}}">
+        <view class="user-name">{{userDesc.name}}</view>
+        <view class="user-phone">{{userDesc.phone}}</view>
+      </view>
+      <view class="user-address">{{userDesc.address}}</view>
+    </view>
+
+    <view class="main-content">
+      <view class="prod-box">
+        <view class="prod-mc" data-url="{{merchantSchema}}" bindtap="onUrlPage">
+          <image class="prod-mc-logo" src="https://img1.haoshiqi.net/miniapp/img/merchant_icon_25a2d95ce6.png" mode="aspectFit" />
+          <view class="prod-mc-name">{{merchantName}}</view>
+        </view>
+        <view class="prod-item" wx:for="{{productDesc}}" wx:key="{{index}}" data-url="{{item.schema}}" bindtap="onUrlPage">
+          <image class="prod-item-img" src="{{item.imgUrl}}" mode="aspectFit" />
+          <view class="prod-item-right">
+            <view class="prod-item-name max-line-2">{{item.skuName}}</view>
+            <view class="prod-item-info">
+              <text class="price">￥{{item.price}}</text>
+              <text class="num">x{{item.amount}}</text>
+            </view>
+            <view class="prod-item-attrs" wx:for="{{item.attrs}}" wx:for-index="idx" wx:for-item="attr" wx:key="{{idx}}">{{attr}}</view>
+            <view class="prod-item-btns">
+              <view class="prod-btn" data-orderid="{{item.orderId}}" data-orderstatus="{{item.status}}" data-suborderid="{{item.subOrderId}}" wx:if="{{item.canRefund}}" catchtap="goRefund">申请退款</view>
+              <view class="prod-btn prod-btn-red" data-suborderid="{{item.subOrderId}}" data-orderstatus="{{item.status}}" data-refundid="{{item.refundId}}" wx:if="{{item.refundId > 0}}" catchtap="goRefundDetail">{{item.refundStatus}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="msg-box">
+        <view class="msg-title">买家留言：</view>
+        <view class="msg-content">{{userMsg}}</view>
+      </view>
+      <view class="amount-box">
+        <view class="amount-item" wx:for="{{priceDesc}}" wx:key="{{index}}">{{item.name}}<text>{{item.icon + item.value}}</text></view>
+        <view class="amount-item amount-real">实付款<text>￥{{needPayPrice}}</text></view>
+      </view>
+    </view>
+
+    <view class="main-content">
+      <view class="order-msg">
+        <view class="order-num">
+          订单号：{{orderDesc.id}}
+          <view class="order-num-copy" bindtap="handleCopy">复制</view>
+        </view>
+        <view class="order-time" wx:for="{{stepList}}" wx:key="{{index}}">{{item}}</view>
+      </view>
+      <view class="mc-btns">
+        <view class="mc-btn">
+          <view class="mc-btn-txt mc-btn-l" bindtap="makePhoneCall">联系卖家</view>
+        </view>
+        <view class="mc-btn">
+          <view class="mc-btn-txt mc-btn-r" bindtap="goService">在线客服</view>
+        </view>
+      </view>
+    </view>
+
+    <block wx:if="{{showFooterIndex == 1}}">
+      <view class="save-money" wx:if="{{statusCode == 1 && savePrice}}">付款后即节省￥{{savePrice}}</view>
+      <view class="order-footer" wx:if="{{orderStatus.hasBottom}}">
+        <view class="btn-normal btn-red" wx:if="{{orderStatus.canConfirm}}" bindtap="confirmReceipt">确认收货</view>
+        <view class="btn-normal btn-red" wx:if="{{orderStatus.canPay}}" data-orderid="{{orderDesc.id}}" bindtap="checkOrder">付款</view>
+        <view class="btn-normal" wx:if="{{orderStatus.canCancel}}" bindtap="cancelOrder">取消订单</view>
+        <view class="btn-normal" wx:if="{{orderStatus.canRefund}}" data-orderid="{{orderDesc.id}}" data-refundprice="{{needPayPrice}}" bindtap="goRefund">申请退款</view>
+        <view class="btn-normal btn-red" wx:if="{{orderStatus.refundId}}" data-orderid="{{orderDesc.id}}" data-refundid="{{orderStatus.refundId}}" bindtap="goRefundDetail">退款详情</view>
+        <view class="btn-normal" wx:if="{{orderStatus.canViewDelivery}}" bindtap="goDelivery">查看物流</view>
+      </view>
+    </block>
+    <block wx:elif="{{showFooterIndex == 2}}">
+      <view class="view-share" wx:if="{{pinStatusDesc}}">
+        <block wx:if="{{coupleStatus == 1}}">
+          <button class="btn-share" open-type="share">{{pinStatusDesc}}</button>
+        </block>
+        <block wx:else>
+          <button class="btn-share" bindtap="onLotterList">{{pinStatusDesc}}</button>
+        </block>
+      </view>
+    </block>
+    <!--支付拦截弹窗-->
+    <merge-pay-modal
+      bind:handlePayModal="handlePayModal"
+      bind:checkOrder="checkOrder"
+      mergeInfo = "{{mergeInfo}}"
+      isMergePay ="{{isMergePay}}"
+  ></merge-pay-modal>
+    <!--重开会员弹窗-->
+    <block wx:if="{{isMemberModal}}">
+      <view class="order-mask"  bindtap="handleMemberModal"> </view>
+      <view class="member-mask" >
+        <view class="mask-con">{{errMsg}}</view>
+        <view class="btn-know" catchtap="handleMemberModal">我知道了</view>
+      </view>
+    </block>
+  </view>
+</dwd-page>

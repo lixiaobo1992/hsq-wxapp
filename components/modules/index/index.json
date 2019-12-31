@@ -1,0 +1,15 @@
+{
+  "component": true,
+  "usingComponents": {
+    "dwd-img": "../c-img/index",
+    "dwd-img-hor": "../c-img-hor/index",
+    "dwd-swiper": "../c-swiper/index",
+    "dwd-category": "../c-category/index",
+    "dwd-tofu": "../c-tofu/index",
+    "dwd-product-col1": "../c-product-col1/index",
+    "dwd-product-col2": "../c-product-col2/index",
+    "dwd-product-col3": "../c-product-col3/index",
+    "dwd-product-slider": "../c-product-slider/index",
+    "dwd-product-seckill": "../c-product-seckill/index"
+  }
+}

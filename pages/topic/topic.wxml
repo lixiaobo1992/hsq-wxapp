@@ -1,0 +1,1 @@
+<web-view class='view-box' src="{{url}}" bindmessage="getMsg"></web-view>

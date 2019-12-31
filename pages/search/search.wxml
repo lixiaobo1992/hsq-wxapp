@@ -1,0 +1,101 @@
+<!--pages/search/search.wxml-->
+
+<view class="page">
+  <!-- 搜索框 -->
+  <view class="search">
+    <view class="view-input">
+      <image class="icon-search" src="https://img1.haoshiqi.net/miniapp/icon_search_1550e1f918.png" mode="aspectFit"></image>
+      <input
+      class="input"
+      value="{{inputValue}}"
+      placeholder="{{placeholder}}"
+      placeholder-style="color: rgb(153, 153, 153); font-size: 28rpx; align-content: center;"
+      bindinput="onInputValue"
+      bindconfirm="{{hotSearch.url && !inputValue ? 'onUrlPage' : 'onInputSearch'}}"
+      confirm-type="search"
+      focus="{{focus}}"
+      data-id="{{couponId}}"
+      data-url="{{hotSearch.url}}"
+      data-hotsearch="{{hotSearch}}"
+      >
+      </input>
+      <view class="clear-icon" wx:if="{{inputValue.length > 1}}" bindtap="clearInput">
+        <image
+          class="icon-delete"
+          src="../../img/delete.png"
+          mode="aspectFit"></image>
+      </view>
+    </view>
+    <view
+      class="btn-search"
+      bindtap="goBack"
+      data-id="{{couponId}}"
+      data-url="{{hotSearch.url}}"
+      data-hotsearch="{{hotSearch}}"
+      >取消</view>
+  </view>
+  <!-- 搜索建议 -->
+  <view class="search-suggest" wx:if="{{searchList.length}}">
+    <view
+      class="search-suggest-item"
+      wx:for="{{searchList}}"
+      wx:key="{{index}}"
+      bindtap="{{item.link ? 'onUrlPage' : 'onHotSearch'}}"
+      data-value="{{item.keywords}}"
+      data-url="{{item.link}}"
+      data-index ="{{ index }}"
+      >
+      <view class="search-suggest-keywords">
+        <rich-text nodes="{{item.highlight.keywords}}"></rich-text>
+      </view>
+      <view class="search-suggest-num">
+        <rich-text nodes="{{item.highlight.item_num}}"></rich-text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else>
+    <!-- 热门搜索 -->
+    <view class="hotSearch" wx:if="{{hotSearchList.length}}">
+      <view class='section'>
+        <text>热门搜索</text>
+      </view>
+      <view class="row">
+        <view
+          class="item {{item.url ? 'url' : ''}}"
+          wx:for="{{hotSearchList}}"
+          wx:key="{{item}}"
+          bindtap="{{item.url ? 'onUrlPage' : 'onHotSearch'}}"
+          data-value="{{item.value}}"
+          data-url="{{item.url}}"
+          data-index= "{{index}}"
+          >{{item.value}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 最近搜索 -->
+    <view class="history">
+      <view class="section">
+        <text>最近搜过</text>
+        <view class="garbage" wx:if="{{historyList && historyList.length}}" bindtap="onGarbage" data-ispinsku="{{isPinSku}}">
+          <image src="https://img1.haoshiqi.net/miniapp/img/icon_garbage_af9fc75f34.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="row">
+        <view
+        class="item"
+        wx:for="{{historyList}}"
+        wx:key="{{item}}"
+        bindtap="onClickHistory"
+        data-id="{{couponId}}"
+        data-value="{{item}}"
+        data-ispinsku="{{isPinSku}}"
+        >{{item}}
+        </view>
+      </view>
+
+      <view class="tip" wx:if="{{!historyList.length}}">暂无搜索记录</view>
+    </view>
+  </view>
+</view>

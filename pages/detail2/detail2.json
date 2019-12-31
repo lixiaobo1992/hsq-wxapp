@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "select-city": "../../components/select-city/select-city",
+    "dwd-sku-select": "../../components/sku-select/index",
+    "coupon-list": "../../components/coupon-list/index",
+    "card-promotion": "../../components/card-promotion/index",
+    "member-modal": "../../components/member-modal/index"
+  }
+}

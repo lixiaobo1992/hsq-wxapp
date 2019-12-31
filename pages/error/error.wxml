@@ -1,0 +1,5 @@
+<import src="/components/error-view/index.wxml" />
+
+<view class="page-err">
+  <template is="ErrorView" data="{{...errorData}}" />
+</view>

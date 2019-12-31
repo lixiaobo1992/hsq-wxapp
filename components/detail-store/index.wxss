@@ -1,0 +1,60 @@
+.store-box{
+  width: 100%;
+  margin-top: 10rpx;
+  display: flex;
+}
+.store-box .store-info{
+  flex: 1;
+  color: #333;
+  height: auto;
+}
+.store-box .store-info .store-img{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 15rpx;
+  float: left;
+  margin-top: 8rpx;
+}
+.store-box .store-info .store-text{
+  float: left;
+  font-size: 24rpx;
+}
+.store-box .store-info .store-text .store-title{
+  margin-top: 5px;
+  font-size: 24rpx;
+}
+.store-box .store-info .store-text .store-site{
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  color: #959595;
+}
+.store-box .store-info .store-text .store-site .prov-text{
+  margin-right: 10rpx;
+}
+.store-box .store-icon{
+  margin-top: 25rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.store-box .store-icon .store-more{
+  width: 30rpx;
+  height: 30rpx;
+}
+.store-public{
+  width: 100%;
+  color: #959595;
+  display: flex;
+}
+.public-title{
+  width: 130rpx;
+  margin-top: 15rpx;
+}
+.public-text{
+  flex:1;
+  color: #333;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 15rpx;
+  height: 34rpx;
+}

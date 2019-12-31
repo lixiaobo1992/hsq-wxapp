@@ -1,0 +1,387 @@
+@import '/components/card/index.wxss';
+@import '/components/foot/foot.wxss';
+@import '/components/pull-loading/index.wxss';
+
+page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgb(250, 250, 248);
+}
+
+.page-profile{
+  height: 100%;
+}
+.page-profile-content{
+  z-index: 1;
+}
+
+
+scroll-view {
+  height: 100%;
+}
+
+/* user info */
+.user-card{
+  box-sizing: border-box;
+  border-bottom: 1px solid #e2e2e2;
+  background-image:url('https://img1.haoshiqi.net/miniapp/profile/profile-bg_60b7d0ec91.png');
+  background-repeat: repeat-y;
+  background-size: 100%;
+  background-position: top center;
+  width:100%;
+}
+.user-card .header-bg{
+  width:100%;
+  height:100%;
+  position:absolute;
+
+}
+.user-card .view-user{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 30rpx;
+  padding-top: 40rpx;
+  margin-left: 37rpx;
+}
+.member-card{
+  width:702rpx;
+  height:100%;
+  margin:0 auto;
+  background-image: url('https://img1.haoshiqi.net/miniapp/profile/vip-bg-all_ce3474946a.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+  border-radius: 24rpx 24rpx 0 0;
+}
+.user-card .member-main{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:28rpx;
+}
+.member-main .left-text{
+  width:538rpx;
+}
+.user-card .text-img {
+  width:122rpx;
+  height:32rpx;
+  margin-left:28rpx;
+  margin-right:16rpx;
+}
+.user-card .save-text {
+  font-size:26rpx;
+  color:#fff;
+  position:relative;
+  width:270rpx;
+  height:32rpx;
+  margin-left:14rpx;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}
+.user-card .save-text:before {
+  content: '';
+  position:absolute;
+  height:44rpx;
+  width:1px;
+  background:#fff8e5;
+  left:-16rpx;
+  top:0;
+  opacity:.2;
+}
+.user-card .btn-check{
+  width:150rpx;
+  height:44rpx;
+  background-image: linear-gradient(104deg, #FFECD1 16%, #E4D4A0 71%);
+  border-radius: 26rpx;
+  line-height:44rpx;
+  font-size:24rpx;
+  color:#333;
+  text-align:center;
+  margin-right:24rpx;
+}
+.user-card .benefits-item {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  margin:36rpx auto 6rpx;
+}
+.benefits-item .item {
+  width:33.3%;
+  text-align:center;
+}
+.benefits-item .item-img {
+  width:84rpx;
+  height:84rpx;
+  border-radius:50%;
+}
+.benefits-item .benefits-text {
+  display:block;
+  color: #E9D9AA;
+  text-align:center;
+  font-size:11px;
+  transform:scale(0.92);
+  padding-top:6px;
+}
+.view-user .avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  display:inline-block;
+  flex-shrink: 0;
+  position:relative;
+}
+
+.avatar .avatar-img{
+  width: 100%;
+  height: 100%;
+  border-radius:50%;
+  border: 4rpx solid #E9D9AA;
+
+}
+
+.view-user .view-info {
+  padding: 30rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view-info .name{
+  font-weight: 700;
+  font-size: 34rpx;
+  color: #fff;
+}
+
+.view-info .user-id{
+  color: #fff;
+  font-size: 26rpx;
+}
+
+
+.logo-img{
+  width: 112rpx;
+  height: 112rpx;
+}
+.logo-img image{
+  width: 100%;
+  height: 100%;
+  border-radius:50%;
+}
+.logo-btn{
+  flex: 1;
+}
+.auth-btn{
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: inline;
+}
+.auth-btn::after{
+  display: none;
+}
+
+.logo-btn .auth-btn{
+  font-size: 34rpx;
+  color: #fff;
+  font-weight: bold;
+  margin-left: 20rpx;
+  line-height: 1;
+  padding: 10rpx 0;
+}
+
+/* end */
+
+.view-section {
+  margin-bottom: 20rpx;
+}
+
+.sell-box{
+  background-color: #fff;
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 80rpx;
+}
+
+/* 我的订单   */
+
+.cell-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(226, 226, 226);
+  padding: 0 30rpx;
+}
+
+.cell-header .title {
+  color: #212121;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.view-sub {
+  display: flex;
+  align-items: center;
+}
+
+.more{
+  margin-left: 10rpx;
+  width: 14rpx;
+  height: 24rpx;
+}
+
+.view-list {
+  display: flex;
+  align-items: center;
+}
+
+.view-wrap {
+  flex-wrap: wrap;
+}
+
+.view-item {
+  width: 25%;
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* .change-width {
+  width: 25%;
+} */
+
+.item-mark {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 10rpx;
+  margin-bottom: 6rpx;
+  position: relative;
+}
+
+.item-mark .img {
+  width: 100%;
+  height: 100%;
+}
+
+.item-mark .mark {
+  position: absolute;
+  background-color: #ed0000;
+  border-radius: 200rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0 10rpx;
+  color: #fff;
+  font-size: 24rpx;
+  min-width:34rpx;
+  text-align: center;
+  right: -20rpx;
+  top: 10rpx;
+}
+
+/* end */
+
+/* 精选推荐 */
+.header-img {
+  width: 100%;
+  height: 88rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.header-img .img {
+  width: 165rpx;
+  height: 36rpx;
+}
+
+
+.bind-phone-tip{
+  background-color: #fff;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+.bind-phone-tip image{
+  width: 36rpx;
+}
+.bind-phone-tip .tip-text{
+  color: #212121;
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
+.bind-phone-tip .tip-text .auth-btn{
+  font-size: 24rpx;
+  color: #3FA1EC;
+  line-height: 1;
+  text-decoration: underline;
+}
+
+.save-money{
+  width: 100%;
+  padding: 0 30rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+.save-money image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+.save-text{
+  color: #666;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+}
+.save-text text{
+  font-family: PingFangSC-Medium;
+  color: #EFB40A;
+}
+.touchBox{
+  background: #f5f5f5;
+  z-index:100;
+  position: relative;
+}
+@keyframes ball {
+  0%{
+    transform:translate3d(0, 4px, 0)
+  }
+  100%{
+    transform:translate3d(0, -82px, 0)
+  }
+}
+.view-bg-header{
+  height:20rpx;
+  width:100%;
+  background: #f5f6f5;
+  display:block;
+}
+
+.cap-icon {
+  position:absolute;
+  width:25px;
+  height:21px;
+  top:0;
+  left:-8px;
+  background-image: url('https://img1.haoshiqi.net/miniapp/profile/member-cap_75104b3a64.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+  z-index:99;
+  transform: rotate(-20deg);
+}
+/* end */

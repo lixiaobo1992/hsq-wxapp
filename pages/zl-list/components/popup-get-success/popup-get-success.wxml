@@ -1,0 +1,49 @@
+<view class="component-popup">
+  <view class="popup-mask"></view>
+  <view class="popup-container">
+    <image src="https://img1.haoshiqi.net/miniapp/successful-bg_b5ff89dbd1.png" mode="widthFix" class="bg-img"></image>
+    <view class="popup-content get-success">
+      <view class="popup-title">
+        继续邀好友助力，达<text>10000米</text>即成功
+      </view>
+      <view class="process-block">
+        <view class="express-block" style="right: {{ 100-startHasBoostPercent+'%' }};">
+          <view class="express-tip">
+            已前进{{ startHasBoostPercent * 100 }}米
+          </view>
+          <view class="express-icon">
+            <image src="https://img1.haoshiqi.net/miniapp/kuaidiyuan_37a3367f27.png" mode="widthFix"></image>
+          </view>
+        </view>
+        <view class="process-strip">
+          <view class="process-strip-bg">
+            <image src="https://img1.haoshiqi.net/miniapp/no_pic_6168b437ed.png"></image>
+          </view>
+          <view class="process-strip-bg active-bg" style="left: {{ startHasBoostPercent-100 + '%' }}">
+            <image src="https://img1.haoshiqi.net/miniapp/all_pic_f47a4b32d0.png"></image>
+          </view>
+        </view>
+        <view class="process-tip">
+          <view class="tip-left">
+            已打包
+          </view>
+          <view class="tip-right">
+            发货寄回家
+          </view>
+        </view>
+      </view>
+      <button class="get-button no-bg scale-animation" open-type="share">
+        <image src="https://img1.haoshiqi.net/miniapp/img/share-btn-bg_b03574dc70.png" class="btn-bg"></image>
+        <view class="share-text">
+          邀好友助力
+        </view>
+      </button>
+      <view class="tip-text">
+        加速卡生效中
+      </view>
+    </view>
+    <view class="popup-close-btn" bindtap="hidePopup">
+      <image class="close-img" src="https://img1.haoshiqi.net/miniapp/cancel_icons_6c7199f079.png"></image>
+    </view>
+  </view>
+</view>

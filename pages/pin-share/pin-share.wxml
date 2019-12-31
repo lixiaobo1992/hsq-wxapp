@@ -1,0 +1,192 @@
+<import src="../../components/count-down/count-down.wxml"/>
+<import src="../../components/back-home/index.wxml" />
+<import src="../../components/card/index.wxml" />
+<wxs src="../../components/price/index.wxs" module="format" />
+
+<dwd-page
+  id="dwd-page-pin-share"
+  custom-class="page-pin-share"
+  content-class="page-pin-share-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+  <view class="share-page" hidden="{{hidePage}}">
+    <template is="backHome" data="{{isShowGoHome}}"></template>
+    <view class="is-join" wx:if="{{!isJoin && !isOwner}}" bindtap="goDetail">
+      <view class="share-img">
+        <image src="{{pThumbnail}}" mode="scaleToFill" />
+      </view>
+      <view class="status-icon">
+        <image src="https://img1.haoshiqi.net/wxapp/img/icon_lootAll_9264ebba09.png" mode="scaleToFill" wx:if="{{leftStock == 0}}"/>
+        <image src="https://img1.haoshiqi.net/miniapp/yitingshou_59bf8a5882.png" mode="scaleToFill" wx:elif="{{leftStock != 0 && !online}}"/>
+      </view>
+      <view class="share-content" bindtap="goDetail">
+        <view class="share-title max-line-2">
+          {{pTit}}
+        </view>
+        <view class="info-line">
+          <view class="count-limit">
+            <text>{{countLimit}}人团</text>
+          </view>
+          <text class="couple-price">拼团价:￥{{pPrice}}</text>
+        </view>
+        <view class="single-bug">单买价： <text class="del-num">{{pSinglePrice}}</text></view>
+      </view>
+    </view>
+    <view class="share-desc">
+      <view class="couple-state" wx:if="{{status == 3 || status == 2}}">
+        <image src="{{stateUrl}}" mode="aspectFit" class="states-icon"/>
+      </view>
+      <view class="count-down" wx:if="{{leftTime > 0 && status == 1}}">
+        <!-- <view class="line"></view> -->
+        <view class="count-box">剩余<template is="countdown" data="{{...countDownInfo}}"></template>结束</view>
+      </view>
+      <view class="text-share">
+        <view wx:if="{{status == 1 && isJoin == 1}}">
+          还差<text class="text-red">{{countLimit - joinCount}}</text>人，快去邀请好友拼团
+        </view>
+        <view wx:elif="{{status == 1}}">
+          拼团中，还差<text class="text-red">{{countLimit - joinCount}}</text>人拼团成功~
+        </view>
+        <view wx:elif="{{status == 2 && isJoin == 1}}">
+          恭喜你，拼团成功 ！！
+        </view>
+        <view wx:elif="{{status == 2}}">
+          哇哦~TA们拼团成功啦
+        </view>
+        <view wx:elif="{{status == 3 && isJoin == 1}}">
+          拼团失败，款项将原路退还
+        </view>
+        <view wx:elif="{{status == 3}}">
+          好可惜~TA们拼团失败
+        </view>
+      </view>
+      <view class="avatar-list">
+        <view>
+          <block wx:for="{{showUserList}}" wx:key="{{item.id}}">
+            <view class="user-avatar">
+              <image class="joined-avatar" src="{{item.userAvatar || 'https://img1.haoshiqi.net/miniapp/avatar_9dc3749044.png'}}" mode="aspectFit" wx:if="{{item.userAvatar || item.isOwner || item.userId}}"/>
+              <view class="robot-avatar" bindtap="joinNow" wx:else>
+                <image src="{{!isJoin && status == 1 ? 'https://img1.haoshiqi.net/miniapp/join_user_icon_9439f997df.png' : 'https://img1.haoshiqi.net/miniapp/join_userIcon_866f8b5886.png'}}" mode="aspectFit" />
+                <!-- <image src="https://img1.haoshiqi.net/miniapp/usericon_tag_b94b3b83ae.png" mode="aspectFit" class="add-icon"/>               -->
+              </view>
+            </view>
+          </block>
+        </view>
+        <text wx:if="{{showMore}}" class="text-btn" bindtap="showMoreUser">更多</text>
+        <text wx:if="{{showLess}}" class="text-btn" bindtap="showLessUser">收起</text>
+      </view>
+      <!-- wx:if="{{ (isJoin != 1 ) || (status != 1 && isJoin == 1) }}" -->
+      <view class='share-btn' wx:if='{{status == 1 && isJoin == 1}}'>
+        <button class='share' hover-class="none" open-type='share'>邀请好友拼团</button>
+      </view>
+      <view class="fixed_footer" style="padding-bottom: {{btnState.paddingBottom}}rpx;" wx:if="{{!(status == 1 && isJoin == 1)}}">
+        <view class="order-buy" bindtap="{{btnState.btnEvent}}">
+          <text class="pay-btn">{{btnState.desc}}</text>
+        </view>
+      </view>
+      <view class="order-detail" bindtap="goOrderDetail" wx:if="{{(isOwner || isJoin) && status == 2}}" data-orderid="{{orderId}}">查看订单详情
+        <image src="https://img1.haoshiqi.net/miniapp/more_red_45b9410a47.png" mode="aspectFit" class="more-icon"/>
+      </view>
+      <view class="fast-join" wx:if="{{((isJoin && status == 3) || !isJoin) && fastJoinInfo.totalCnt}}">
+        <view class="join-box">
+          <view class="fast-title">或参与别人的拼团</view>
+          <view class="fast-content {{fastJoinInfo.totalCnt > 1 && index == 0 ? 'content-style' : ''}}" wx:for="{{fastJoinInfo.list}}" data-id="{{item.id}}" wx:key="fastJoin"  data-index="{{index}}" data-status="{{item.status}}" bindtap="joinNow">
+            <view class="owner-img">
+              <image src="{{item.avatar || 'https://img1.haoshiqi.net/miniapp/avatar_9dc3749044.png'}}" mode="aspectFit" />
+            </view>
+            <view class="owner-name">{{item.username}}</view>
+            <view class="group-desc">
+              <view class="lack-count">还差<text class="text-red">{{item.countLimit - item.joinCount}}</text>人成团</view>
+              <view class="left-time">{{item.countDown}}</view>
+            </view>
+            <view class="join-btn">去参团</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="goto-detail more" data-type="couple_detail" wx:if="{{title && isJoin == 1}}" bindtap="goDetail">
+      商品详情：{{title}}
+      <image src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="aspectFit" class="more-icon"/>
+    </view>
+    <view class="couple-rules more" wx:if="{{!(status ==2 && isJoin == 1)}}" bindtap="goRule">
+      拼团规则：好友拼团
+      <text class="deliver-rule rule">人满发货</text>
+      <text class="refund-rule rule">人不满原路退款</text>
+      <image src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="aspectFit" class="more-icon"/>
+    </view>
+    <block wx:if="{{list && list.length}}">
+      <view class="view-tip">
+        <text class="tip-title">更多超值拼团</text>
+        <view class="tip-line" ></view>
+      </view>
+      <view class="view-list">
+        <!-- 使用注意事项， card 不实现背景，自己外层盒子实现 -->
+        <view class="product-{{listMode}}">
+          <block wx:for="{{list}}" wx:key="{{item.id}}">
+            <template is="card" data="{{...item}}" />
+          </block>
+        </view>
+      </view>
+    </block>
+    <view class="more-activity" bindtap="goIndex">不过瘾，去逛逛更多团购吧～
+      <image src="https://img1.haoshiqi.net/miniapp/more_black_2091717a7c.png" mode="aspectFit" class="more-icon"/>
+    </view>
+    <view class="skus-mask" hidden="{{!showSelect}}" bindtap="closeSelect"></view>
+      <view class="skus-select-tip {{showSelect ? 'select-tip-ani' : ''}}">
+      <view class="sku-info">
+        <view class="sku-image">
+          <image src="{{selectData.thumbnail}}" mode="aspectFit" />
+        </view>
+        <view class="sku-desc">
+          <view class="sku-price">
+            ￥<text>{{format(selectData.price, 2)}}</text>
+          </view>
+          <view class="sku-stock" wx:if="{{selectData.left > 30}}">
+            库存：{{selectData.left}}件
+          </view>
+          <view class="sku-stock" wx:else>
+            仅剩{{selectData.left}}件
+          </view>
+          <view class="sku-number">
+            商品编号： {{selectData.id}}
+          </view>
+        </view>
+      </view>
+      <view class="sku-attrs-list">
+        <view class="sku-block-list" wx:for="{{selectData.list}}" wx:for-index="attrKey" wx:key="attrKey">
+          <view class="sku-block-tit">
+            {{item.name}}：
+          </view>
+          <view class="sku-item-list">
+            <!-- sku-item-active，sku-item-unactive -->
+            <view class="sku-item sku-item-active">
+              {{item.defaultAttr}}
+            </view>
+          </view>
+        </view>
+
+        <view class="buy-amount {{attrDatas.length < 1 ? 'no-border' : ''}}">
+          <view class="amount-tit">
+            数量：
+          </view>
+          <view class="amount-btn-block">
+            <view class="reduce-btn" bindtap="goNext" data-type="reduce">-</view>
+            <input type="number" class="amount-input" bindinput="numInput" focus='{{ focusNow }}' value='{{ amountNum }}'/>
+            <view class="add-btn" bindtap="goNext" data-type="increase">+</view>
+          </view>
+        </view>
+      </view>
+      <view class="sku-buy-btn" bindtap="toOrderCommit">
+        立即购买
+      </view>
+    </view>
+    <!-- 功能按钮 -->
+    <view class="couple-go-home" wx:if="{{sceneData == 1036}}" data-type="home" >
+      <view class='jump-app-box'>
+        <button open-type="launchApp" class='jump-btn' app-parameter="{{jumpAppData}}" binderror="launchAppError">返回App</button>
+        <image src="https://img1.haoshiqi.net/miniapp/app_98085a87a9.png" class='app-icon'></image>
+      </view>
+    </view>
+  </view>
+</dwd-page>

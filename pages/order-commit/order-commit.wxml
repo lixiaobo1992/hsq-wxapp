@@ -1,0 +1,229 @@
+<import src="../../components/order-commit-pop/index.wxml" />
+<wxs src="../../utils/filter.wxs" module="filter" />
+
+
+<dwd-page
+  id="dwd-page-commit"
+  custom-class="page-commit"
+  content-class="page-commit-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+  <view class="commit-order-page {{ msgboard.title ? 'msgTop' : '' }}" hidden="{{isLoading}}">
+    <view class="msg-box" wx:if="{{ msgboard.title }}">
+      <image class="msg-img" src="https://img1.haoshiqi.net/miniapp/order-confirm/msgboard_878cc7e279.png" mode="aspectFit" />
+      <text class="msg-title">{{ msgboard.title }}</text>
+      <text class="msg-cont-btn" bindtap="setModalBtn" wx:if="{{ msgboard.title }}">详情</text>
+    </view>
+    <!-- 收货地址 -->
+    <view class="addres-info" bindtap="onAddressBtnClicked">
+      <block wx:if="{{ address.id }}">
+        <view class="user-info">
+          <text class="user-name">{{ address.contacter }}</text>
+          <text class="user-mobile">{{ address.mobile }}</text>
+        </view>
+        <view class="addres-text">{{ address.addressText }}</view>
+      </block>
+      <view class="not-addres" wx:else>添加收货地址</view>
+      <image class="left-arrow" src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="widthFix" />
+    </view>
+
+    <view class="account-product">
+      <view class="barnd-card" wx:for="{{ productList }}" wx:key="{{ item.merchant_id }}">
+        <!-- 商家信息 -->
+        <view class="barnd-info">
+          <image class="barnd-icon" src="https://img1.haoshiqi.net/miniapp/img/merchant_icon_25a2d95ce6.png" mode="widthFix" />
+          <text class="barnd-name">{{ item.merchant_name }}</text>
+        </view>
+        <!-- 产品列表 -->
+        <view class="product-list">
+          <view class="product-item" wx:for="{{ item.skuList }}" wx:for-item="product" wx:key="{{ product.id }}">
+            <view class="product-img">
+              <!-- <image src="{{ product.thumbnail }}" mode="aspectFit" /> -->
+              <dwd-image
+                src="{{ product.thumbnail }}"
+                custom-class="image-thumbnail"
+                mode="aspectFit"
+                lazy-load="{{ false }}"
+                default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" />
+            </view>
+            <view class="product-info">
+              <view class="max-line-2 product-title">{{ product.name }}</view>
+              <view class="product-price">
+                <text class="member-price" wx:if="{{ product.is_member_price}}">
+                    <view class="vip-bg"><image src="https://img1.haoshiqi.net/miniapp/profile/profile-member-icon_6b175c2fdc.png" class="img-vip" mode="scaleToFill" />
+                    </view>
+                  <text>￥{{ product.price}}</text>
+                </text>
+                <text class="price" wx:else>￥{{ product.price }}</text>
+                <text class="count">x<text>{{ product.amount }}</text></text>
+              </view>
+              <view class="product-decs" wx:for="{{ product.attrs }}" wx:for-item="attrItem" wx:for-index="attrItemIndex" wx:key="{{ index }}">{{ attrItem }}</view>
+            </view>
+          </view>
+
+        </view>
+
+        <!-- 商家优惠 -->
+        <view class="barnd-attach" data-index="{{ index }}" wx:if="{{ orderType != 4 && orderType != 5 && item.lately_double_tips }}" bindtap="onShowShopDiscount">
+          <text class="attach-name">店铺活动</text>
+          <view class="attach-right merchant-offer">
+            <text class="offer-text">{{ item.lately_double_tips || '暂无可用' }}</text>
+            <image class="left-arrow" src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="widthFix" />
+          </view>
+        </view>
+        <!-- 商家券 -->
+        <view
+          class="barnd-attach"
+          data-type="merchant"
+          data-merchant-id="{{ item.merchant_id }}"
+          wx:if="{{ orderType != 4 && orderType != 5 && merchantCoupon[item.merchant_id].list.length }}"
+          bindtap="selectCouponEvent">
+          <text class="attach-name">店铺券</text>
+          <text class="coupon-tip" wx:if="{{ merchantCoupon[item.merchant_id].list.length }}">{{ merchantCoupon[item.merchant_id].list.length }}张可用</text>
+          <view class="attach-right merchant-coupon">
+            <block wx:if="{{ merchantCoupon[item.merchant_id].currentMerchantCoupon }}">
+              <text class="coupon-price">-¥{{ merchantCoupon[item.merchant_id].merchantDiscount }}</text>
+            </block>
+            <text wx:else class="coupon-price">{{ merchantCoupon[item.merchant_id].list.length ? '未使用' : '暂无可用' }}</text>
+            <image class="left-arrow" src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="widthFix" />
+          </view>
+        </view>
+        <!-- 数量加减 商家邮费，留言 -->
+        <view class="barnd-attach" wx:if="{{ isFastbuy && orderType != 4 && orderType != 5 }}">
+          <text class="attach-name">购买数量：</text>
+          <view class="attach-right buy-num">
+            <dwd-input-number value="{{ item.skuList[0].amount }}" max="{{ item.skuList[0].max_cart_nums }}" size="small" style="line-height: 0;" bind:onChange="countChangeVal" />
+            <text class="buy-num-tip">本商品限购{{ item.skuList[0].max_cart_nums }}件</text>
+          </view>
+        </view>
+        <view class="barnd-attach">
+          <text class="attach-name">配送</text>
+          <view class="attach-right postage {{ !item.canDelivery || item.deliveryPrice ? 'not' : '' }}">{{ item.deliveryPriceText }}</view>
+        </view>
+        <view class="barnd-attach">
+          <text class="attach-name">留言</text>
+          <view class="attach-right leave-msg">
+            <input class="leave-input" type="text" data-id="{{ item.merchant_id }}" value="{{ notes[item.merchant_id] }}"  bindinput="bindMessageInput" placeholder="建议留言前先与商家沟通确认" />
+          </view>
+        </view>
+        <view class="sub-total">共{{ item.totalAmount }}件商品<text class="sub-text">小计：</text><text class="sub-price">¥{{ item.needPayPrice }}</text></view>
+      </view>
+
+      <!-- 优惠券 -->
+      <view wx:if="{{ orderType != 4 && orderType != 5 }}" class="offer-card coupon-card" data-type="platform" bindtap="selectCouponEvent">
+        <view class="offer-type">
+          <text class="offer-name">平台券</text>
+          <text class="coupon-tip" wx:if="{{ platformCouponList.length }}">{{ platformCouponList.length }}张可用</text>
+        </view>
+        <view class="side-member" wx:if="{{platformCouponList.length && currentPlatformCoupon.member_coupon == 2}}">
+          <image src="https://img1.haoshiqi.net/miniapp/profile/profile-member-icon_6b175c2fdc.png" mode="widthFix"  class="vip-icon"/>
+          <view class="side-text">会员券</view>
+      </view>
+        <text
+          class="offer-price {{currentPlatformCoupon.member_coupon == 2 ? 'active':''}}"
+          wx:if="{{ platformCouponList.length && currentPlatformCoupon.platformDiscount }}">-¥{{ filter.dealPrice(currentPlatformCoupon.platformDiscount) }}
+        </text>
+        <text class="unused" wx:elif="{{ !platformCouponList.length }}">暂无可用</text>
+        <text class="unused" wx:elif="{{ !currentPlatformCoupon.platformDiscount }}">未使用</text>
+        <image class="left-arrow" src="https://img1.haoshiqi.net/miniapp/more_85508a3b09.png" mode="widthFix" />
+      </view>
+      <!--开通好会员协议-->
+      <view class="member-box" wx:if="{{canOpenMember}}">
+        <view class="good-member-card">
+          <view class="discount-price">
+            <image class="member-icon" src="https://img1.haoshiqi.net/miniapp/profile/profile-member-icon_6b175c2fdc.png" mode="widthFix"/>
+            <text class="discount-text">{{ openMemberText.discountText }}<text class="price">{{ openMemberText.discountPrice }}</text>{{ openMemberText.discountSuffix }}</text>
+            <view class="give-money" catchtap="toggleMemberModel">
+              <text>{{ openMemberText.subContent}}</text>
+              <image class="question-mark" src="https://img1.haoshiqi.net/miniapp/tips_5aaca8bcb4.png" mode="widthFix"/>
+            </view>
+          </view>
+          <view class="right-price" bindtap="selectMember">
+            <view class="open-card-price">
+              <text class="card-text">会员费</text>
+              <text class="card-price price">￥{{openMemberText.price}}</text>
+            </view>
+            <view class="select-member {{goodMemberInfo.isSelectMember?'active':''}}"></view>
+          </view>
+        </view>
+        <view class="good-member-agreement" bindtap="openMember" data-url="{{openMemberText.link}}">{{ openMemberText.serviceTitle }}</view>
+      </view>
+    </view>
+
+    <view class="footer-tip">
+      <image class="tip-icon" src="https://img1.haoshiqi.net/miniapp/commit_notice_9144887f24.png"></image>
+      <view class="tip-text">{{address.addressText || '请添加收货地址'}}</view>
+    </view>
+    <!-- 底部支付 -->
+    <view class="order-footer-btn">
+      <view class="pay-price">共{{ totalAmount }}件 合计：<text class="total-price">¥{{ needPayPriceText }}</text></view>
+      <view class="pay-btn {{isDisabled ? 'btn-disable' : ''}}" bindtap="orderSubmit">提交订单</view>
+    </view>
+
+  </view>
+</dwd-page>
+<!-- 商品信息弹窗 -->
+<template is="order-commit-pop" data="{{hidden: windowHidden, data: popWindowData}}" />
+
+<!-- 店铺活动弹窗 -->
+<view class="offer-popup">
+  <view class="popup-mask" bindtap="setOfferPopup" wx:if="{{isOfferPopupShow}}"></view>
+  <view class="offer-popup-content clearfix {{ isOfferPopupShow ? 'show': '' }}">
+    <view class="offter-content">
+      <view class="offter-title">
+        <text>店铺活动</text>
+        <image class="close-img"  src="../../img/delete.png" mode="aspectFit" bindtap="setOfferPopup" />
+      </view>
+      <view class="scroll-reduce">
+        <view class="shop-reduce" wx:if="{{productList[currentMerchantIndex].shopReduce.length}}">
+          <view wx:for="{{productList[currentMerchantIndex].shopReduce}}" wx:for-item="reduce" wx:for-index="reduceIndex" wx:key="reduceIndex" class="reduce-item">
+            <text class="reduce-tips">{{ reduce.tips }}</text>
+            <view class="reduce-content">
+              <view class="reduce-detail max-line-2">{{ reduce.reduceDetail }}</view>
+              <view class="reduce-price">-¥{{ reduce.price }}</view>
+            </view>
+          </view>
+        </view>
+        <view class="offter-product">
+          <view class="offter-product-item" wx:for="{{ productList[currentMerchantIndex].skuList }}" wx:key="{{ item.id }}"
+        wx:if="{{ item.discount_activity.shop_discount.length }}">
+            <view class="pro-img">
+              <image mode="scaleToFill" src="{{ item.thumbnail }}"/>
+            </view>
+            <view class="pro-info">
+              <view class="pro-content">
+                <view class="max-line-2 pro-name">{{ item.name }}</view>
+                <view class="pro-num-price">
+                  <text class="pro-num">x{{ item.amount }}</text>
+                  <text class="offter-price"  wx:if="{{item.discount_activity.discount_price}}">-¥{{item.discount_activity.discount_price}}</text>
+                  <text class="offter-price" wx:else>无优惠</text>
+                </view>
+              </view>
+              <view class="offter-info">
+                <text wx:for="{{ item.discount_activity.shop_discount }}" wx:for-item="shopItem" wx:key="{{index}}" class="{{ shopItem.status ? 'red': '' }}">{{index !=0 ? ', ':''}}{{shopItem.text}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="offter-total">
+          <view class="total-tit">共优惠金额</view>
+          <text class="red">-¥{{ productList[currentMerchantIndex].shop_activity_discount_price}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="offter-total">
+      <view class="total-tit">共优惠金额</view>
+      <text class="red">-¥{{ productList[currentMerchantIndex].total_double_discount_price}}</text>
+    </view> -->
+    <!-- <view class="popup-btn" bindtap="setOfferPopup">确认</view> -->
+  </view>
+</view>
+<!--好会员权益弹窗-->
+<member-modal
+  bind:ModalClick="toggleMemberModel"
+  goodMemberInfo="{{rightsInfo}}"
+  wx:if="{{goodMemberInfo.memberModelStatus}}"
+>
+</member-modal>
+

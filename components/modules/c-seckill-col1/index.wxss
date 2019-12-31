@@ -1,0 +1,357 @@
+.c-seckill-col1{
+  overflow: hidden;
+  background: #fff;
+}
+
+.c-seckill-col1 .seckill-row1-box{
+  width: 100%;
+  overflow: hidden;
+}
+
+.c-seckill-col1 .shop-box{
+  width: 100%;
+  padding: 20rpx 20rpx;
+  overflow: hidden;
+  border-bottom: 1px solid #f4f4f4;
+  display: flex;
+}
+
+.c-seckill-col1 .shop-box:last-child{
+  margin-bottom: 0;
+}
+
+.c-seckill-col1 .img-box{
+  float: left;
+  width: 280rpx;
+  height: 280rpx;
+  position: relative;
+}
+
+.c-seckill-col1 .shop-img{
+  width: 280rpx;
+  height: 280rpx;
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center; */
+}
+
+.c-seckill-col1 .shop-status{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 128rpx;
+  height: 128rpx;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.c-seckill-col1 .img-label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280rpx;
+  height: 280rpx;
+  z-index: 1;
+}
+
+.c-seckill-col1 .icon-img{
+  width: 100%;
+}
+
+.c-seckill-col1 .text-box{
+  margin-left: 20rpx;
+  position: relative;
+  flex: 1
+}
+.c-seckill-col1 .shop-title{
+  font-size: 28rpx;
+  color: #333;
+  line-height: 40rpx;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.c-seckill-col1 .title-tag{
+  display: inline-block;
+  line-height: 32rpx;
+  padding: 0 10rpx;
+  background-color: #EA594C;
+  color: #fff;
+  font-size: 22rpx;
+  border-radius: 6rpx;
+  margin-right: 10rpx;
+  margin-top:6rpx;
+}
+
+.c-seckill-col1 .row2-tag-box{
+  width: 100%;
+  overflow: hidden;
+  height:36rpx;
+  display: flex;
+  margin-top: 5rpx;
+}
+.c-seckill-col1 .row2-text-tag{
+  height: 32rpx;
+  line-height: 32rpx;
+  border: 1px solid #EA594C;
+  border-radius: 4rpx;
+  color: #EA594C;
+  padding: 0 8rpx;
+  font-size: 20rpx;
+  margin-right: 4rpx;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  min-width: 40rpx;
+  max-width:256rpx;
+}
+.c-seckill-col1 .row2-text-tag:first-child{
+  flex-shrink: 0;
+}
+.c-seckill-col1 .shop-date{
+  margin-top: 18rpx;
+  display: inline-block;
+  height: 28rpx;
+  line-height: 28rpx;
+  padding: 0 10rpx;
+  color: #EA594C;
+  border: 1px solid #EA594C;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  margin-right: 4rpx;
+}
+.c-seckill-col1 .shop-price-box{
+  overflow: hidden;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+.c-seckill-col1 .price-box{
+  color: #F21833;
+  height: 56rpx;
+  line-height: 56rpx;
+  position: relative;
+  display: block;
+}
+.c-seckill-col1 .price-integer{
+  font-size: 40rpx;
+  height: 56rpx;
+  font-weight: bold;
+}
+.c-seckill-col1 .price-decimals{
+  font-size: 40rpx;
+  height: 56rpx;
+  font-weight: bold;
+}
+.c-seckill-col1 .buy-btn{
+  position: absolute;
+  right: 20rpx;
+  bottom: 0rpx;
+  width: 130rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  background: #FE0137;
+  border-radius: 33rpx;
+  color: #fff;
+  text-align: center;
+}
+.c-seckill-col1 .bottom-price{
+  margin-bottom: 10rpx;
+  position: relative;
+}
+.c-seckill-col1 .market-price{
+  display: inline-block;
+  font-size: 24rpx;
+  color: #999;
+  text-decoration: line-through;
+}
+.c-seckill-col1 .stock-progress-box{
+  position: absolute;
+  right: 20rpx;
+  bottom: 0;
+  display: inline-block;
+}
+.c-seckill-col1 .progress-text{
+  display: inline-block;
+  font-size: 20rpx;
+  color: #999;
+}
+.c-seckill-col1 .progress-box{
+  margin-left: 20rpx;
+  display: inline-block;
+  width: 128rpx;
+  height: 14rpx;
+  background: #FFB0A0;
+  box-shadow: 0 0 1px 0 rgba(255,176,160,0.53);
+  border-radius: 14rpx;
+  position: relative;
+}
+.c-seckill-col1 .current-progress{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  background-image: linear-gradient(90deg, #FBA592 29%, #F38371 84%);
+  border-radius: 7rpx;
+  height: 14rpx;
+}
+
+.c-seckill-col1 .shop-timer-box{
+  flex: 1;
+  display:flex;
+  flex-direction:column;
+  justify-content:start;
+  font-size:22rpx;
+  padding:10rpx 0;
+  margin-top: 5rpx;
+}
+.c-seckill-col1 .timer-countdown{
+  display:flex;
+  font-size:22rpx;
+  align-items:flex-end;
+  color: #333333;
+  line-height: 32rpx;
+}
+.c-seckill-col1 .timer-text{
+  color:#333333;
+  font-weight: bold;
+  font-size: 22rpx;
+}
+.c-seckill-col1 .count-number-day{
+  font-size: 22rpx;
+  color: #333;
+  font-weight: bold;
+  margin-left: 5rpx;
+}
+.c-seckill-col1 .count-number{
+  width:32rpx;
+  height:32rpx;
+  text-align:center;
+  line-height:32rpx;
+  color:#fff;
+  font-size:20rpx;
+  background-color:#171900;
+  border-radius:4rpx;
+  margin:0 5rpx;
+  flex-shrink: 0;
+}
+/* 展开和收起按钮 */
+.c-seckill-col1 .unfold-more-btn{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.c-seckill-col1 .more-btn-img{
+  display: inline-block;
+  width: 20rpx;
+  height: 14rpx;
+  margin-left: 5rpx;
+}
+
+.c-seckill-col1 .pack-up-btn{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.c-seckill-col1 .clear-btn{
+  background: #fff !important;
+  color: #FE0137 !important;
+  border: 1px solid #FE0137;
+  position: absolute;
+  right: 20rpx;
+  bottom: 0rpx;
+  width: 130rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  border-radius: 33rpx;
+  text-align: center;
+}
+
+.c-seckill-col1 .gray-btn{
+  background: #cccccc !important;
+  color: #fff !important;
+  border: 0 !important;
+  position: absolute;
+  right: 20rpx;
+  bottom: 0rpx;
+  width: 130rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  border-radius: 33rpx;
+  text-align: center;
+}
+
+.c-seckill-col1 .up-btn-img{
+  display: inline-block;
+  width: 20rpx;
+  height: 14rpx;
+  transform: rotate(180deg);
+  margin-left: 5rpx;
+}
+.row-expire-day{
+  height:28rpx;
+  line-height:28rpx;
+  font-size:20rpx;
+  color: #999999;
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c-seckill-col1 .tag-overflow {
+  display:inline-block;
+  position: relative;
+}
+
+.tag-overflow .left-arrow {
+  width:100%;
+  height:80rpx;
+  display:inline-block;
+  position: absolute;
+  right:0;
+  top:0;
+}
+.tag-overflow .arrow{
+  position: absolute;
+  right:0;
+  top:0;
+  width:24rpx;
+  height:24rpx;
+  background:url('https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png') no-repeat center;
+  background-size: 100% auto;
+  right:4rpx;
+  top:4rpx;
+}
+.tag-overflow .arrow.up {
+  transform: rotate(-90deg);
+}
+.tag-overflow .arrow.down {
+  transform: rotate(90deg);
+}
+.row2-tag-box.tagH{
+  height:36rpx;
+}
+.flex-start{
+  align-self:flex-start;
+}
+.flex-end{
+  align-self:flex-end;
+}

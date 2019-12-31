@@ -1,0 +1,5 @@
+<view class="dwd-tpl-wrapper custom-class" wx:if="{{isValid}}" style="{{ styles }}">
+  <slot>
+    <view>dwd-tpl</view>
+  </slot>
+</view>

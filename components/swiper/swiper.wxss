@@ -1,0 +1,33 @@
+
+/* 每个页面仍需要设置 padding-top，因为 js 生成的慢，有短暂的高度不匹配 */
+.swiper {
+  position: relative;
+  padding-top: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+.swiper swiper {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
+.swiper swiper image {
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('https://img1.haoshiqi.net/miniapp/not-img1_dab4753322.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+
+/* swiper-item 不能设置100%高度 */
+/* swiper-item {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  height: 100% !important;
+} */

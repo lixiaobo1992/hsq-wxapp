@@ -1,0 +1,156 @@
+.c-product-seckill{
+  width: 100%;
+  overflow: hidden;
+}
+.c-product-seckill .slider-box{
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 10rpx;
+  padding-top:10rpx;
+}
+.c-product-seckill .slider-goods-box{
+  width: auto;
+  overflow-x: auto;
+  display: flex;
+  white-space:nowrap;
+  flex-flow:row nowrap;
+  justify-content: flex-start;
+}
+.c-product-seckill .goods-box{
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: #ffffff;
+  margin-block-start: 0rpx;
+  margin-block-end: 0rpx;
+}
+.c-product-seckill .goods-img-box{
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
+}
+.c-product-seckill .goods-img-box .img-box{
+  width: 100%;
+  height: 100%;
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center; */
+}
+.c-product-seckill .row3-status-img{
+  position: absolute;
+  width: 96rpx;
+  height: 96rpx;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 3;
+}
+.c-product-seckill .img-label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200rpx;
+  height: 200rpx;
+  z-index: 2;
+  overflow: hidden;
+}
+.c-product-seckill .icon-img{
+  width: 100%;
+}
+.c-product-seckill .goods-text-box{
+  margin-inline-start: 0rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  width: 200rpx;
+}
+.c-product-seckill .goods-title{
+  font-size: 24rpx;
+  color: #333;
+  height: 64rpx;
+  line-height: 32rpx;
+  padding: 0 10rpx;
+  width: 200rpx;
+}
+.c-product-seckill .goods-price-box{
+  color: #F21833;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+}
+.c-product-seckill .price-integer{
+  font-size: 28rpx;
+  height: 36rpx;
+  font-weight: bold;
+}
+.c-product-seckill .price-decimals{
+  font-size: 16rpx;
+}
+.c-product-seckill .market-price{
+  font-size: 20rpx;
+  color: #999999;
+  text-decoration: line-through;
+  padding: 0 10rpx;
+  margin-top:-10rpx;
+  display:block;
+}
+.c-product-seckill .more-box{
+  width: 200rpx;
+  background: #ffffff;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.c-product-seckill .more-box .img-box{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 110rpx 50rpx 0;
+}
+/* 添加秒杀插件 */
+.goods-top-title{
+  background: #fff;
+  width:100%;
+  position: relative;
+
+}
+.goods-top-title .img-more{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+  display: block;
+  vertical-align: middle;
+  min-height:42px;
+
+}
+.goods-top-title .time-left{
+  display:inline-block;
+  font-size:24rpx;
+  border:1px solid #fb0438;
+  border-radius:13px;
+  /* padding-right:10rpx; */
+  position: absolute;
+  margin-top:5rpx;
+}
+.goods-top-title .time-left .time-space-left{
+  background: #fb0438;
+  text-align:center;
+  height:42rpx;
+  line-height:42rpx;
+  color:#fff;
+  display:inline-block;
+  border-radius:13px;
+  font-size:24rpx;
+  padding:0 10rpx;
+}
+.goods-top-title .time-left .time-space-right{
+  padding:0 10rpx;
+  color:#fb0438;
+}
+/* .goods-top-title .go-shopping{
+  font-size:24rpx;
+  color:#999;
+} */
+.slider-right .more-arrow{
+  width:24rpx;
+  height: 24rpx;
+}

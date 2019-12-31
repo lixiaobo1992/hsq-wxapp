@@ -1,0 +1,15 @@
+<template name="countdown">
+  <view class="count-time">
+    <text wx:if="{{day}}" class="day">{{day}}天</text><text class="time-num">{{hour}}</text>{{mark}}<text class="time-num">{{minute}}</text>{{mark}}<text class="time-num">{{second}}</text>    
+  </view>
+</template>
+
+<!-- count-time和time-num两个类来调整样式 -->
+<!-- 数据格式 -->
+<!-- {
+  day: day,
+  hour: hour,
+  minute: minute,
+  second: second,
+  mark: mark,//用来连接时间的符号
+} -->

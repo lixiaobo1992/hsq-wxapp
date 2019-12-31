@@ -1,0 +1,24 @@
+<!--components/zone-list.wxml-->
+<view class="city-list">
+  <view class="select-header">
+    <view class="select-title {{ isSelectProvince ? 'no-data': '' }}" bindtap="cancelSelect">
+      {{ (currentProvince.currentAddress) ? currentProvince.currentAddress : '请选择' }}
+    </view>
+    <view wx:if="{{ currentProvince.currentAddress }}" class="{{ isSelectProvince ? '' : 'no-data' }}">
+      请选择
+    </view>
+  </view>
+  <!-- 选择省份 -->
+  <block wx:if="{{ isSelectProvince }}">
+    <view class="zone-item" wx:for="{{zones}}" wx:key="id" bindtap="selectProvince" data-province="{{item}}">
+      <image wx:if="{{ item.currentAddress == currentProvince.currentAddress }}" class="select-icon" src="https://img2.haoshiqi.net/item_detail_check@3x.png" mode="scaleToFill" />
+      <label class="zone-label">{{item.currentAddress}}</label>
+    </view>
+  </block>
+  <!-- 选择城市 -->
+  <block wx:else>
+    <view class="zone-item" wx:for="{{ cityList }}" wx:key="{{ item.id }}" bindtap="selectCity" data-city="{{item}}">
+      <label class="zone-label">{{ item.city }}</label>
+    </view>
+  </block>
+</view>

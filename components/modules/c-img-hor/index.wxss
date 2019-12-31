@@ -1,0 +1,24 @@
+.c-img-box{
+  position: relative;
+}
+.c-img-list{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+}
+.c-img-item{
+  height: 100%;
+  flex: 1;
+}
+.c-img-item .image{
+  width: 100%;
+  height: 100%;
+
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center; */
+}

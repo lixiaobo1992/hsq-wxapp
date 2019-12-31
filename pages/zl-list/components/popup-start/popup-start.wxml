@@ -1,0 +1,39 @@
+<view class="component-popup">
+  <view class="popup-mask"></view>
+  <view class="popup-container">
+    <view class="zl-tip" wx:if="{{ showPrizeInfo.helpSuccess }}">
+      <view class="zl-user-icon">
+        <image src="{{ showPrizeInfo.avatar }}"></image>
+      </view>
+      <view class="zl-tip-text">
+        谢谢你，帮我助力成功！
+      </view>
+    </view>
+    <view class="popup-content-block">
+      <image src="https://img1.haoshiqi.net/miniapp/popup-bg_9977345e22.png" mode="widthFix" class="bg-img"></image>
+      <view class="popup-content">
+        <view class="popup-title">
+          中奖了，获得一张<text>{{ showPrizeInfo.speed }}倍</text>加速卡
+        </view>
+        <view class="popup-coupon">
+          <image src="https://img1.haoshiqi.net/miniapp/coupon-bg_d146dcecec.png" mode="widthFix" class="popup-coupon-bg"></image>
+          <view class="coupon-title">
+            {{ showPrizeInfo.speed }}倍加速卡
+          </view>
+          <view class="coupon-text">
+            <text class="color-black">首次</text>最低前进<text class="font-weight">{{ showPrizeInfo.startBoostPercent * 100 }}米</text>
+          </view>
+          <view class="coupon-text">
+            每次助力效果<text class="font-weight">x{{ showPrizeInfo.speed }}</text>
+          </view>
+        </view>
+        <view class="get-button" bindtap="hidePopup">
+          去领好货任务
+        </view>
+      </view>
+      <view class="popup-close-btn" bindtap="hidePopup">
+        <image class="close-img" src="https://img1.haoshiqi.net/miniapp/cancel_icons_6c7199f079.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

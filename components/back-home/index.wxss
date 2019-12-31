@@ -1,0 +1,14 @@
+
+.btn-back-home {
+  position: fixed;
+  z-index: 300;
+  top: 32rpx;
+  left: -8rpx;
+  width: 160rpx;
+  height: 64rpx;
+  overflow: hidden;
+}
+.btn-back-home image {
+  width: 100%;
+  height: 100%;
+}

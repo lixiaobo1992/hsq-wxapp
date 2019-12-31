@@ -1,0 +1,90 @@
+<dwd-tpl custom-class="c-product-col1" data="{{data}}" data-type="{{data.type}}">
+  <view class="product-row1-box">
+    <view
+      class="shop-box"
+      wx:for="{{data.list}}"
+      data-index="{{index}}"
+      data-url="{{item.link}}"
+      data-title="{{ data.moduleName }}"
+      wx:key="{{index}}"
+      data-group="{{ item.flow }}"
+      data-form-Type="onUrlPage"
+      data-piwik-event="{{ item.piwikEvent }}"
+      data-piwik-data="{{ item.piwikData }}"
+      data-module-id="{{ data.id }}"
+      bindtap="onDetailPage"
+    >
+      <view class="img-box">
+        <dwd-image
+          src="{{ item.thumbnail }}"
+          custom-class="shop-img"
+          mode="scaleToFill"
+          lazy-load="{{ true }}"
+          default-image="https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png" />
+        <!-- 商品状态 抢光了 -->
+        <image
+          class="shop-status"
+          src="{{ item.invalid_img }}"
+          wx:if="{{ item.invalid_img }}"
+        />
+      </view>
+      <view class="text-box">
+          <view class="flex-start">
+            <view class="shop-title">
+              <text class="title-tag" wx:if="{{item.merchant_type == 2}}">自营</text>
+              {{ item.title }}
+            </view>
+            <view class="row-expire-day">
+                <text class="row2-left-day" wx:if="{{ item.expired_date_text_one }}">{{ item.expired_date_text_one }} </text>
+              </view>
+
+              <view
+                class="row2-tag-box {{item.arrowClick?'tag-overflow':''}}"
+                style="height:{{!item.showupArrow?'100%':''}}"
+                wx:if="{{item.tags.length > 0}}"
+              >
+                <view
+                  class="row2-text-tag"
+                  wx:for="{{item.tags}}"
+                  wx:for-item="tagsData"
+                  wx:for-index="tagsIndex"
+                  wx:key="{{tagsIndex}}"
+                  style="color: {{ tagsData.color }}"
+                >{{ tagsData.text }}</view>
+                  <view
+                    class="left-arrow"
+                    data-type="arrow"
+                    data-index="{{ index }}"
+                    data-id="{{ data.id }}"
+                    wx:if="{{item.arrowClick}}"
+                    catchtap="{{item.arrowClick ? 'onDetailPage' : ''}}"
+                  >
+                    <view class = " arrow {{!item.showupArrow?'up':'down'}}"> </view>
+                  </view>
+              </view>
+          </view>
+        <view class="shop-price-box flex-end">
+          <view class="price-box">
+            <text class="price-integer">￥{{ item.price.price_yuan }}</text>
+            <text class="price-decimals">.{{ item.price.price_fen }}</text>
+            <text class="buy-btn">去抢购</text>
+          </view>
+          <view class="bottom-price">
+            <view class="row-vip-price" wx:if="{{ item.member_price > 0 }}">
+                <view class="vip-bg"><image src="https://img1.haoshiqi.net/miniapp/vip-icon_1be7bb7dd2.png" class="img-vip" mode="scaleToFill" />
+                </view>
+                <text class="vip-price">￥{{ item.member_price }}</text>
+            </view>
+            <view class="market-price" wx:else>￥{{ item.market_price }}</view>
+            <view class="stock-progress-box">
+              <view class="progress-text">已抢{{ item.rate_percent + '%' }}</view>
+              <view class="progress-box">
+                <view class="current-progress" style="width: {{item.rate_percent}}%"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</dwd-tpl>

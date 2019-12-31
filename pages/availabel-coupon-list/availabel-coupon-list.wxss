@@ -1,0 +1,228 @@
+.availabel-coupon{
+  padding-top: 20rpx;
+}
+/* 优惠券列表 */
+
+.coupon-list{
+  padding: 0 30rpx;
+}
+.block{
+  display:block;
+  width:100%;
+}
+.coupon-cell {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  width: 100%;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  color:#EA594C;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.coupon-left{
+  width: 234rpx;
+  padding: 20rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-right: 1px dashed #EA594C;
+}
+.coupon-left::before,.coupon-left::after{
+  content: '';
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 100%;
+  background-color: #f5f5f9;
+  position: absolute;
+  right: -16rpx;
+}
+.coupon-left::before{
+  top: -15rpx;
+}
+.coupon-left::after{
+  bottom: -15rpx;
+}
+.coupon-left .coupon-pirce{
+  font-weight: bold;
+  font-size: 86rpx;
+  color: #EA594C;
+}
+
+.coupon-right{
+  flex: 1;
+  position: relative;
+  line-height: 40rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 20rpx 100rpx 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.coupon-right .coupon-name{
+
+}
+
+.coupon-right .coupon-sub-title{
+
+}
+.coupon-right .coupon-end-time{
+
+}
+
+.coupon-right .coupon-btn{
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  margin-top: -20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100%;
+  background-color: #fff;
+  background: url('https://img1.haoshiqi.net/miniapp/icon-select_4f5897bf51.png') no-repeat 0 0;
+  background-size: 100% 100%;
+}
+
+.coupon-right .coupon-btn.active{
+  background-image: url('https://img1.haoshiqi.net/miniapp/icon-select-active_8b467c2a09.png');
+}
+
+
+.confirm-btn{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: -1px;
+  background-color: #FB0438;
+}
+.block-box{
+  display:flex;
+  flex-direction: row;
+  margin-bottom: 20rpx;
+  width:100%;
+  background-color: #f7e8eb;
+  align-items: center;
+}
+/* 好会员券区域 */
+.member-coupon-left{
+  width:180rpx;
+  height:180rpx;
+  display:flex;
+  align-items:center;
+  position: relative;
+}
+.member-coupon-left::before{
+  content: '';
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 100%;
+  background-color: #f5f5f9;
+  position: absolute;
+  left: -16rpx;
+}
+.coupon-left::before{
+  top: 35rpx;
+}
+.coupon-member-bg{
+  position: absolute;
+  bottom:0;
+  left:10rpx;
+  width:154rpx;
+  height:102rpx;
+  background-image: url('https://img1.haoshiqi.net/miniapp/coupon-right-star_47740f6c8a.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.member-coupon-left .coupon-member-price{
+  width:100%;
+  text-align:center;
+  font-size: 72rpx;
+  color: #ED0000;
+  font-weight:bold;
+}
+.member-coupon-left .coupon-member-price .sub-sign{
+  font-size:48rpx;
+}
+.coupon-cell .member-bg{
+  background-image: linear-gradient(90deg, #FEF7EE 4%, #FFFFFF 54%, #FFFFFF 100%);
+}
+.member-coupon-right{
+  flex:1;
+}
+.member-coupon-right .member-coupon-name {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight:bold;
+}
+.member-coupon-right .member-coupon-sub-title{
+  font-size: 24rpx;
+  color: #ED0000;
+}
+.member-coupon-right  .member-coupon-sub-con{
+  font-size: 24rpx;
+  color: #999999;
+}
+.member-selected{
+  height:180rpx;
+  width:90rpx;
+  background: url('https://img1.haoshiqi.net/miniapp/select-member-bg_fe59b4a24f.png') no-repeat 0 0;
+  background-size: 100% 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+}
+.member-selected::before,.member-selected::after{
+  content: '';
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 100%;
+  background-color: #f5f5f9;
+  position: absolute;
+  left: -16rpx;
+}
+.member-selected::before{
+  top:-15rpx;
+}
+.member-selected::after{
+  bottom:-15rpx;
+}
+.member-selected .select-circle{
+  width:44rpx;
+  height:44rpx;
+  border:2rpx solid #EFDEB4;
+  border-radius:50%;
+}
+.member-selected .select-circle.active{
+  background:url('https://img1.haoshiqi.net/miniapp/select-icon_54deefa6ab.png');
+  background-size: 100% 100%;
+}
+.title{
+  font-size:32rpx;
+  color: #333333;
+  width:100%;
+  display: block;
+  text-align: left;
+  margin-bottom:20rpx;
+}
+.member-coupon-end-time{
+  font-size:24rpx;
+  color:#333;
+}

@@ -1,0 +1,211 @@
+/* pages/lottery-detail/lottery-detail.wxss */
+@import '/components/labels/labels.wxss';
+@import '/components/swiper/swiper.wxss';
+@import '/components/sec-head/index.wxss';
+@import '/components/pin-buy/pin-buy.wxss';
+
+.view-page {
+  padding-bottom: 98rpx;
+}
+
+/* 公共css  */
+.mt {
+  margin-top: 20rpx;
+}
+/* end  */
+
+/* 抽奖团状态 */
+.view-status {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: white;
+  background-color: rgb(237, 0, 0);
+}
+/* end  */
+
+/* 抽奖团信息 */
+.lottery-Info {
+  display: flex;
+  flex-direction: column;
+  padding: 16rpx 30rpx;
+  background-color: white;
+}
+
+.view-title {
+  font-size: 32rpx;
+  color: rgb(33, 33, 33);
+}
+
+.view-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10rpx;
+}
+
+.view-price .sub-price {
+  display: flex;
+  align-items: center;
+}
+
+.sub-price .price {
+  font-size: 40rpx;
+  color: rgb(237, 0, 0);
+  margin-right: 54rpx;
+}
+
+.sub-market {
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  display: flex;
+  align-items: center;
+}
+
+.market-price {
+  text-decoration: line-through;
+}
+
+.view-join {
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  display: flex;
+  align-items: center;
+}
+
+.join-num {
+  color: rgb(237, 0, 0);
+}
+
+.view-desc {
+  font-size: 24rpx;
+  color: rgb(33, 33, 33);
+  padding-top: 10rpx;
+}
+
+/* end  */
+
+/* 抽奖团规则 */
+.view-rule {
+  background-color: white;
+  padding: 20rpx 30rpx;
+}
+
+.rule-title {
+  font-size: 28rpx;
+  color: rgb(33, 33, 33);
+  padding-bottom: 20rpx;
+}
+
+.rule-content {
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  line-height: 1.4;
+}
+
+/* end  */
+
+/* 城市选择 */
+.city-front {
+  display: flex;
+  align-items: center;
+}
+
+.city-img {
+  flex: 0 0 auto;
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 4rpx;
+  position: relative;
+  top: -2rpx;
+}
+
+.city-label {
+  flex: 0 0 auto;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.city {
+  position: relative;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+  background-color: #fff;
+  margin-bottom: 2rpx;
+}
+
+.city-name {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: black;
+  margin-right: 80rpx;
+  word-break: break-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.canDelivery {
+  color: #f00;
+  padding-left: 106rpx;
+  margin-top: 4rpx;
+  line-height: 1;
+  font-size: 24rpx;
+}
+
+.city-arrow {
+  position: absolute;
+  right: 20rpx;
+  top: 18rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+/* end  */
+
+/* labes  */
+.labels {
+  margin-top: 0rpx;
+  padding-right: 10rpx
+}
+/* end  */
+
+/* 图文详情  */
+.img-full {
+  width: 100%;
+  height: 100%;
+}
+/* end  */
+
+/* 底部按钮 */
+.view-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 98rpx;
+}
+
+.footer-status {
+  background-color: rgb(237, 0, 0);
+  font-size: 32rpx;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.disabled {
+  background-color: rgb(153, 153, 153);
+}
+.font-big{
+  font-size: 32rpx;
+}
+
+/* end  */

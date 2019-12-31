@@ -1,0 +1,39 @@
+<!--pages/address-list/address-list.wxml-->
+<dwd-page
+  id="dwd-page-address"
+  custom-class="page-address"
+  content-class="page-address-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <view class="page">
+    <view class="address-box">
+      <view class="address-list" wx:for="{{address}}" wx:key="index" wx:for-item="item">
+        <view class="address-detail" data-id="{{item.id}}" data-index="{{index}}" bindtap="selectOrderAddr">
+          <view class="address-info">
+            <text class="address-name">{{item.contacter}}</text>
+            <text class="address-mobile">{{item.mobile}}</text>
+          </view>
+          <text>{{item.province + item.city + item.district + item.detail_address}}</text>
+        </view>
+        <view class="address-operate">
+          <view class="address-select-box">
+            <view class="address-select" data-id="{{item.id}}" data-index="{{index}}" bindtap="setDefault">
+              <text>默认地址</text>
+              <view class="address-radio {{item.is_default ? 'address-choose' : ''}}"></view>
+            </view>
+          </view>
+          <view class="address-edit-box address-edit" data-id="{{item.id}}" data-index="{{index}}" bindtap="edit">编辑</view>
+          <block wx:if="{{!isFromOrder}}">
+            <view class="address-delete-box address-delete" data-id="{{item.id}}" data-index="{{index}}" bindtap="delete">删除</view>
+          </block>
+        </view>
+      </view>
+
+      <view wx:if="{{!address.length && !isLoading}}">
+        <image class="empty-img" src="/img/tip-img/not-search-result.png" mode="aspectFit" />
+        <view class="empty-text">您还未设置收货地址，赶紧去新建吧~</view>
+      </view>
+    </view>
+    <view class="address-add-box" bindtap="addAddress">+ 新增地址</view>
+  </view>
+</dwd-page>

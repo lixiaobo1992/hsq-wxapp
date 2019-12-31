@@ -1,0 +1,86 @@
+<!--pages/lottery-detail/lottery-detail.wxml-->
+<import src="/components/labels/labels.wxml" />
+<import src="/components/swiper/swiper.wxml" />
+<import src="/components/sec-head/index.wxml" />
+<import src="/components/pin-buy/pin-buy.wxml" />
+<wxs src="../../../components/price/index.wxs" module="format" />
+
+<dwd-page
+  id="dwd-page-lottery-detail"
+  custom-class="page-lottery-detail"
+  content-class="page-lottery-detail-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh"
+  bind:onAuthSuccess="onAuthSuccess">
+  <view class="view-page" style="-webkit-overflow-scrolling: touch;height:100%;overflow-y:scroll; position: relative; z-index: 1;" hidden="{{hidePage}}">
+
+    <!-- swiper -->
+    <template is="swiper" data="{{...swiperInfo}}"></template>
+
+    <!-- 抽奖团状态 -->
+    <view class="view-status" wx:if="{{statusTitle}}">{{ statusTitle }}</view>
+
+    <!-- 抽奖团信息 -->
+    <view class="lottery-Info" wx:if="{{title}}">
+      <view class="view-title">{{title}}</view>
+      <view class="view-price">
+        <view class="sub-price">
+          <view class="price">￥{{format(price)}}</view>
+          <view class="sub-market">
+            价格：
+            <view class="market-price">{{format(marketPrice)}}</view></view>
+        </view>
+        <view class="view-join">
+          已有
+          <view class="join-num">{{joinCount}}</view>
+          人参加
+        </view>
+      </view>
+      <view class="view-desc" wx:if="{{desc}}">{{desc}}</view>
+    </view>
+
+    <!-- 抽奖团规则 -->
+    <view class="view-rule mt" wx:if="{{rule && rule.length}}">
+      <view class="rule-title">抽奖团规则</view>
+      <view class="rule-content" wx:for="{{rule}}" wx:key="{{index}}">{{item}}</view>
+    </view>
+
+    <!-- 送至 -->
+    <!-- <view class='mt city' bindtap='onSelectCity'>
+      <view class='city-front'>
+        <label class='city-label'>送至：</label>
+        <image class="city-img" src="https://img1.haoshiqi.net/miniapp/address/location_e7c4dc70ce.png" mode="scaleToFill" />
+        <view class='city-name'>{{currentCity.currentAddress}}</view>
+      </view>
+      <view class='canDelivery' hidden='{{canDelivery}}'>该地区不支持配送</view>
+      <image class="city-arrow" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="scaleToFill" />
+    </view> -->
+
+    <!-- 质保标签 -->
+    <view class="mt labels" wx:if="{{labels}}">
+      <template is="labels" data="{{labels:labels, fontSize:24}}"></template>
+    </view>
+
+    <!-- 图文详情 -->
+    <view class="mt" wx:if="{{morePics}}">
+      <template is="sec-head" data="{{title:'图文详情'}}"></template>
+      <image wx:for="{{morePics}}" wx:key="{{morePics}}" class="img-full" src="{{item}}" mode="widthFix" />
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="view-footer">
+      <block wx:if="{{status == 2}}">
+        <template is="pin-buy" data="{{...footerPriceObj}}"></template>
+      </block>
+      <block wx:else>
+        <view class="footer-status {{ (status == 1 && remindStatus == 1) ? 'disabled' : ''}}" bindtap="onClickStatus">{{buttonTitle}}</view>
+      </block>
+    </view>
+
+    <!-- 城市自定义组件 -->
+    <component-city didShowCitySelection="{{didShowCitySelection}}" bind:onSelectingNewCity="onSelectingNewCity">
+    </component-city>
+
+  </view>
+
+</dwd-page>

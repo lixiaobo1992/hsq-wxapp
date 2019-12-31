@@ -1,0 +1,232 @@
+.c-product-col2{
+  position: relative;
+  overflow: hidden;
+  padding: 0 20rpx;
+}
+.c-product-col2 .col2-box{
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.c-product-col2 .row2-box{
+  width: 350rpx;
+  box-sizing: border-box;
+  padding-bottom: 10rpx;
+  border-radius: 10rpx;
+}
+.c-product-col2 .row2-box:nth-of-type(odd){
+  margin-right: 1orpx;
+}
+.c-product-col2 .row2-container{
+  width: 350rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+.c-product-col2 .row2-img-box{
+  position: relative;
+  width: 350rpx;
+  padding-bottom: 100%;
+  border-radius: 10rpx;
+}
+.c-product-col2 .row2-img{
+  position: absolute;
+  border-radius: 10rpx 10rpx 0 0;
+  left: 0;
+  top: 0;
+  width: 350rpx;
+  height: 350rpx;
+
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img2_0056f25dcd.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center; */
+}
+.c-product-col2 .img-label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 350rpx;
+  height: 350rpx;
+  z-index: 2;
+  overflow: hidden;
+}
+.c-product-col2 .icon-img{
+  width: 100%;
+}
+.c-product-col2 .row2-tag-img{
+  position: absolute;
+  left: 4rpx;
+  top: 0;
+  width: 56rpx;
+  height: 56rpx;
+}
+.c-product-col2 .row2-status-img{
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  left: 30%;
+  top: 30%;
+}
+.c-product-col2 .row2-text-box{
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  position: relative;
+  height: 242rpx;
+}
+.c-product-col2 .row2-title{
+  color: rgb(0, 0, 0);
+  font-size: 28rpx;
+  max-height: 72rpx;
+  margin-bottom: 6rpx;
+  overflow: hidden;
+  line-height: 36rpx;
+  height:70rpx;
+  text-align:left;
+}
+.c-product-col2 .title-tag{
+  padding: 0 5rpx;
+  background: #F21833;
+  color: #ffffff;
+  font-size: 22rpx;
+  display: inline-block;
+  border-radius: 4rpx;
+  margin-right: 8rpx;
+  line-height: 30rpx;
+}
+
+.c-product-col2 .row2-tag-box{
+  width: 100%;
+  overflow: hidden;
+  height: 36rpx;
+  display: flex;
+  margin-top: 6rpx;
+}
+.c-product-col2 .row2-text-tag{
+  height: 32rpx;
+  line-height: 32rpx;
+  border: 1px solid #EA594C;
+  border-radius: 4rpx;
+  color: #EA594C;
+  padding: 0 8rpx;
+  font-size: 20rpx;
+  margin-right: 4rpx;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  min-width: 20rpx;
+  max-width:266rpx;
+}
+.c-product-col2 .row2-text-tag:first-child{
+    flex-shrink: 0;
+}
+.c-product-col2 .row2-price-box{
+  white-space: nowrap;
+  padding: 10rpx 20rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.c-product-col2 .row2-price{
+  display: inline-block;
+  color: #FB0438;
+}
+.c-product-col2 .price-integer{
+  font-size:38rpx;
+  height: 56rpx;
+  font-weight: bold;
+}
+.c-product-col2 .price-decimals{
+  font-size: 24rpx;
+}
+.c-product-col2 .row2-market{
+  font-size: 20rpx;
+  margin-left: 10rpx;
+  color: #999;
+  text-decoration: line-through;
+  display: inline-block;
+}
+.row-expire-day{
+  height:28rpx;
+  line-height:28rpx;
+  font-size:20rpx;
+  color: #999999;
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align:left;
+}
+.c-product-col1 .tag-overflow {
+  display:inline-block;
+  position: relative;
+}
+
+.tag-overflow .left-arrow {
+  width:100%;
+  height:80rpx;
+  display:inline-block;
+  position: absolute;
+  right:0;
+  top:0;
+}
+.tag-overflow .arrow{
+  position: absolute;
+  right:0;
+  top:0;
+  width:24rpx;
+  height:24rpx;
+  background:url('https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png') no-repeat center;
+  background-size: 100% auto;
+  right:4rpx;
+  top:4rpx;
+}
+.tag-overflow .arrow.up {
+  transform: rotate(-90deg);
+}
+.tag-overflow .arrow.down {
+  transform: rotate(90deg);
+}
+.tag-overflow.tagH{
+  height:36rpx;
+}
+.flex-start{
+  align-self:flex-start;
+}
+.flex-end{
+  align-self:flex-end;
+}
+
+/* 添加会员价 */
+.c-product-col2 .row2-vip-price{
+  display:inline-block;
+  font-size:24rpx;
+  min-height:44rpx;
+  line-height:44rpx;
+  margin-left:10rpx;
+  text-align:left;
+}
+.c-product-col2 .vip-bg{
+  line-height:24rpx;
+  display:inline-block;
+}
+.c-product-col2 .img-vip{
+  width:24rpx;
+  height:24rpx;
+  display:inline-block;
+  border-radius:4rpx;
+}
+.c-product-col2 .vip-price {
+  font-size:24rpx;
+  color:#333;
+  background: #FDFBEB;
+  padding:0 4rpx;
+  border-radius:4rpx;
+}

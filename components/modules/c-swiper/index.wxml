@@ -1,0 +1,45 @@
+<dwd-tpl custom-class="c-swiper" data="{{ data }}">
+  <view class="c-swiper-box {{ data.layout == 1 ? 'c-swiper-1' : '' }}" style="{{ innerStyles }}">
+    <swiper
+      indicator-dots="{{ data.list.length > 1 && data.dots ? true : false }}"
+      circular="{{ data.circular }}"
+      autoplay="{{ data.auto }}"
+      interval="{{ data.interval || 6000 }}"
+      previous-margin="{{ data.layout == 1 ? '12px' : '0px' }}"
+      next-margin="{{ data.layout == 1 ? '12px' : '0px' }}"
+      indicator-active-color="{{ data.activeColor }}"
+      indicator-color="rgba(0, 0, 0, .3)">
+      <block wx:for="{{ data.list }}" wx:key="index">
+        <swiper-item class="c-swiper-item">
+          <!-- <image
+            class="c-swiper-img"
+            bindtap="onUrlPage"
+            data-form-Type="onUrlPage"
+            data-url="{{ item.link }}"
+            data-index="{{ index }}"
+            data-group="{{ item.flow }}"
+            data-piwik-event="{{ item.piwikEvent }}"
+            data-piwik-data="{{ item.piwikData }}"
+            src="{{ item.image.url }}"
+            mode="scaleToFill" /> -->
+
+            <dwd-image
+              bindtap="onUrlPage"
+              data-form-Type="onUrlPage"
+              data-url="{{ item.link }}"
+              data-title="{{ data.moduleName }}"
+              data-index="{{ index }}"
+              data-group="{{ item.flow }}"
+              data-piwik-event="{{ item.piwikEvent }}"
+              data-piwik-data="{{ item.piwikData }}"
+              data-module-id="{{ data.id }}"
+              src="{{ item.image.url }}"
+              custom-class="c-swiper-img"
+              mode="scaleToFill"
+              lazy-load="{{ true }}"
+              default-image="https://img1.haoshiqi.net/miniapp/not-img1_dab4753322.png" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</dwd-tpl>

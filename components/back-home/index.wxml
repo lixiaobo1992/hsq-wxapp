@@ -1,0 +1,5 @@
+<template name="backHome">
+  <view class="btn-back-home" bindtap="goIndex" wx:if="{{ isShowGoHome }}">
+    <image src="https://img1.haoshiqi.net/miniapp/btn-home_d9e1a19e15.png" mode="aspectFit"/>
+  </view>
+</template>

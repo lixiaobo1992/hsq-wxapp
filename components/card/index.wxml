@@ -1,0 +1,56 @@
+<import src="../../components/price/index.wxml" />
+
+<template name="card">
+  <view class="product-item"
+  data-id="{{id}}"
+  bindtap="onTapNext"
+  data-type="detail"
+  data-online="{{onLine}}"
+  data-instock="{{inStock}}"
+  data-index='{{index}}'
+  data-url = '{{link}}'
+  data-form-type="card">
+    <view class="product-row">
+      <view class="product-media" wx:if="{{image}}">
+        <!-- <image src="{{image}}" mode="aspectFit"/> -->
+        <dwd-image
+          src="{{ image }}"
+          custom-class="image-thumbnail"
+          mode="scaleToFill"
+          lazy-load="{{ true }}"
+          default-image="https://img1.haoshiqi.net/miniapp/not-img1_dab4753322.png" />
+
+        <image class="image-lootAll" wx:if="{{isShowLootAll}}" src="https://img1.haoshiqi.net/wxapp/img/icon_lootAll_9264ebba09.png" mode="aspectFit"></image>
+      </view>
+
+      <view wx:if="{{countDownInfo}}" class="product-countdown">
+        {{countDownInfo}}  结束
+      </view>
+    </view>
+    <view class="product-intro">
+      <view class="product-info">
+        <view class="product-title max-line-2">
+          <text class="title-zy" wx:if="{{merchantType == 2}}">自营</text>
+          {{title}}
+        </view>
+        <view class="product-desc" wx:if="{{desc}}">{{desc}}</view>
+      </view>
+      <view class="product-tags">
+        <view class="tags"
+          wx:for="{{tags}}"
+          wx:if="{{tags.length > 0}}"
+          wx:for-index="tagIndex"
+          wx:for-item="tagItem"
+          wx:key="{{tagIndex}}">{{tagItem.text}}</view>
+        <text class="remain-time" wx:if="{{remainTime}}">{{remainTime}}</text>
+      </view>
+      <view class="row-expire-day">
+          <text class="row2-left-day" wx:if="{{ expired_date_text }}">{{ expired_date_text}} </text>
+      </view>
+      <view class="product-sub">
+        <template is="price" data="{{...priceObj}}" />
+        <text class="product-num" wx:if="{{num}}">x {{num}}</text>
+      </view>
+    </view>
+  </view>
+</template>

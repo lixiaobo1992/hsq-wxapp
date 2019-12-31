@@ -1,0 +1,49 @@
+
+.app-page{
+  background-color: #f5f5f9;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 28rpx;
+}
+
+.title{
+  background-color: white;
+  padding: 20rpx;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.detail{
+  color: gray;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2rpx;
+}
+
+.context0{
+  color: red;
+  padding: 20rpx;
+}
+
+.context{
+  padding: 20rpx;
+}
+
+.time{
+  padding: 20rpx;
+  padding-top: 0;
+}
+
+.more-less{
+  background-color: white;
+  width: 100%;
+  height: 60rpx;
+  padding: 10rpx;
+}
+
+.more{
+  width: 100%;
+  height: 40rpx;
+}

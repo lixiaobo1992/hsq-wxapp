@@ -1,0 +1,179 @@
+@import '/components/search/search.wxss';
+
+.search-box {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+
+.category-page {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding-top: 101rpx;
+}
+
+.category-box{
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sort-sides-scroll{
+  width: 150rpx;
+  background-color: #f8f8f8;
+  height: 100%;
+}
+
+.sort-main-scroll{
+  flex: 1;
+  height: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* 左侧导航 */
+.sort-sides-scroll .sort-item{
+    width: 100%;
+    height: 120rpx;
+    line-height: 120rpx;
+    box-sizing: border-box;
+    background-color: #F5F5F9;
+    display: flex;
+    align-items: center;
+}
+
+.sort-sides-scroll .sort-item .text{
+    width: 100%;
+    border-left: 4rpx solid #F5F5F9;
+    min-height: 60rpx;
+    padding-left: 5rpx;
+    padding-right: 5rpx;
+    transition: all 0.5s 0s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sort-sides-scroll .sort-item .text text{
+    font-size: 28rpx;
+    line-height: 34rpx;
+    word-break: break-all;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+}
+.sort-sides-scroll .sort-item.active{
+    background-color: #fff;
+}
+.sort-sides-scroll .sort-item.active .text{
+    border-left: 4rpx solid #ED0000;
+    color: #ED0000;
+    font-weight: bold;
+}
+
+.category-ad{
+  width: 100%;
+  position: relative;
+  padding-top: 32.8%;
+  margin-bottom: 20rpx;
+}
+.category-ad .ad-image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.sort-main-scroll .sort-box{
+    width: 100%;
+    padding-top: 30rpx;
+    overflow: hidden;
+}
+.sort-main-scroll .sort-box:first-child{
+    padding-top: 40rpx;
+}
+
+.sort-box .sort-title{
+    display: flex;
+    align-items: center;
+    height: 40rpx;
+    padding:0 30rpx;
+    margin-bottom: 5rpx;
+}
+.sort-box .sort-title .sort-name{
+    font-size: 28rpx;
+    color: #666666;
+    flex: 1;
+    padding-left: 30rpx;
+    position: relative;
+}
+.sort-box .sort-title .sort-name::before{
+  content: '';
+  display: block;
+  width: 10rpx;
+  height: 10rpx;
+  background-color: #f00;
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -5rpx;
+}
+.sort-box .sort-title .sort-more{
+    display: flex;
+    align-items: center;
+}
+.sort-box .sort-title .sort-more text{
+    font-size: 24rpx;
+    color: #999999;
+}
+.sort-box .sort-title .sort-more image{
+    width: 24rpx;
+}
+
+.sort-box .child-sort {
+    width: 100%;
+    overflow: hidden;
+}
+.sort-box .child-sort .child-item{
+    float: left;
+    display: block;
+    width: 33.3333%;
+    text-align: center;
+    margin-bottom: 10rpx;
+}
+.sort-box .child-sort .child-item .item-img{
+    display: inline-block;
+    width: 120rpx;
+    height: 120rpx;
+}
+.sort-box .child-sort .child-item .item-img image{
+    width: 120rpx;
+    height: 120rpx;
+}
+.sort-box .child-sort .child-item .sort-name{
+    padding:0 20rpx;
+    line-height: 32rpx;
+    font-size: 24rpx;
+    text-align: center;
+    color: #212121;
+    margin-top: 10rpx;
+    max-height: 64rpx;
+    word-break: break-all;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+}
+

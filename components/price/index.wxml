@@ -1,0 +1,21 @@
+
+<wxs src="index.wxs" module="format" />
+
+<template name="price">
+  <view class="price-box">
+    <view class="item item-type">{{ type }}</view>
+      <view class="item {{rmb ? 'item-rmb' : 'item-price'}}">{{ format(price, 2) }}</view>
+      <block wx:if="{{point > 0}}">
+        <view class="item item-point">{{ point }}</view>
+      </block>
+      <block wx:if="{{memberPrice}}">
+        <view class="member-price">
+          <image src="https://img1.haoshiqi.net/miniapp/vip-icon_1be7bb7dd2.png" class="vip-icon" mode="scaleToFill" />
+          <view class="item-member-price">￥{{ format(memberPrice, 2) }}</view>
+        </view>
+      </block>
+      <block wx:else>
+          <view class="item item-market-price">{{ format(marketPrice, 2) }}</view>
+      </block>
+  </view>
+</template>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "address-list": "/components/address-list/address-list",
+    "city-list": "/components/city-list/city-list"
+  }
+}

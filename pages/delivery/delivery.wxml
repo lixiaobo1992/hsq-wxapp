@@ -1,0 +1,23 @@
+
+<dwd-page
+  id="dwd-page-delivery"
+  custom-class="page-delivery"
+  content-class="page-delivery-content"
+  isLoading="{{ isLoading }}"
+  bind:onRefresh="refresh">
+  <view class="app-page">
+
+    <view class="title">{{title}}</view>
+
+    <view class="detail" wx:for="{{details}}" wx:key="time">
+      <view class="context0" wx:if="{{index == 0}}">{{item.context}}</view>
+      <view class="context" wx:if="{{index != 0}}">{{item.context}}</view>
+      <view class="time">{{item.time}}</view>
+    </view>
+
+    <view class="more-less" bindtap="onMoreOrLess" wx:if="{{datas.length > number}}">
+      <image class="more" src="https://img1.haoshiqi.net/wxapp/img/more_85508a3b09.png" mode="aspectFit" style="transform:rotate({{rotate}}deg)"/>
+    </view>
+
+  </view>
+</dwd-page>

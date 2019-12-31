@@ -1,0 +1,103 @@
+.popup-mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 100;
+}
+.popup-container{
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  width: 90%;
+  transform: translateY(-50%);
+  z-index: 101;
+}
+.popup-container .bg-img{
+    width: 100%;
+}
+.popup-container .popup-content{
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 67%;
+  height: 83%;
+}
+.popup-title{
+  height: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF4D8;
+  font-weight: bolder;
+  font-size: 40rpx;
+}
+.popup-content-center{
+  height: 46%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.coupon-price{
+  font-size: 130rpx;
+  line-height: 1;
+  color: #F86E03;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-end;
+}
+.coupon-price::before{
+  content: '￥';
+  font-size: 44rpx;
+  color: #F86E03;
+  line-height: 1.5;
+}
+.coupon-title-1{
+  font-size: 28rpx;
+  color: #F86E03;
+}
+.coupon-title-2{
+  font-size: 26rpx;
+  color: #F86E03;
+  opacity: 0.7;
+}
+.coupon-date{
+  height: 14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F86E03;
+  font-size: 22rpx;
+  opacity: 0.7;
+}
+.popup-btn-block{
+  height: 28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.buy-btn{
+  width: 360rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 8rpx 0 #C67B00;
+  font-size: 36rpx;
+  color: #EE5310;
+  font-weight: bold;
+}
+.buy-btn-desc{
+  font-size: 26rpx;
+  text-align: center;
+  color: #F5A623;
+}
+.buy-btn-desc text{
+  text-decoration-line: underline;
+}

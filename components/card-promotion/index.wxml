@@ -1,0 +1,32 @@
+<view class="new-mask" wx:if="{{promotions.length}}" data-type="close" bindtap="handlepromotion"></view>
+    <view class="new-container new-container-ani">
+      <view class="container-title">
+        <view class="text-center"> {{ promotionTitle?promotionTitle:'优惠信息' }}</view>
+        <image src="https://img1.haoshiqi.net/miniapp/delete_ae056b2bf9.png" mode="widthFix" class="img-box" data-type="close" bindtap="handlepromotion" />
+      </view>
+      <view class="container-content">
+        <view
+          class="container-content-item"
+          wx:for="{{promotions}}"
+          wx:key="{{index}}"
+          data-index="{{index}}"
+          >
+          <view class="title">
+            <text class="border">{{item.title}}</text>
+          </view>
+          <view class="desc" wx:if="{{ !type }}">{{item.text}} </view>
+          <view wx:else>
+          <view class="desc" wx:for="{{item.text}}" wx:key="{{index}}" wx:for-item="textitem">
+              <text>{{ textitem.first}}</text>
+              <text class="red">{{ textitem.second}}</text>
+              <text wx:if="{{ item.text.length-1 !== index}}">,</text>
+          </view>
+          </view>
+          <view class="link-text" wx:if="{{item.type}}" bindtap="onPinDetail" data-id="{{item.id}}" data-url ="{{ item.link }}">
+              <text>去凑单</text>
+              <image class="link-more" src="https://img1.haoshiqi.net/miniapp/more-link_71c7e3697d.png" mode="aspectFill" />
+          </view>
+        </view>
+      </view>
+      <!-- <view class="btn-know" data-type="close" bindtap="handlepromotion">确认</view> -->
+</view>

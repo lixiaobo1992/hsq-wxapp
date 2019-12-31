@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单列表",
+  "usingComponents": {
+    "merge-pay-modal": "../../components/merge-pay-modal/index"
+  }
+}

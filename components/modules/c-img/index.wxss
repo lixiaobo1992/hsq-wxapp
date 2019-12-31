@@ -1,0 +1,26 @@
+.c-img {
+  overflow: hidden;
+}
+.c-img-item{
+  position: relative;
+  left: 0;
+  top: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+}
+.c-img-item .image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+  display: block;
+  vertical-align: middle;
+
+  /* background-image: url('https://img1.haoshiqi.net/miniapp/not-img1_dab4753322.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center; */
+}
